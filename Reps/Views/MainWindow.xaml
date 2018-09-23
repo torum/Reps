@@ -1,0 +1,412 @@
+﻿<fw:AcrylicWindow x:Class="Reps.Views.MainWindow"
+                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                  xmlns:local="clr-namespace:Reps.Views"
+                  xmlns:helpers="clr-namespace:Reps.Helpers"
+                  xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
+                  mc:Ignorable="d"
+                  
+                  Background="Transparent"
+                  BorderThickness="0"
+                  
+                  fw:AcrylicWindow.Enabled="True"
+                  fw:AcrylicWindow.ShowTitleBar="False"
+                  fw:AcrylicWindow.ExtendViewIntoTitleBar="True"
+                  fw:AcrylicWindow.TintOpacity="0"
+                  fw:AcrylicWindow.TintColor="{DynamicResource WindowTintColor}"
+                  fw:AcrylicWindow.FallbackColor="Transparent"
+                  
+                  StateChanged="Window_StateChanged"
+                  
+                  helpers:MaximizeDoubleClickHelper.MaximizeDoubleClick="True" 
+                  
+                  Title="" 
+                  Height="450" Width="800"
+                  DataContext="{StaticResource MainViewModel}">
+
+    <Grid x:Name="BackgroundGrid" Background="Transparent">
+        <Rectangle x:Name="AcrylicBackground" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Fill="{DynamicResource WindowBackgroundBaseColorBrush}" Opacity="{Binding WindowOpacity, Mode=OneWay}" helpers:EnableDragHelper.EnableDrag="True"></Rectangle>
+
+        <!-- アプリタイトルバー -->
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50*"/>
+                    <ColumnDefinition Width="50*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- アプリアイコン -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+
+                    <Viewbox Margin="9 6 3 3" Panel.ZIndex="1" HorizontalAlignment="Left" VerticalAlignment="Center" Stretch="Uniform" Width="12" Height="12" ToolTip="{Binding AppTitle, Mode=OneWay}" ToolTipService.ToolTip="{Binding AppTitle, Mode=OneWay}" Focusable="True" FocusVisualStyle="{x:Null}">
+                        <Canvas Opacity="1" Width="12" Height="12" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                        </Canvas>
+                    </Viewbox>
+
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right" Margin="3 0 3 3">
+
+                    <!-- 透明度変更 -->
+<!--
+                    <Slider x:Name="SliderSeek" Grid.Column="1" Width="60" Opacity="0.7" Minimum="0.1" Maximum="1" Value="{Binding Mode=TwoWay, Path=WindowOpacity}" ToolTip="画面の透過率" VerticalAlignment="Center"  Margin="3 3 3 3" Foreground="Gray" Background="Transparent" IsMoveToPointEnabled="True" Style="{DynamicResource CustomSliderStyle}"></Slider>
+-->
+                    <!-- テーマ切替 -->
+<!--
+                    <ComboBox x:Name="ThemeComboBox" ItemsSource="{Binding Themes}" SelectedItem="{Binding CurrentTheme}" ToolTip="テーマの切替" VerticalAlignment="Center" Margin="3 0 3 0" Padding="0 0 0 0" Background="Transparent" Style="{DynamicResource ComboBoxFlatStyle}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Canvas Background="Transparent" Width="12" Height="12" ToolTip="{Binding Path=Label, Mode=OneWay}">
+                                        <Path Fill="{Binding RelativeSource={RelativeSource AncestorType=ComboBox}, Path=Foreground}" Width="12" Height="12" Stretch="Uniform" Data="{Binding Path=IconData, Mode=OneWay}" />
+                                    </Canvas>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+-->
+                    <Button x:Name="SettingsButton" Style="{StaticResource PathButton}" Width="18" Height="18" Margin="3 0 3 0" Opacity="0.7" Command="{Binding ShowSettingsCommand}" ToolTip="設定(Ctrl+S)" Content="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.21,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.21,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.67 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z">
+                    </Button>
+
+                    <Button x:Name="MinimizeButton" Style="{StaticResource PathButton}" Width="18" Height="18" Margin="3" Opacity="0.7" Click="MinimizeButton_Click" ToolTip="最小化(Alt+Space, S)">
+                        M20,14H4V10H20
+                    </Button>
+
+                    <Button x:Name="RestoreButton" Style="{StaticResource PathButton}" Width="18" Height="18" Margin="3" Opacity="0.7" Click="RestoreButton_Click" ToolTip="元のサイズに戻す(Alt+Space, R)">
+                        M4,8H8V4H20V16H16V20H4V8M16,8V14H18V6H10V8H16M6,12V18H14V12H6Z
+                    </Button>
+
+                    <Button x:Name="MaxButton" Style="{StaticResource PathButton}" Width="18" Height="18" Margin="3" Opacity="0.7" Click="MaxButton_Click" ToolTip="最大化(Alt+Space, X)">
+                        M4,4H20V20H4V4M6,8V18H18V8H6Z
+                    </Button>
+
+                    <Button x:Name="CloseButton" Style="{StaticResource PathButton}" Width="18" Height="18" Margin="3" Opacity="0.7" Click="CloseButton_Click" ToolTip="閉じる(Alt+Space, C)/(Alt+F4)">
+                        M13.46,12L19,17.54V19H17.54L12,13.46L6.46,19H5V17.54L10.54,12L5,6.46V5H6.46L12,10.54L17.54,5H19V6.46L13.46,12Z
+                    </Button>
+
+                </StackPanel>
+
+            </Grid>
+
+        </Grid>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="246"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- フローティングボックス -->
+            <Border Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Stretch" helpers:EnableDragHelper.EnableDrag="True">
+
+                <Grid Width="224" Margin="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- サイドメニュー -->
+                    <Border Grid.Row="1" Grid.Column="0" >
+                        
+                    </Border>
+                    
+                    <!-- 情報ボックス -->
+                    <Border Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Background="Transparent">
+                        
+                        <Grid>
+                            <!-- ぼかし背景 -->
+                            <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{DynamicResource WindowBackgroundBaseColorBrush}" Opacity="0.1" Margin="0" Style="{DynamicResource BoardStyle}"></Border>
+
+                        </Grid>
+
+                    </Border>
+
+                </Grid>
+
+            </Border>
+
+            <!-- 板情報 | 歩み値 -->
+            <Border Grid.Row="1" Grid.Column="1" Background="Transparent">
+
+            </Border>
+
+            <!-- 設定画面 -->
+            <Grid x:Name="settings" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Background="{DynamicResource WindowBackgroundColorBrush}" Visibility="{Binding ShowSettings, Converter={StaticResource BoolToVisibilityCollapsedConverter}}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TabControl Grid.Row="0" TabStripPlacement="Left" BorderThickness="0" Margin="0" Background="{DynamicResource BoardBackgroundColorBrush}" Style="{StaticResource SettingsTabControlStyle}">
+
+                    <TabItem Header="全般" Width="100" Height="48" Style="{StaticResource SettingsTabItemStyle}">
+
+                        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Padding="12" VerticalAlignment="Top" Style="{DynamicResource CustomScrollViewerStyle}">
+
+                            <StackPanel>
+                                <Border BorderBrush="DimGray" BorderThickness="0 0 0 0.5" Margin="3" Padding="3">
+                                    <Label Padding="0" Content="このアプリケーションについて" Style="{StaticResource SectionTitle}"/>
+                                </Border>
+
+                                <TextBlock Padding="6" TextWrapping="Wrap" Style="{DynamicResource DefaultTextBlockStyle}">
+                                    TODO
+                                </TextBlock>
+
+                                <TextBlock Padding="6" Style="{DynamicResource DefaultTextBlockStyle}">
+                                    TODO
+                                </TextBlock>
+
+                                <Border BorderBrush="DimGray" BorderThickness="0 0 0 0.5" Margin="3" Padding="3">
+                                    <Label Padding="0" Content="プライバシーについて" Style="{StaticResource SectionTitle}"/>
+                                </Border>
+                                <TextBlock Padding="6" TextWrapping="Wrap" Style="{DynamicResource DefaultTextBlockStyle}">
+                                本アプリケーションは、個人情報を含む一切の情報を収集・保存及び送信することはありません。
+                                </TextBlock>
+
+                                <Border BorderBrush="DimGray" BorderThickness="0 0 0 0.5" Margin="3" Padding="3">
+                                    <Label Padding="0" Content="免責" Style="{StaticResource SectionTitle}"/>
+                                </Border>
+                                <TextBlock Padding="6" TextWrapping="Wrap" Style="{DynamicResource DefaultTextBlockStyle}">
+                                開発する上で、間違いのないように作っていますが、万が一不具合等で損害が発生しても、開発者はいかなる責任もとれませんので、ご承知おきください。もし不具合や改善点などありましたら、ご連絡いただければと思います。
+                                </TextBlock>
+
+                                <Border BorderBrush="DimGray" BorderThickness="0 0 0 0.5" Margin="3" Padding="3">
+                                    <Label Padding="0" Content="ウェブサイト" Style="{StaticResource SectionTitle}"/>
+                                </Border>
+                                <TextBlock Padding="6" Style="{DynamicResource DefaultTextBlockStyle}">
+                                <Run Text=""></Run>
+                                <Hyperlink NavigateUri="https://torum.github.io/Reps/" RequestNavigate="Hyperlink_RequestNavigate">https://torum.github.io/Reps/</Hyperlink>
+                                </TextBlock>
+
+                                <Border BorderBrush="DimGray" BorderThickness="0 0 0 0.5" Margin="3" Padding="3">
+                                    <Label Padding="0" Content="更新情報（Twitter）" Style="{StaticResource SectionTitle}"/>
+                                </Border>
+                                <TextBlock Padding="6" Style="{DynamicResource DefaultTextBlockStyle}">
+                                <Run Text=""></Run>
+                                <Hyperlink NavigateUri="https://twitter.com/torum_apps" RequestNavigate="Hyperlink_RequestNavigate">https://twitter.com/torum_apps</Hyperlink>
+                                </TextBlock>
+
+                            </StackPanel>
+
+                        </ScrollViewer>
+
+                    </TabItem>
+
+                    <TabItem Header="ライセンス" Width="100" Height="48" Style="{StaticResource SettingsTabItemStyle}">
+
+                        <TabControl Margin="12">
+                            <TabControl.Resources>
+                                <Style x:Key="LicenseTabFocusVisualStyle">
+                                    <Setter Property="Control.Template">
+                                        <Setter.Value>
+                                            <ControlTemplate>
+                                                <Rectangle Margin="1" StrokeThickness="1" StrokeDashArray="1 2" Stroke="{DynamicResource ControlMediumColorBrush}"/>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                                <Style TargetType="{x:Type TabControl}">
+                                    <Setter Property="OverridesDefaultStyle" Value="False" />
+                                    <Setter Property="Foreground" Value="{DynamicResource NormalTextColorBrush}" />
+                                    <Setter Property="Background" Value="{DynamicResource BoardBackgroundColorBrush}"/>
+                                    <Setter Property="BorderThickness" Value="0"/>
+                                </Style>
+                                <Style x:Key="LicenseTabItemStyle" TargetType="{x:Type TabItem}">
+                                    <Setter Property="OverridesDefaultStyle" Value="False" />
+                                    <Setter Property="FocusVisualStyle" Value="{StaticResource LicenseTabFocusVisualStyle}"/>
+                                    <Setter Property="Foreground" Value="{DynamicResource ControlDarkColorBrush}" />
+                                    <Setter Property="Background" Value="{DynamicResource BoardBackgroundColorBrush}"/>
+                                    <Setter Property="BorderThickness" Value="0 0 0 2"/>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type TabItem}">
+
+                                                <Border Name="HeaderBorder" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Padding="{TemplateBinding Padding}" HorizontalAlignment="Center" CornerRadius="0">
+                                                    <ContentPresenter x:Name="ContentSite" HorizontalAlignment="Center" VerticalAlignment="Center" ContentSource="Header" RecognizesAccessKey="True" />
+                                                </Border>
+
+                                                <ControlTemplate.Triggers>
+
+                                                    <Trigger Property="IsSelected" Value="True">
+                                                        <Setter Property="Foreground" Value="{DynamicResource TitleTextColorBrush}" />
+                                                        <Setter TargetName="HeaderBorder" Property="BorderBrush" Value="{DynamicResource ControlLightColorBrush}" />
+                                                        <Setter TargetName="HeaderBorder" Property="BorderThickness" Value="0 0 0 2"/>
+                                                    </Trigger>
+
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter Property="Foreground" Value="{DynamicResource TitleTextColorBrush}" />
+                                                        <Setter TargetName="HeaderBorder" Property="BorderBrush" Value="{DynamicResource ControlDarkColorBrush}" />
+                                                        <Setter TargetName="HeaderBorder" Property="BorderThickness" Value="0 0 0 2"/>
+                                                    </Trigger>
+
+                                                    <Trigger Property="IsEnabled" Value="False">
+                                                        <Setter Property="Background" Value="gray" />
+                                                        <Setter Property="BorderBrush" Value="#FFC9C7BA" />
+                                                        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </TabControl.Resources>
+
+                            <TabItem Header="使用許諾契約書 (EULA)" Padding="6" Style="{DynamicResource LicenseTabItemStyle}">
+
+                                <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" VerticalAlignment="Top" Style="{DynamicResource CustomScrollViewerStyle}">
+
+
+                                    <TextBlock TextWrapping="Wrap" Padding="6">
+ソフトウェアの使用許諾書
+    <LineBreak/>
+    <LineBreak/>                            
+第１条 （本契約の成立）<LineBreak/>
+ご利用者（甲）が、本ソフトウェアの使用もしくはインストールを行った時点で、本契約書記載の内容に同意いただいたものとみなし、本ソフトウェアの開発者（以下開発者、乙）もしくは開発者が再使用許諾権を付与した者（以下あわせて「開発者」といいます）
+との間で、本契約が有効に成立するものといたします。
+                                <LineBreak/><LineBreak/>
+第２条 （使用許諾）<LineBreak/>
+1. ご利用者は、無償で本ソフトウェアを、日本国内において、個人としての使用に限定して、無料で使用することができま
+す。
+                                <LineBreak/>
+2. ご利用者は、本ソフトウェアを改変したり、再発布することはできません。
+                                <LineBreak/>
+3. ご利用者は、本条項に基づき本ソフトウェアの使用権のみを取得し、本ソフトウェアの著作権、所有権その他のいかなる権利も取得しません。
+                                <LineBreak/>
+4. 本契約はご利用者に対し、本ソフトウェアの改訂版(アドオンパック)、変更、機能強化、サービスパック、またはその他のサポートサービスを受ける権利を付与するものではありません。
+                                <LineBreak/>
+5. ご利用者は、本ソフトウェアを、直接的、間接的を問わず、日本国、米国およびその他の国の全ての法律・規則に違反して輸出してはいけません。
+                                <LineBreak/><LineBreak/>
+第３条 （保証責任）<LineBreak/>
+1. 開発者は、別途記載するライブラリを除き、本ソフトウェアの著作権を有し、または著作権者から再使用許諾する権利を受けていることを保証します。
+                                    <LineBreak/>
+2. 開発者は、本ソフトウェアのご利用者の使用目的への適合性および法律上の瑕疵担保責任を含め一切の保証を行いません。
+                                <LineBreak/><LineBreak/>
+第４条 （責任の範囲）<LineBreak/>
+1. 前条に関わらず、ご利用者が本ソフトウェアを使用したことによりご利用者に直接的結果として発生した損害に対し開発者は責任を負いません。
+                                <LineBreak/>
+3. 開発者は、開発者の判断により第三者に本契約記載の業務を委託することができるものとします。ただし、委託にあたっての責任は、全て開発者の責任においてなされるものとします。
+                                <LineBreak/><LineBreak/>
+第５条 （権利の譲渡）<LineBreak/>
+ご利用者は、当社の書面による事前の承諾なく下記の行為を行ってはいけません。<LineBreak/>
+①． 本ソフトウェアの複製物を第三者に譲渡、貸与、占有移転すること<LineBreak/>
+②． 本契約上の地位または本契約に基づく権利義務を第三者に移転、譲渡、担保の用に供すること
+                                <LineBreak/><LineBreak/>
+第６条 （本契約の終了）<LineBreak/>
+ご利用者が本契約の条項に違反し、開発者が違反の是正を催告した後、２週間以内に是正されなかった場合、当社は本契約を解約し、ご利用者の本ソフトウェアの使用を終了させることができます。
+                                <LineBreak/><LineBreak/>
+第７条 （契約の変更）<LineBreak/>
+本契約の変更は、開発者の判断で、変更できるものとします。
+                                <LineBreak/><LineBreak/>
+第８条 （協議）<LineBreak/>
+本契約に規定されていない事項または本契約の解釈に疑義が生じた場合は、甲および乙は、誠意をもって協議するものとします。
+                                <LineBreak/><LineBreak/>
+以上
+                                
+                                <LineBreak/>
+
+
+                                    </TextBlock>
+
+                                </ScrollViewer>
+
+                            </TabItem>
+
+                            <TabItem Header="使用ライブラリ等" Padding="6" Style="{DynamicResource LicenseTabItemStyle}">
+
+                                <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" VerticalAlignment="Top" Style="{DynamicResource CustomScrollViewerStyle}">
+
+                                    <StackPanel Margin="6 6 50 6">
+
+                                        <StackPanel Margin="0 0 0 0">
+
+                                            <TextBlock TextWrapping="Wrap" Style="{DynamicResource DefaultTextBlockStyle}">
+                                                本ソフトウェアは下記のライブラリを使用しています。
+                                            </TextBlock>
+                                            
+                                        </StackPanel>
+                                        
+                                        <StackPanel Margin="0 24 0 0">
+
+                                            <TextBlock TextWrapping="Wrap" FontWeight="Bold" Style="{DynamicResource DefaultTextBlockStyle}">
+                                    FluentWPF<LineBreak/>
+                                            </TextBlock>
+
+                                            <TextBlock TextWrapping="Wrap" Padding="6" Style="{DynamicResource DefaultTextBlockStyle}">
+                                        MIT License
+<LineBreak/><LineBreak/>
+Copyright (c) 2016 minami_SC
+<LineBreak/><LineBreak/>
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+<LineBreak/><LineBreak/>
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+<LineBreak/><LineBreak/>
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+                                            </TextBlock>
+
+                                        </StackPanel>
+
+                                    </StackPanel>
+
+                                </ScrollViewer>
+
+                            </TabItem>
+
+                        </TabControl>
+
+                    </TabItem>
+
+                </TabControl>
+
+                <Border Grid.Row="1" Height="62" Margin="0" Background="{DynamicResource BoardBackgroundColorBrush}">
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 12 0 0">
+                        <Button Width="80" Content="キャンセル(_C)" Margin="0 0 24 0" Padding="3" IsCancel="True" Command="{Binding SettingsCancelCommand}" Visibility="Hidden"></Button>
+                        <Button Width="80" Content="_OK" Margin="0 0 32 0" Padding="3" IsDefault="True" Command="{Binding SettingsOKCommand}"></Button>
+                    </StackPanel>
+
+                </Border>
+
+
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+</fw:AcrylicWindow>
