@@ -1,0 +1,85 @@
+<TMPL_INCLUDE NAME="header.tmpl">
+
+<TMPL_INCLUDE NAME="menu.tmpl">
+<div id="content">
+<TMPL_VAR NAME="page_over_data" ESCAPE='0'>
+<table border="1" class="main_table">
+    <tr>
+        <th class="list">ユーザーID<br />(担当者名)</th>
+        <TMPL_IF NAME="r_visible">
+        <TMPL_IF NAME="rl_visible">
+        <th class="list" width="63">賃貸：<br />住居用</th>
+        </TMPL_IF>
+        <TMPL_IF NAME="rb_visible">
+        <th class="list" width="63">賃貸：<br />事業用</th>
+        </TMPL_IF>
+        </TMPL_IF>
+        <TMPL_IF NAME="b_visible">
+        <TMPL_IF NAME="bl_visible">
+        <th class="list" width="63">売買：<br />土地</th>
+        </TMPL_IF>
+        <TMPL_IF NAME="bm_visible">
+        <th class="list" width="63">売買：<br />マンション</th>
+        </TMPL_IF>
+        <TMPL_IF NAME="bh_visible">
+        <th class="list" width="63">売買：<br />一戸建て</th>
+        </TMPL_IF>
+        <TMPL_IF NAME="bb_visible">
+        <th class="list" width="63">売買：<br />投資用</th>
+        </TMPL_IF>
+        </TMPL_IF>
+        <th class="list" align="center" width="35">削除</th>
+    </tr>
+    <TMPL_LOOP NAME='main_loop'>
+    <tr>
+        <td>
+            <a href="<TMPL_VAR NAME='script_name' ESCAPE='0'>?_mode=mode_admin_showUser_profile&_usr_id=<TMPL_VAR NAME="ID" ESCAPE='0'>"><TMPL_VAR NAME="ID" ESCAPE='0'></a>&nbsp;<br />(<TMPL_VAR NAME="USER_WHO" ESCAPE='1'>)
+        </td>
+        <TMPL_IF NAME="r_visible">
+        <TMPL_IF NAME="rl_visible">
+        <td>
+            <div class="edit-button"><a href="<TMPL_VAR NAME='script_name' ESCAPE='0'>?_mode=mode_admin_showUser_items&_type=rl&_usr_id=<TMPL_VAR NAME="ID" ESCAPE='0'>">一覧</a></div>
+        </td>
+        </TMPL_IF>
+        <TMPL_IF NAME="rb_visible">
+        <td>
+            <div class="edit-button"><a href="<TMPL_VAR NAME='script_name' ESCAPE='0'>?_mode=mode_admin_showUser_items&_type=rb&_usr_id=<TMPL_VAR NAME="ID" ESCAPE='0'>">一覧</a></div>
+        </td>
+        </TMPL_IF>
+        </TMPL_IF>
+        <TMPL_IF NAME="b_visible">
+        <TMPL_IF NAME="bl_visible">
+        <td>
+            <div class="edit-button"><a href="<TMPL_VAR NAME='script_name' ESCAPE='0'>?_mode=mode_admin_showUser_items&_type=bl&_usr_id=<TMPL_VAR NAME="ID" ESCAPE='0'>">一覧</a></div>
+        </td>
+        </TMPL_IF>
+        <TMPL_IF NAME="bm_visible">
+        <td>
+            <div class="edit-button"><a href="<TMPL_VAR NAME='script_name' ESCAPE='0'>?_mode=mode_admin_showUser_items&_type=bm&_usr_id=<TMPL_VAR NAME="ID" ESCAPE='0'>">一覧</a></div>
+        </td>
+        </TMPL_IF>
+        <TMPL_IF NAME="bh_visible">
+        <td>
+            <div class="edit-button"><a href="<TMPL_VAR NAME='script_name' ESCAPE='0'>?_mode=mode_admin_showUser_items&_type=bh&_usr_id=<TMPL_VAR NAME="ID" ESCAPE='0'>">一覧</a></div>
+        </td>
+        </TMPL_IF>
+        <TMPL_IF NAME="bb_visible">
+        <td>
+            <div class="edit-button"><a href="<TMPL_VAR NAME='script_name' ESCAPE='0'>?_mode=mode_admin_showUser_items&_type=bb&_usr_id=<TMPL_VAR NAME="ID" ESCAPE='0'>">一覧</a></div>
+        </td>
+        </TMPL_IF>
+        </TMPL_IF>
+        <td align="center" width="35"><input name="_object_id_to_be_deleted" value="<TMPL_VAR NAME="ID" ESCAPE='0'>" type="checkbox" /></td>
+    </tr>
+    </TMPL_LOOP>
+    <tr>
+        <td colspan="7" align="right" valign="middle"><br />
+            <TMPL_VAR NAME="page_lower_data" ESCAPE='0'>
+            <p><small>ユーザーを削除しても、ユーザーが登録した物件自体は削除されません。<br />ユーザーが登録した物件の削除は、事前にユーザーの物件一覧から削除してください。</small></p>
+        </td>
+    </tr>
+</table>
+</div>
+
+<TMPL_INCLUDE NAME="footer.tmpl">
+  

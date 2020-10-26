@@ -1,0 +1,224 @@
+<TMPL_INCLUDE NAME="header.tmpl">
+
+<TMPL_INCLUDE NAME="menu.tmpl">
+<div id="content">
+
+    <TMPL_VAR NAME="page_data" ESCAPE='0'>
+
+    <table class="main_table" border="0">
+        <tr>
+            <th colspan="4" align="left" style="background-color:#9BD1FA;padding:0px;"><b class="rtop"><b class="r1"></b><b class="r2"></b><b class="r3"></b><b class="r4"></b></b>&nbsp;&nbsp;<img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>/icons/chart_bar.png" width="16" height="16" align="top" border="0" />&nbsp;統計情報</th>
+        </tr>
+        <TMPL_IF NAME="rl_visible">
+        <tr>
+            <th colspan="2" align="left" class="list" width="50%">賃貸：：住居用</th>
+            <td colspan="2" align="right" class="list" width="50%"><small>最終更新日 <TMPL_VAR NAME="rl_last_updated" ESCAPE='0'></small></td>
+        </tr>
+        <tr>
+            <td align="left" width="20%">&nbsp;&nbsp;総登録物件数:</td>
+            <td align="left" width="30%"><strong><TMPL_IF NAME="rl_count_all"><TMPL_VAR NAME="rl_count_all" ESCAPE='0'><TMPL_ELSE>0</TMPL_IF></strong>件</td>
+
+            <td align="left" width="20%">&nbsp;&nbsp;公開物件数:</td>
+            <td align="left" width="30%"><strong><TMPL_IF NAME="rl_count_published"><TMPL_VAR NAME="rl_count_published" ESCAPE='0'><TMPL_ELSE>0</TMPL_IF></strong>件</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="20%">&nbsp;&nbsp;&nbsp;アクセス履歴:</td>
+            <td align="left" valign="top" width="30%"><TMPL_IF NAME='rl_access_count_all'>
+                総数：<strong><TMPL_VAR NAME="rl_access_count_all" ESCAPE='0'></strong>回<br />
+                    <TMPL_LOOP NAME='rl_access_loop'>
+                        <a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_edit&_type=rl&_object_id=<TMPL_VAR NAME="OBJECT_ID" ESCAPE='0'>">RL<TMPL_VAR NAME="OBJECT_ID" ESCAPE='0'></a>（<TMPL_VAR NAME="ACCESS_COUNT" ESCAPE='0'>回）<br />
+                    </TMPL_LOOP>
+                </TMPL_IF>
+                <!-- 全て表示 -->
+            </td>
+
+            <td align="left" valign="top" width="20%">&nbsp;&nbsp;問い合わせ:</td>
+            <td align="left" valign="top" width="30%"><TMPL_IF NAME='rl_inquiry_count_all'>
+                総数：<strong><TMPL_VAR NAME="rl_inquiry_count_all" ESCAPE='0'></strong>回<br />
+                    <TMPL_LOOP NAME='rl_inquiry_loop'>
+                        <a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_edit&_type=rl&_object_id=<TMPL_VAR NAME="OBJECT_ID" ESCAPE='0'>">RL<TMPL_VAR NAME="OBJECT_ID" ESCAPE='0'></a>（<TMPL_VAR NAME="INQUIRY_COUNT" ESCAPE='0'>回）<br />
+                    </TMPL_LOOP>
+                </TMPL_IF>
+            </td>
+        </tr>
+        </TMPL_IF>
+        <TMPL_IF NAME="rb_visible">
+        <tr>
+            <th colspan="2" align="left" class="list">賃貸：：事業用</th>
+            <td colspan="2" align="right" class="list"><small>最終更新日 <TMPL_VAR NAME="rb_last_updated" ESCAPE='0'></small></td>
+        </tr>
+        <tr>
+            <td align="left" width="20%">&nbsp;&nbsp;総登録物件数:</td>
+            <td width="30%"><strong><TMPL_IF NAME="rb_count_all"><TMPL_VAR NAME="rb_count_all" ESCAPE='0'><TMPL_ELSE>0</TMPL_IF></strong>件</td>
+
+            <td align="left">&nbsp;&nbsp;公開物件数:</td>
+            <td><strong><TMPL_IF NAME="rb_count_published"><TMPL_VAR NAME="rb_count_published" ESCAPE='0'><TMPL_ELSE>0</TMPL_IF></strong>件</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="20%">&nbsp;&nbsp;&nbsp;アクセス履歴:</td>
+            <td align="left" valign="top" width="30%"><TMPL_IF NAME='rb_access_count_all'>
+                総数：<strong><TMPL_VAR NAME="rb_access_count_all" ESCAPE='0'></strong>回<br />
+                    <TMPL_LOOP NAME='rb_access_loop'>
+                        <a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_edit&_type=rb&_object_id=<TMPL_VAR NAME="OBJECT_ID" ESCAPE='0'>">RB<TMPL_VAR NAME="OBJECT_ID" ESCAPE='0'></a>（<TMPL_VAR NAME="ACCESS_COUNT" ESCAPE='0'>回）<br />
+                    </TMPL_LOOP>
+                </TMPL_IF>
+            </td>
+
+            <td align="left" valign="top" width="20%">&nbsp;&nbsp;問い合わせ:</td>
+            <td align="left" valign="top" width="30%"><TMPL_IF NAME='rb_inquiry_count_all'>
+                総数：<strong><TMPL_VAR NAME="rb_inquiry_count_all" ESCAPE='0'></strong>回<br />
+                    <TMPL_LOOP NAME='rb_inquiry_loop'>
+                        <a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_edit&_type=rb&_object_id=<TMPL_VAR NAME="OBJECT_ID" ESCAPE='0'>">RB<TMPL_VAR NAME="OBJECT_ID" ESCAPE='0'></a>（<TMPL_VAR NAME="INQUIRY_COUNT" ESCAPE='0'>回）<br />
+                    </TMPL_LOOP>
+                </TMPL_IF>
+            </td>
+        </tr>
+        </TMPL_IF>
+        <TMPL_IF NAME="bl_visible">
+        <tr>
+            <th colspan="2" align="left" class="list">売買：：土地</th>
+            <td colspan="2" align="right" class="list"><small>最終更新日 <TMPL_VAR NAME="bl_last_updated" ESCAPE='0'></small></td>
+        </tr>
+        <tr>
+            <td align="left" width="20%">&nbsp;&nbsp;総登録物件数:</td>
+            <td width="30%"><strong><TMPL_IF NAME="bl_count_all"><TMPL_VAR NAME="bl_count_all" ESCAPE='0'><TMPL_ELSE>0</TMPL_IF></strong>件</td>
+
+            <td align="left">&nbsp;&nbsp;公開物件数:</td>
+            <td><strong><TMPL_IF NAME="bl_count_published"><TMPL_VAR NAME="bl_count_published" ESCAPE='0'><TMPL_ELSE>0</TMPL_IF></strong>件</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" width="20%">&nbsp;&nbsp;&nbsp;アクセス履歴:</td>
+            <td width="30%">
+                <TMPL_IF NAME='bl_access_count_all'>
+                総数：<strong><TMPL_VAR NAME="bl_access_count_all" ESCAPE='0'></strong>回<br />
+                    <TMPL_LOOP NAME='bl_access_loop'>
+                        <a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_edit&_type=bl&_object_id=<TMPL_VAR NAME="OBJECT_ID" ESCAPE='0'>">BL<TMPL_VAR NAME="OBJECT_ID" ESCAPE='0'></a>（<TMPL_VAR NAME="ACCESS_COUNT" ESCAPE='0'>回）<br />
+                    </TMPL_LOOP>
+                </TMPL_IF>
+            </td>
+
+            <td align="left" valign="top">&nbsp;&nbsp;問い合わせ:</td>
+            <td>
+                <TMPL_IF NAME='bl_inquiry_count_all'>
+                総数：<strong><TMPL_VAR NAME="bl_inquiry_count_all" ESCAPE='0'></strong>回<br />
+                    <TMPL_LOOP NAME='bl_inquiry_loop'>
+                        <a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_edit&_type=bl&_object_id=<TMPL_VAR NAME="OBJECT_ID" ESCAPE='0'>">BL<TMPL_VAR NAME="OBJECT_ID" ESCAPE='0'></a>（<TMPL_VAR NAME="INQUIRY_COUNT" ESCAPE='0'>回）<br />
+                    </TMPL_LOOP>
+                </TMPL_IF>
+            </td>
+        </tr>
+        </TMPL_IF>
+        <TMPL_IF NAME="bm_visible">
+        <tr>
+            <th colspan="2" align="left" class="list">売買：：マンション</th>
+            <td colspan="2" align="right" class="list"><small>最終更新日 <TMPL_VAR NAME="bm_last_updated" ESCAPE='0'></small></td>
+
+        </tr>
+        <tr>
+            <td align="left" width="20%">&nbsp;&nbsp;総登録物件数:</td>
+            <td><strong><TMPL_IF NAME="bm_count_all"><TMPL_VAR NAME="bm_count_all" ESCAPE='0'><TMPL_ELSE>0</TMPL_IF></strong>件</td>
+
+            <td align="left">&nbsp;&nbsp;公開物件数:</td>
+            <td><strong><TMPL_IF NAME="bm_count_published"><TMPL_VAR NAME="bm_count_published" ESCAPE='0'><TMPL_ELSE>0</TMPL_IF></strong>件</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top">&nbsp;&nbsp;&nbsp;アクセス履歴:</td>
+            <td>
+                <TMPL_IF NAME='bm_access_count_all'>
+                総数：<strong><TMPL_VAR NAME="bm_access_count_all" ESCAPE='0'></strong>回<br />
+                    <TMPL_LOOP NAME='bm_access_loop'>
+                        <a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_edit&_type=bm&_object_id=<TMPL_VAR NAME="OBJECT_ID" ESCAPE='0'>">BM<TMPL_VAR NAME="OBJECT_ID" ESCAPE='0'></a>（<TMPL_VAR NAME="ACCESS_COUNT" ESCAPE='0'>回）<br />
+                    </TMPL_LOOP>
+                </TMPL_IF>
+            </td>
+
+            <td align="left" valign="top">&nbsp;&nbsp;問い合わせ:</td>
+            <td>
+                <TMPL_IF NAME='bm_inquiry_count_all'>
+                総数：<strong><TMPL_VAR NAME="bm_inquiry_count_all" ESCAPE='0'></strong>回<br />
+                    <TMPL_LOOP NAME='bm_inquiry_loop'>
+                        <a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_edit&_type=bm&_object_id=<TMPL_VAR NAME="OBJECT_ID" ESCAPE='0'>">BM<TMPL_VAR NAME="OBJECT_ID" ESCAPE='0'></a>（<TMPL_VAR NAME="INQUIRY_COUNT" ESCAPE='0'>回）<br />
+                    </TMPL_LOOP>
+                </TMPL_IF>
+            </td>
+        </tr>
+        </TMPL_IF>
+        <TMPL_IF NAME="bh_visible">
+        <tr>
+            <th colspan="2" align="left" class="list">売買：：一戸建て</th>
+            <td colspan="2" align="right" class="list"><small>最終更新日 <TMPL_VAR NAME="bh_last_updated" ESCAPE='0'></small></td>
+
+        </tr>
+        <tr>
+            <td align="left" width="20%">&nbsp;&nbsp;総登録物件数:</td>
+            <td><strong><TMPL_IF NAME="bh_count_all"><TMPL_VAR NAME="bh_count_all" ESCAPE='0'><TMPL_ELSE>0</TMPL_IF></strong>件</td>
+
+            <td align="left">&nbsp;&nbsp;公開物件数:</td>
+            <td><strong><TMPL_IF NAME="bh_count_published"><TMPL_VAR NAME="bh_count_published" ESCAPE='0'><TMPL_ELSE>0</TMPL_IF></strong>件</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top">&nbsp;&nbsp;&nbsp;アクセス履歴:</td>
+            <td>
+                <TMPL_IF NAME='bh_access_count_all'>
+                総数：<strong><TMPL_VAR NAME="bh_access_count_all" ESCAPE='0'></strong>回<br />
+                    <TMPL_LOOP NAME='bh_access_loop'>
+                        <a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_edit&_type=bh&_object_id=<TMPL_VAR NAME="OBJECT_ID" ESCAPE='0'>">BH<TMPL_VAR NAME="OBJECT_ID" ESCAPE='0'></a>（<TMPL_VAR NAME="ACCESS_COUNT" ESCAPE='0'>回）<br />
+                    </TMPL_LOOP>
+                </TMPL_IF>
+            </td>
+
+            <td align="left" valign="top">&nbsp;&nbsp;問い合わせ:</td>
+            <td>
+                <TMPL_IF NAME='bh_inquiry_count_all'>
+                総数：<strong><TMPL_VAR NAME="bh_inquiry_count_all" ESCAPE='0'></strong>回<br />
+                    <TMPL_LOOP NAME='bh_inquiry_loop'>
+                        <a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_edit&_type=bh&_object_id=<TMPL_VAR NAME="OBJECT_ID" ESCAPE='0'>">BH<TMPL_VAR NAME="OBJECT_ID" ESCAPE='0'></a>（<TMPL_VAR NAME="INQUIRY_COUNT" ESCAPE='0'>回）<br />
+                    </TMPL_LOOP>
+                </TMPL_IF>
+            </td>
+        </tr>
+        </TMPL_IF>
+        <TMPL_IF NAME="bb_visible">
+        <tr>
+            <th colspan="2" align="left" class="list">売買：：事業用</th>
+            <td colspan="2" align="right" class="list"><small>最終更新日 <TMPL_VAR NAME="bb_last_updated" ESCAPE='0'></small></td>
+
+        </tr>
+        <tr>
+            <td align="left" width="20%">&nbsp;&nbsp;総登録物件数:</td>
+            <td><strong><TMPL_IF NAME="bb_count_all"><TMPL_VAR NAME="bb_count_all" ESCAPE='0'><TMPL_ELSE>0</TMPL_IF></strong>件</td>
+
+            <td align="left">&nbsp;&nbsp;公開物件数:</td>
+            <td><strong><TMPL_IF NAME="bb_count_published"><TMPL_VAR NAME="bb_count_published" ESCAPE='0'><TMPL_ELSE>0</TMPL_IF></strong>件</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top">&nbsp;&nbsp;&nbsp;アクセス履歴:</td>
+            <td>
+                <TMPL_IF NAME='bb_access_count_all'>
+                総数：<strong><TMPL_VAR NAME="bb_access_count_all" ESCAPE='0'></strong>回<br />
+                    <TMPL_LOOP NAME='bb_access_loop'>
+                        <a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_edit&_type=bb&_object_id=<TMPL_VAR NAME="OBJECT_ID" ESCAPE='0'>">BB<TMPL_VAR NAME="OBJECT_ID" ESCAPE='0'></a>（<TMPL_VAR NAME="ACCESS_COUNT" ESCAPE='0'>回）<br />
+                    </TMPL_LOOP>
+                </TMPL_IF>
+            </td>
+
+            <td align="left" valign="top">&nbsp;&nbsp;問い合わせ:</td>
+            <td>
+                <TMPL_IF NAME='bb_inquiry_count_all'>
+                総数：<strong><TMPL_VAR NAME="bb_inquiry_count_all" ESCAPE='0'></strong>回<br />
+                    <TMPL_LOOP NAME='bb_inquiry_loop'>
+                        <a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_edit&_type=bb&_object_id=<TMPL_VAR NAME="OBJECT_ID" ESCAPE='0'>">BB<TMPL_VAR NAME="OBJECT_ID" ESCAPE='0'></a>（<TMPL_VAR NAME="INQUIRY_COUNT" ESCAPE='0'>回）<br />
+                    </TMPL_LOOP>
+                </TMPL_IF>
+            </td>
+        </tr>
+        </TMPL_IF>
+    </table>
+
+    <br />
+
+</div>
+
+<TMPL_INCLUDE NAME="footer.tmpl">
+
+

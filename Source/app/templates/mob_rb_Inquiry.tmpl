@@ -1,0 +1,63 @@
+<TMPL_INCLUDE NAME="mob_header.tmpl">
+    
+<a href="<TMPL_VAR NAME='script_name' ESCAPE='0'>?_mode=mode_search&_type=rb" class="nav">賃貸事業用検索</a>&nbsp;::&nbsp;お問い合わせ<br /><br />
+    
+    
+    <TMPL_VAR NAME="page_data" ESCAPE='0'>
+    
+    <TMPL_IF NAME="result_count">
+    <form method="post" name="rinquiry" id="rinquiry" action="<TMPL_VAR NAME='script_name' ESCAPE='0'>?_mode=mode_inquiry&_type=rb" >
+    
+
+            <TMPL_LOOP NAME='main_loop'>
+物件番号：RB<TMPL_VAR NAME="ID" ESCAPE='0'><br />
+所在地：<TMPL_VAR NAME="BUSINESS_LOCATION" ESCAPE='1'><br />
+最寄駅：<TMPL_VAR NAME="BUSINESS_STATION_1" ESCAPE='1'><TMPL_IF NAME="BUSINESS_STATION_2"><br /><TMPL_VAR NAME="BUSINESS_STATION_2" ESCAPE='1'></TMPL_IF><br />
+
+賃料：<TMPL_VAR NAME="BUSINESS_PRICE" ESCAPE='1'>円<br />
+交通：<TMPL_IF NAME="BUSINESS_BUS_MINUTES">バス<TMPL_VAR NAME="BUSINESS_BUS_MINUTES" ESCAPE='1'>分</TMPL_IF>
+<TMPL_IF NAME="BUSINESS_WALK_MINUTES">徒歩<TMPL_VAR NAME="BUSINESS_WALK_MINUTES" ESCAPE='1'>分</TMPL_IF><br />
+
+<TMPL_IF NAME="BUSINESS_PRICE_KANRIHI">管理費：<TMPL_VAR NAME="BUSINESS_PRICE_KANRIHI" ESCAPE='1'>円<br /></TMPL_IF>
+<TMPL_IF NAME="BUSINESS_PRICE_SIKIKIN">敷金：<TMPL_VAR NAME="BUSINESS_PRICE_SIKIKIN" ESCAPE='1'><TMPL_VAR NAME="BUSINESS_PRICE_SIKIKIN_UNIT" ESCAPE='1'><br /></TMPL_IF>
+<TMPL_IF NAME="BUSINESS_PRICE_REIKIN">礼金：<TMPL_VAR NAME="BUSINESS_PRICE_REIKIN" ESCAPE='1'><TMPL_VAR NAME="BUSINESS_PRICE_REIKIN_UNIT" ESCAPE='1'><br /></TMPL_IF>
+
+<TMPL_IF NAME="BUSINESS_SENYUU_SQUARE">専有面積<TMPL_VAR NAME="BUSINESS_SENYUU_SQUARE" ESCAPE='1'>平米<br /></TMPL_IF>
+<TMPL_IF NAME="BUSINESS_TOTI_SQUARE">土地面積<TMPL_VAR NAME="BUSINESS_TOTI_SQUARE" ESCAPE='1'>平米<br /></TMPL_IF>
+
+
+
+
+<!--
+                <TMPL_IF NAME="BUSINESS_LAST_UPDATED"><TMPL_VAR NAME="BUSINESS_LAST_UPDATED" ESCAPE='1'><TMPL_ELSE><TMPL_VAR NAME="BUSINESS_CREATED" ESCAPE='1'></TMPL_IF>
+-->
+                <input name="_object_id" value="<TMPL_VAR NAME="ID" ESCAPE='0'>" type="hidden" />
+
+            </TMPL_LOOP>
+
+        <div style="clear:both;">&nbsp;</div>
+<p>上記<TMPL_VAR NAME="result_count"  ESCAPE='1'>物件について問い合わせメールを送信します。</p>
+
+<br />
+お名前:<br />
+<input type="text" name="c_name"><br />
+電話番号:<br />
+<input type="text" name="c_phone"><br />
+メールアドレス:<br />
+<input type="text" name="c_email"><br />
+お問い合わせ文:<br />
+<textarea name="c_text"></textarea><br />
+ご希望の連絡方法:<br />
+<input name="contact_pref" value="1" type="radio" />メール<br />
+<input name="contact_pref" value="2" type="radio" />電話<br />
+<input name="contact_pref" value="3" type="radio" checked="checked" />どちらでも<br />
+<br />
+                    <input type="hidden" name="_mode" value="mode_inquiry" />
+                    <input name="_type" value="rb" type="hidden" />
+                    <input value="送信" type="submit" name="submit_Inquiry" />
+    </form>
+        
+    </TMPL_IF>
+
+
+<TMPL_INCLUDE NAME="mob_footer.tmpl">

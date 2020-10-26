@@ -1,0 +1,94 @@
+<TMPL_INCLUDE NAME="site_header.tmpl">
+
+<div id="container">
+
+    <!-- 卿倾炮孟サイドバ〖粕み哈み -->
+    <TMPL_INCLUDE NAME="site_bl_sidebar.tmpl">
+
+    <div id="content">
+
+        <TMPL_VAR NAME="page_data" ESCAPE='0'>
+
+        <!-- 卿倾炮孟浮瑚フォ〖ム 幌まり-->
+        <form method="get" action="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_search&amp;_type=bl" enctype="application/x-www-form-urlencoded" name="land">
+
+            <table class="main_table" border="0" align="center" width="567">
+                <tr align="left">
+                    <th class="list" align="right">交疥: </th>
+                    <td><input type="text" name="land_address"  size="50" maxlength="50" /></td>
+                </tr>
+                <tr align="left">
+                    <th class="list" align="right">呵大り必: </th>
+                    <td><input type="text" name="land_station"  size="50" maxlength="50" /></td>
+                </tr>
+                <tr>
+                    <th class="list" align="right">擦呈: </th>
+                    <td>
+                        <select name="land_price_1">
+                            <option label="布嘎なし" value="0" selected="selected">布嘎なし</option><option label="500 它边" value="500">500 它边</option><option label="1000 它边" value="1000">1000 它边</option><option label="1500 它边" value="1500">1500 它边</option><option label="2000 它边" value="2000">2000 它边</option><option label="2500 它边" value="2500">2500 它边</option><option label="3000 它边" value="3000">3000 它边</option><option label="3500 它边" value="3500">3500 它边</option><option label="4000 它边" value="4000">4000 它边</option><option label="5000 它边" value="5000">5000 它边</option><option label="6000 它边" value="6000">6000 它边</option><option label="7000 它边" value="7000">7000 它边</option><option label="8000 它边" value="8000">8000 它边</option><option label="9000 它边" value="9000">9000 它边</option><option label="10000 它边" value="10000">10000 它边</option><option label="15000 它边" value="15000">15000 它边</option><option label="20000 它边" value="20000">20000 它边</option>
+        
+                        </select>
+            ×
+                        <select name="land_price_2">
+                            <option label="500 它边" value="500">500 它边</option><option label="1000 它边" value="1000">1000 它边</option><option label="1500 它边" value="1500">1500 它边</option><option label="2000 它边" value="2000">2000 它边</option><option label="2500 它边" value="2500">2500 它边</option><option label="3000 它边" value="3000">3000 它边</option><option label="3500 它边" value="3500">3500 它边</option><option label="4000 它边" value="4000">4000 它边</option><option label="5000 它边" value="5000">5000 它边</option><option label="6000 它边" value="6000">6000 它边</option><option label="7000 它边" value="7000">7000 它边</option><option label="8000 它边" value="8000">8000 它边</option><option label="9000 它边" value="9000">9000 它边</option><option label="10000 它边" value="10000">10000 它边</option><option label="15000 它边" value="15000">15000 它边</option><option label="20000 它边" value="20000">20000 它边</option><option label="惧嘎なし" value="0" selected="selected">惧嘎なし</option>
+
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="list" align="right">烫姥: </th>
+                    <td>
+                        <select name="land_square_1">
+                            <option label="布嘎なし" value="0" selected="selected">布嘎なし&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option><option label="50 m&sup2;" value="50">50 m&sup2;</option><option label="100 m&sup2;" value="100">100 m&sup2;</option><option label="150 m&sup2;" value="150">150 m&sup2;</option><option label="200 m&sup2;" value="200">200 m&sup2;</option><option label="300 m&sup2;" value="300">300 m&sup2;</option><option label="400 m&sup2;" value="400">400 m&sup2;</option><option label="500 m&sup2;" value="500">500 m&sup2;</option><option label="600 m&sup2;" value="600">600 m&sup2;</option><option label="700 m&sup2;" value="700">700 m&sup2;</option><option label="800 m&sup2;" value="800">800 m&sup2;</option><option label="1000 m&sup2;" value="1000">1000 m&sup2;</option>
+
+                        </select>
+            ×
+                        <select name="land_square_2">
+                            <option label="50 m&sup2;" value="50">50 m&sup2;</option><option label="100 m&sup2;" value="100">100 m&sup2;</option><option label="150 m&sup2;" value="150">150 m&sup2;</option><option label="200 m&sup2;" value="200">200 m&sup2;</option><option label="300 m&sup2;" value="300">300 m&sup2;</option><option label="400 m&sup2;" value="400">400 m&sup2;</option><option label="500 m&sup2;" value="500">500 m&sup2;</option><option label="600 m&sup2;" value="600">600 m&sup2;</option><option label="700 m&sup2;" value="700">700 m&sup2;</option><option label="800 m&sup2;" value="800">800 m&sup2;</option><option label="1000 m&sup2;" value="1000">1000 m&sup2;</option><option label="惧嘎なし" value="0" selected="selected">惧嘎なし&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+        
+                        </select>
+                        &nbsp;&nbsp;ⅷ≈m&sup2;∽は≈士势∽と票じです
+                    </td>
+                </tr>
+                <tr>
+                    <th class="list" align="right">必盘殊尸</th>
+                    <td>
+                        <select name="land_walk_minutes">
+                            <option label="回年なし" value="0">回年なし</option>
+                            <option label="1尸笆柒" value="1">1尸笆柒</option>
+                            <option label="5尸笆柒" value="5">5尸笆柒</option>
+                            <option label="7尸笆柒" value="7">7尸笆柒</option>
+                            <option label="10尸笆柒" value="10">10尸笆柒</option>
+                            <option label="15尸笆柒" value="15">15尸笆柒</option>
+                            <option label="20尸笆柒" value="20">20尸笆柒</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="list" align="right">茶咙: </th>
+                    <td><label><input type="checkbox" name="land_has_" value="2" />茶咙あり</label>&nbsp;&nbsp;
+                        <label><input type="checkbox" name="land_has_" value="3" />瓢茶あり</label>
+                    </td>
+                </tr>
+                <tr align="center">
+                    <td colspan="2">
+                        <input type="hidden" name="sort_by" value=""  />
+                        <input type="hidden" name="_mode" value="mode_search"  />
+                        <input type="hidden" name="_type" value="bl"  />
+                        <input type="submit" name="search_object" value="回年した掘凤で浮瑚する" class="submit" />
+                    </td>
+                </tr>
+            </table>
+
+        </form>
+
+        <!-- ペ〖ジの山绩箕に交疥掐蜗腕にフォ〖カスをあてるスクリプト -->
+        <script type="text/javascript">
+            <!-- 
+                document.land.land_address.focus(); 
+            // -->
+        </script>
+    </div>
+</div>
+
+<TMPL_INCLUDE NAME="site_footer.tmpl">

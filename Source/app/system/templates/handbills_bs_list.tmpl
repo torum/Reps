@@ -1,0 +1,44 @@
+<TMPL_INCLUDE NAME="header.tmpl">
+
+<TMPL_INCLUDE NAME="menu.tmpl">
+<div id="content">
+<TMPL_VAR NAME="page_data" ESCAPE='0'>
+
+<form method="post" action="<TMPL_VAR NAME="script_name" ESCAPE='0'>" enctype="multipart/form-data" onsubmit="return confirmDelete(document.sdelete)" name="sdelete">
+
+    <table border="1" class="main_table">
+        <tr>
+            <th class="list">&nbsp;</th>
+            <th width="40" valign="top" class="list">削除</th>
+        </tr>
+        <TMPL_LOOP NAME='main_loop'>
+        <tr valign="top">
+    
+            <td style="border:solid 1px #ccc;padding:6px;">
+    
+                <a href="<TMPL_VAR NAME="FILE_PATH" ESCAPE='1'>"><TMPL_VAR NAME="DATETIME" ESCAPE='1'></a>
+                &nbsp;(PDFファイル、サイズ：<TMPL_VAR NAME="FILE_SIZE" ESCAPE='1'>)
+                <br />
+
+                <TMPL_IF NAME="TEXT">
+                    <br />
+                    <TMPL_VAR NAME="TEXT" ESCAPE='1'>
+                </TMPL_IF>
+            </td>
+            <td style="border:solid 1px #ccc;" width="35" align="center"><input name="_object_id_to_be_deleted" value="<TMPL_VAR NAME="ID" ESCAPE='0'>" type="checkbox" /></td>
+        </tr>
+        </TMPL_LOOP>
+        <tr>
+            <td colspan="4" align="right">
+                <input onclick="doCheckAll(this.form,true)" name="check_all" value="すべてチェックする" type="button">
+                <input onclick="doCheckAll(this.form,false)" name="uncheck_all" value="すべてチェックを外す" type="button">
+                <input name="_mode" value="mode_handbills" type="hidden">
+                <input name="_kind" value="bs" type="hidden">
+                <input tabindex="1" name="delete_object" value="削除" class="submit" type="submit">
+            </td>
+        </tr>
+    </table>
+</form>
+</div>
+
+<TMPL_INCLUDE NAME="footer.tmpl">

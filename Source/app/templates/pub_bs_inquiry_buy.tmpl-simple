@@ -1,0 +1,771 @@
+<table cellspacing="3" cellpadding="4" border="0" width="735">
+    <tbody>
+
+        <!-- ÇäÇãÌä¤¤¹ç¤ï¤»¤Î¥·¥ó¥×¥ëÈÇ¡¡-->
+
+        <!-- ÂçÉôÊ¬¤ÎÆþÎÏÍó¤ò¥³¥á¥ó¥È¤ÇÈóÉ½¼¨¤Ë¤·¡¢¤³¤³¤Ç¡¢type="hidden"¤È¤·¤Æ¤¢¤é¤«¤¸¤áÃÍ¤ò¤¤¤ì¤Æ¤ª¤¯¤³¤È¤Ç¡¢É¬¿Ü¹àÌÜ¤ÎÆþÎÏ¤ò²óÈò¡£ -->
+        <input type="hidden" value="Ì¤»ØÄê" name="BUKKEN_SYUBETSU" />
+        <input type="hidden" value="Ì¤»ØÄê" name="BUKKEN_AREA" />
+        <input type="hidden" value="Ì¤»ØÄê" name="BUKKEN_EKI" />
+        <input type="hidden" value="Ì¤»ØÄê" name="BUKKEN_AREA_SECOND" />
+        <input type="hidden" value="Ì¤»ØÄê" name="BUKKEN_EKI_SECOND" />
+        <input type="hidden" value="Ì¤»ØÄê" name="BUKKEN_YOSAN" />
+        <input type="hidden" value="Ì¤»ØÄê" name="MENSEKI_MANSION" />
+        <input type="hidden" value="Ì¤»ØÄê" name="MENSEKI_TATEMONO" />
+        <input type="hidden" value="Ì¤»ØÄê" name="MENSEKI_TOCHI" />
+
+        <input type="hidden" value="Ì¤»ØÄê" name="MADORI" />
+        <input type="hidden" value="Ì¤»ØÄê" name="MADORI_TYPE" />
+        <input type="hidden" value="Ì¤»ØÄê" name="YOTEI" />
+        <input type="hidden" value="Ì¤»ØÄê" name="YUBIN" />
+        <input type="hidden" value="Ì¤»ØÄê" name="NINTI" />
+        <input type="hidden" value="-" name="BIRTHDAY_Y" />
+        <input type="hidden" value="-" name="BIRTHDAY_M" />
+        <input type="hidden" value="-" name="BIRTHDAY_D" />
+
+        <input type="hidden" value="Ì¤»ØÄê" name="ADDRESS_TODOUFUKEN" />
+        <input type="hidden" value="Ì¤»ØÄê" name="ADDRESS_SIKUCYOUSON" />
+        <input type="hidden" value="Ì¤»ØÄê" name="ADDRESS_CHYOUME" />
+        <input type="hidden" value="Ì¤»ØÄê" name="ADDRESS_BANCHI" />
+        <input type="hidden" value="Ì¤»ØÄê" name="ADDRESS_MANSYON" />
+        <input type="hidden" value="Ì¤»ØÄê" name="YUBIN" />
+        <input type="hidden" value="Ì¤»ØÄê" name="YUBIN2" />
+
+
+<!--
+        <tr>
+            <td colspan="2">
+                ¢§¤´¹ØÆþ´õË¾¾ò·ï¡Ê¥ª¥ì¥ó¥¸¤Î¿§ÉÕ¤­¤Î¹àÌÜ¤Ë¤ÏÉ¬¤º¤´µ­Æþ¤¯¤À¤µ¤¤¡Ë
+            </td>
+        </tr>
+        <tr>
+            <td width="25%" bgcolor="#FFEFBE">
+                ´õË¾Êª·ï¤Î¼ïÊÌ
+            </td>
+            <td width="75%" bgcolor="#FFFAE6">
+                <label><input type="radio" value="ÅÚÃÏ" name="BUKKEN_SYUBETSU" <TMPL_IF NAME="_type_bl">checked="checked"</TMPL_IF> />ÅÚÃÏ</label>
+                <label><input type="radio" value="¥Þ¥ó¥·¥ç¥ó" name="BUKKEN_SYUBETSU" <TMPL_IF NAME="_type_bm">checked="checked"</TMPL_IF> />¥Þ¥ó¥·¥ç¥ó</label>
+                <label><input type="radio" value="¸Í·ú¤Æ" name="BUKKEN_SYUBETSU" <TMPL_IF NAME="_type_bh">checked="checked"</TMPL_IF> />°ì¸Í·ú¤Æ</label> 
+
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" width="25%" bgcolor="#FFEFBE">
+                ¤´´õË¾¤Î¥¨¥ê¥¢¡¦±Ø<br />
+                ¡ÊÂè1´õË¾¡Ë
+            </td>
+            <td valign="top" width="75%" bgcolor="#FFFAE6">
+                <table cellspacing="4" cellpadding="0" border="0">
+                    <tbody>
+                        <tr>
+                            <td>
+                                ¢§¥¨¥ê¥¢(ÃÏ°è)¤òÆþÎÏ¡ÊÎã¡§ÅìµþÅÔÂ¿Ëà»Ô¡Ë
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input size="50" name="BUKKEN_AREA" />
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                ¢§±Ø¤òÆþÎÏ¡ÊÎã¡§µþ²¦ÀþÀ»ÀØºù¥±µÖ¡Ë
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <table cellspacing="0" cellpadding="0" border="0">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <input size="50" name="BUKKEN_EKI" />
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" width="25%" bgcolor="#E6E6E6">
+                <p>
+                    ¤´´õË¾¤Î¥¨¥ê¥¢¡¦±Ø<br />
+                    ¡ÊÂè2´õË¾¡Ë
+                </p>
+            </td>
+            <td valign="top" width="75%" bgcolor="#EFEFEF">
+                <table cellspacing="4" cellpadding="0" border="0">
+                    <tbody>
+                        <tr>
+                            <td>
+                                ¢§¥¨¥ê¥¢¤òÆþÎÏ
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input size="50" name="BUKKEN_AREA_SECOND" />
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                ¢§±Ø¤òÆþÎÏ
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <table cellspacing="0" cellpadding="0" border="0">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <input size="50" name="BUKKEN_EKI_SECOND" />
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td bgcolor="#FFEFBE">
+                ¤´Í½»»
+            </td>
+            <td bgcolor="#FFFAE6">
+                <input size="9" name="BUKKEN_YOSAN" />Ëü±ß¤¯¤é¤¤
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" bgcolor="#E6E6E6">
+                ¥Þ¥ó¥·¥ç¥ó<br />
+                ¤´´õË¾¤ÎÊý
+            </td>
+            <td bgcolor="#EFEFEF">
+                ÀìÍ­ÌÌÀÑ¡§<select name="MENSEKI_MANSION">
+                    <option value="" selected="selected">
+                        ÁªÂò¤·¤Æ¤¯¤À¤µ¤¤
+                    </option>
+                    <option value="0">
+                        0
+                    </option>
+                    <option value="40">
+                        40
+                    </option>
+                    <option value="50">
+                        50
+                    </option>
+                    <option value="55">
+                        55
+                    </option>
+                    <option value="60">
+                        60
+                    </option>
+                    <option value="65">
+                        65
+                    </option>
+                    <option value="70">
+                        70
+                    </option>
+                    <option value="75">
+                        75
+                    </option>
+                    <option value="80">
+                        80
+                    </option>
+                    <option value="85">
+                        85
+                    </option>
+                    <option value="90">
+                        90
+                    </option>
+                    <option value="95">
+                        95
+                    </option>
+                    <option value="100">
+                        100
+                    </option>
+                    <option value="110">
+                        110
+                    </option>
+                    <option value="120">
+                        120
+                    </option>
+                    <option value="130">
+                        130
+                    </option>
+                    <option value="140">
+                        140
+                    </option>
+                    <option value="160">
+                        160
+                    </option>
+                </select>Ê¿ÊÆ°Ê¾å
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" bgcolor="#E6E6E6">
+                ÅÚÃÏ¡¦¸Í·ú¤Æ<br />
+                ¤´´õË¾¤ÎÊý
+            </td>
+            <td bgcolor="#EFEFEF">
+                ·úÊªÌÌÀÑ¡§<select name="MENSEKI_TATEMONO">
+                    <option value="" selected="selected">
+                        ÁªÂò¤·¤Æ¤¯¤À¤µ¤¤
+                    </option>
+                    <option value="0">
+                        0
+                    </option>
+                    <option value="40">
+                        40
+                    </option>
+                    <option value="50">
+                        50
+                    </option>
+                    <option value="55">
+                        55
+                    </option>
+                    <option value="60">
+                        60
+                    </option>
+                    <option value="65">
+                        65
+                    </option>
+                    <option value="70">
+                        70
+                    </option>
+                    <option value="75">
+                        75
+                    </option>
+                    <option value="80">
+                        80
+                    </option>
+                    <option value="85">
+                        85
+                    </option>
+                    <option value="90">
+                        90
+                    </option>
+                    <option value="95">
+                        95
+                    </option>
+                    <option value="100">
+                        100
+                    </option>
+                    <option value="110">
+                        110
+                    </option>
+                    <option value="120">
+                        120
+                    </option>
+                    <option value="130">
+                        130
+                    </option>
+                    <option value="140">
+                        140
+                    </option>
+                    <option value="160">
+                        160
+                    </option>
+                    <option value="180">
+                        180
+                    </option>
+                </select> Ê¿ÊÆ°Ê¾å<br />
+                ÅÚÃÏÌÌÀÑ¡§<select name="MENSEKI_TOCHI">
+                    <option value="" selected="selected">
+                        ÁªÂò¤·¤Æ¤¯¤À¤µ¤¤
+                    </option>
+                    <option value="0">
+                        0
+                    </option>
+                    <option value="40">
+                        40
+                    </option>
+                    <option value="50">
+                        50
+                    </option>
+                    <option value="55">
+                        55
+                    </option>
+                    <option value="60">
+                        60
+                    </option>
+                    <option value="65">
+                        65
+                    </option>
+                    <option value="70">
+                        70
+                    </option>
+                    <option value="75">
+                        75
+                    </option>
+                    <option value="80">
+                        80
+                    </option>
+                    <option value="85">
+                        85
+                    </option>
+                    <option value="90">
+                        90
+                    </option>
+                    <option value="95">
+                        95
+                    </option>
+                    <option value="100">
+                        100
+                    </option>
+                    <option value="110">
+                        110
+                    </option>
+                    <option value="120">
+                        120
+                    </option>
+                    <option value="130">
+                        130
+                    </option>
+                    <option value="140">
+                        140
+                    </option>
+                    <option value="160">
+                        160
+                    </option>
+                    <option value="180">
+                        180
+                    </option>
+                    <option value="200">
+                        200
+                    </option>
+                    <option value="250">
+                        250
+                    </option>
+                    <option value="300">
+                        300
+                    </option>
+                </select>Ê¿ÊÆ°Ê¾å
+            </td>
+        </tr>
+        <tr>
+            <td bgcolor="#FFEFBE">
+                ´Ö¼è¤ê
+            </td>
+            <td bgcolor="#FFFAE6">
+                <input maxlength="2" size="5" name="MADORI" /> <select name="MADORI_TYPE">
+                    <option selected="selected">
+                        ÁªÂò¤·¤Æ¤¯¤À¤µ¤¤
+                    </option>
+                    <option value="¥ï¥ó¥ë¡¼¥à">
+                        ¥ï¥ó¥ë¡¼¥à
+                    </option>
+                    <option value="£Ë">
+                        £Ë
+                    </option>
+                    <option value="£Ä£Ë">
+                        £Ä£Ë
+                    </option>
+                    <option value="£Ì£Ë">
+                        £Ì£Ë
+                    </option>
+                    <option value="£Ì£Ä£Ë">
+                        £Ì£Ä£Ë
+                    </option>
+                    <option value="£Ó£Ë">
+                        £Ó£Ë
+                    </option>
+                    <option value="£Ó£Ä£Ë">
+                        £Ó£Ä£Ë
+                    </option>
+                    <option value="£Ó£Ì£Ë">
+                        £Ó£Ì£Ë
+                    </option>
+                    <option value="£Ó£Ì£Ä£Ë">
+                        £Ó£Ì£Ä£Ë
+                    </option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td bgcolor="#FFEFBE">
+                ¹ØÆþÍ½Äê»þ´ü
+            </td>
+            <td bgcolor="#FFFAE6">
+                <input type="radio" value="»êµÞ" name="YOTEI" />»êµÞ
+                <input type="radio" value="3¥õ·î°ÊÆâ" name="YOTEI" />3¥õ·î°ÊÆâ
+                <input type="radio" value="È¾Ç¯°ÊÆâ" name="YOTEI" />È¾Ç¯°ÊÆâ
+                <input type="radio" value="1Ç¯°ÊÆâ" name="YOTEI" />1Ç¯°ÊÆâ
+                <input type="radio" value="Ì¤Äê" name="YOTEI" />Ì¤Äê
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+
+-->
+
+
+<table cellspacing="3" cellpadding="4" border="0" width="735">
+    <tbody>
+        <tr>
+            <td colspan="2">
+                ¢§¤ªµÒÍÍ¤Î¾ðÊó¡Ê¥ª¥ì¥ó¥¸¤Î¿§ÉÕ¤­¤Î¹àÌÜ¤Ë¤ÏÉ¬¤º¤´µ­Æþ¤¯¤À¤µ¤¤¡Ë
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" width="25%" bgcolor="#FFEFBE">
+                ¤ªÌ¾Á°¡Ê´Á»ú¡Ë
+            </td>
+            <td valign="top" width="75%" bgcolor="#FFFAE6">
+                <input size="40" name="NAME" />
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" nowrap="nowrap" width="25%" bgcolor="#FFEFBE">
+                ¤ªÌ¾Á°¡Ê¥Õ¥ê¥¬¥Ê¡Ë
+            </td>
+            <td valign="top" width="75%" bgcolor="#FFFAE6">
+                <input size="40" name="NAME_KANA" /><br />
+                ¢¨Á´³Ñ¥«¥¿¥«¥Ê
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" width="25%" bgcolor="#E6E6E6">
+                E-¥á¡¼¥ë¥¢¥É¥ì¥¹
+            </td>
+            <td valign="top" width="75%" bgcolor="#EFEFEF">
+                <input size="40" name="EMAIL" /><br />
+                ¢¨È¾³Ñ±Ñ¿ô»ú
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" width="25%" bgcolor="#FFEFBE">
+                ¤ªÅÅÏÃÈÖ¹æ
+            </td>
+            <td valign="top" width="75%" bgcolor="#FFFAE6">
+                <input size="5" name="TEL" />-<input size="5" name="TEL2" />-<input size="5" name="TEL3" /><br />
+                ¢¨È¾³Ñ¿ô»ú
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" width="25%" bgcolor="#E6E6E6">
+                FAXÈÖ¹æ
+            </td>
+            <td valign="top" width="75%" bgcolor="#EFEFEF">
+                <input size="5" name="FAX" />-<input size="5" name="FAX2" />-<input size="5" name="FAX3" /><br />
+                ¢¨È¾³Ñ¿ô»ú
+            </td>
+        </tr>
+<!--
+        <tr>
+            <td valign="top" width="25%" bgcolor="#FFEFBE">
+                Í¹ÊØÈÖ¹æ
+            </td>
+            <td valign="top" width="75%" bgcolor="#FFFAE6">
+                <input size="5" name="YUBIN" />-<input size="7" name="YUBIN2" /><br />
+                ¢¨È¾³Ñ¿ô»ú¡Ê7·å¡Ë
+            </td>
+        </tr>
+        <tr valign="top">
+            <td bgcolor="#FFEFBE">
+                ¤´½»½ê
+            </td>
+            <td bgcolor="#FFFAE6">
+                <select size="1" name="ADDRESS_TODOUFUKEN">
+                    <option value="" selected="selected">
+                        ÁªÂò¤·¤Æ¤¯¤À¤µ¤¤
+                    </option>
+                    <option value="ËÌ³¤Æ»">
+                        ËÌ³¤Æ»
+                    </option>
+                    <option value="ÀÄ¿¹¸©">
+                        ÀÄ¿¹¸©
+                    </option>
+                    <option value="´ä¼ê¸©">
+                        ´ä¼ê¸©
+                    </option>
+                    <option value="µÜ¾ë¸©">
+                        µÜ¾ë¸©
+                    </option>
+                    <option value="½©ÅÄ¸©">
+                        ½©ÅÄ¸©
+                    </option>
+                    <option value="»³·Á¸©">
+                        »³·Á¸©
+                    </option>
+                    <option value="Ê¡Åç¸©">
+                        Ê¡Åç¸©
+                    </option>
+                    <option value="°ñ¾ë¸©">
+                        °ñ¾ë¸©
+                    </option>
+                    <option value="ÆÊÌÚ¸©">
+                        ÆÊÌÚ¸©
+                    </option>
+                    <option value="·²ÇÏ¸©">
+                        ·²ÇÏ¸©
+                    </option>
+                    <option value="ºë¶Ì¸©">
+                        ºë¶Ì¸©
+                    </option>
+                    <option value="ÀéÍÕ¸©">
+                        ÀéÍÕ¸©
+                    </option>
+                    <option value="ÅìµþÅÔ">
+                        ÅìµþÅÔ
+                    </option>
+                    <option value="¿ÀÆàÀî¸©">
+                        ¿ÀÆàÀî¸©
+                    </option>
+                    <option value="¿·³ã¸©">
+                        ¿·³ã¸©
+                    </option>
+                    <option value="ÉÙ»³¸©">
+                        ÉÙ»³¸©
+                    </option>
+                    <option value="ÀÐÀî¸©">
+                        ÀÐÀî¸©
+                    </option>
+                    <option value="Ê¡°æ¸©">
+                        Ê¡°æ¸©
+                    </option>
+                    <option value="»³Íü¸©">
+                        »³Íü¸©
+                    </option>
+                    <option value="Ä¹Ìî¸©">
+                        Ä¹Ìî¸©
+                    </option>
+                    <option value="´ôÉì¸©">
+                        ´ôÉì¸©
+                    </option>
+                    <option value="ÀÅ²¬¸©">
+                        ÀÅ²¬¸©
+                    </option>
+                    <option value="°¦ÃÎ¸©">
+                        °¦ÃÎ¸©
+                    </option>
+                    <option value="»°½Å¸©">
+                        »°½Å¸©
+                    </option>
+                    <option value="¼¢²ì¸©">
+                        ¼¢²ì¸©
+                    </option>
+                    <option value="µþÅÔÉÜ">
+                        µþÅÔÉÜ
+                    </option>
+                    <option value="ÂçºåÉÜ">
+                        ÂçºåÉÜ
+                    </option>
+                    <option value="Ê¼¸Ë¸©">
+                        Ê¼¸Ë¸©
+                    </option>
+                    <option value="ÆàÎÉ¸©">
+                        ÆàÎÉ¸©
+                    </option>
+                    <option value="ÏÂ²Î»³¸©">
+                        ÏÂ²Î»³¸©
+                    </option>
+                    <option value="Ä»¼è¸©">
+                        Ä»¼è¸©
+                    </option>
+                    <option value="Åçº¬¸©">
+                        Åçº¬¸©
+                    </option>
+                    <option value="²¬»³¸©">
+                        ²¬»³¸©
+                    </option>
+                    <option value="¹­Åç¸©">
+                        ¹­Åç¸©
+                    </option>
+                    <option value="»³¸ý¸©">
+                        »³¸ý¸©
+                    </option>
+                    <option value="ÆÁÅç¸©">
+                        ÆÁÅç¸©
+                    </option>
+                    <option value="¹áÀî¸©">
+                        ¹áÀî¸©
+                    </option>
+                    <option value="°¦É²¸©">
+                        °¦É²¸©
+                    </option>
+                    <option value="¹âÃÎ¸©">
+                        ¹âÃÎ¸©
+                    </option>
+                    <option value="Ê¡²¬¸©">
+                        Ê¡²¬¸©
+                    </option>
+                    <option value="º´²ì¸©">
+                        º´²ì¸©
+                    </option>
+                    <option value="Ä¹ºê¸©">
+                        Ä¹ºê¸©
+                    </option>
+                    <option value="·§ËÜ¸©">
+                        ·§ËÜ¸©
+                    </option>
+                    <option value="ÂçÊ¬¸©">
+                        ÂçÊ¬¸©
+                    </option>
+                    <option value="µÜºê¸©">
+                        µÜºê¸©
+                    </option>
+                    <option value="¼¯»ùÅç¸©">
+                        ¼¯»ùÅç¸©
+                    </option>
+                    <option value="²­Æì¸©">
+                        ²­Æì¸©
+                    </option>
+                </select><br />
+                ¢¨ÅÔÆ»ÉÜ¸©
+            </td>
+        </tr>
+        <tr valign="top">
+            <td bgcolor="#FFEFBE">
+                &nbsp;
+            </td>
+            <td bgcolor="#FFFAE6">
+                <input size="30" name="ADDRESS_SIKUCYOUSON" /><br />
+                ¢¨»Ô¶èÄ®Â¼
+            </td>
+        </tr>
+        <tr valign="top">
+            <td bgcolor="#FFEFBE">
+                &nbsp;
+            </td>
+            <td bgcolor="#FFFAE6">
+                
+                    <input size="30" name="ADDRESS_CHYOUME" /><br />
+                ¢¨Ä®¡¦ÃúÌÜ
+            </td>
+        </tr>
+        <tr valign="top">
+            <td bgcolor="#FFEFBE">
+                &nbsp;
+            </td>
+            <td bgcolor="#FFFAE6">
+                <input size="30" name="ADDRESS_BANCHI" /><br />
+                ¢¨ÈÖÃÏ¡¦¹æ
+            </td>
+        </tr>
+        <tr valign="top">
+            <td bgcolor="#E6E6E6">
+                &nbsp;
+            </td>
+            <td bgcolor="#EFEFEF">
+                <input size="30" name="ADDRESS_MANSYON" /><br />
+                ¢¨¥Þ¥ó¥·¥ç¥óÌ¾¤Ê¤É
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" width="25%" bgcolor="#E6E6E6">
+                À¸Ç¯·îÆü
+            </td>
+            <td valign="top" width="75%" bgcolor="#EFEFEF">
+                À¾Îñ<input size="7" name="BIRTHDAY_Y" />Ç¯<input size="5" name="BIRTHDAY_M" />·î<input size="5" name="BIRTHDAY_D" />Æü
+            </td>
+        </tr>
+-->
+        <tr>
+            <td valign="top" width="25%" bgcolor="#FFEFBE">
+                ¤´´õË¾¤Î¤´Ï¢ÍíÊýË¡
+            </td>
+            <td valign="top" width="75%" bgcolor="#FFFAE6">
+                <table cellspacing="0" cellpadding="0" border="0">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <input type="checkbox" value="1" name="SHUDAN_EMAIL" />E-¥á¡¼¥ë
+                            </td>
+                            <td></td>
+                            <td>
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" value="1" name="SHUDAN_TEL" />TEL
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                                ¤´´õË¾»þ´ÖÂÓ<input name="RENRAKU_TIME" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" value="1" name="SHUDAN_FAX" />FAX
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                        </tr>
+    <!--
+                        <tr>
+                            <td>
+                                <input type="checkbox" value="1" name="SHUDAN_YUBIN" />Í¹ÊØ
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                        </tr>
+    -->
+                    </tbody>
+                </table>¢¨Ê£¿ôÁªÂò²Ä¡ÊÉ¬¤º¤Ò¤È¤Ä¤Ï¤ªÁª¤Ó¤¯¤À¤µ¤¤¡Ë
+            </td>
+        </tr>
+    <!--
+        <tr>
+            <td valign="top" width="25%" bgcolor="#FFEFBE">
+                ¤É¤Î¤è¤¦¤Ë¤·¤Æ¤³¤Î¥Û¡¼¥à¥Ú¡¼¥¸¤ªÃÎ¤ê¤Ë¤Ê¤ê¤Þ¤·¤¿¤«¡©
+            </td>
+            <td width="75%" bgcolor="#FFFAE6">
+                <select multiple="multiple" name="NINTI">
+                    <option value="¿·Ê¹ÀÞ¹þ¥Á¥é¥·">
+                        ¿·Ê¹ÀÞ¹þ¥Á¥é¥·
+                    </option>
+                    <option value="¿·Ê¹»æÌÌ¹­¹ð">
+                        ¿·Ê¹»æÌÌ¹­¹ð
+                    </option>
+                    <option value="½»Âð¾ðÊó»ï">
+                        ½»Âð¾ðÊó»ï
+                    </option>
+                    <option value="ÉÔÆ°»º¸¡º÷¥µ¥¤¥È">
+                        ÉÔÆ°»º¸¡º÷¥µ¥¤¥È
+                    </option>
+                    <option value="°ìÈÌ¸¡º÷¥µ¥¤¥È">
+                        °ìÈÌ¸¡º÷¥µ¥¤¥È
+                    </option>
+                    <option value="¤½¤ÎÂ¾¤Î¥µ¥¤¥È">
+                        ¤½¤ÎÂ¾¤Î¥µ¥¤¥È
+                    </option>
+                    <option value="¤½¤ÎÂ¾">
+                        ¤½¤ÎÂ¾
+                    </option>
+                </select>
+            </td>
+        </tr>
+    -->
+        <tr>
+            <td valign="top" width="25%" bgcolor="#E6E6E6">
+                ¤´°Õ¸«¡¦¤´Í×Ë¾
+            </td>
+            <td width="75%" bgcolor="#EFEFEF">
+                <textarea name="OPINION" rows="5" cols="40"></textarea>
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+

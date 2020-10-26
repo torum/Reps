@@ -1,0 +1,191 @@
+<TMPL_INCLUDE NAME="header.tmpl">
+
+<TMPL_INCLUDE NAME="menu.tmpl">
+<div id="content">
+    <TMPL_VAR NAME="page_data" ESCAPE='0'>
+
+    <form method="get" action="<TMPL_VAR NAME='script_name' ESCAPE='0'>" enctype="application/x-www-form-urlencoded" name="backup">
+    <table border="1" class="main_table">
+        <tr>
+            <th align="left" colspan="2" style="background-color:#9BD1FA;padding:0px;"><b class="rtop"><b class="r1"></b><b class="r2"></b><b class="r3"></b><b class="r4"></b></b>&nbsp;&nbsp;<img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>/icons/database_save.png" width="16" height="16" align="top" border="0" />&nbsp;バックアップ</th>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <p>
+                    データバックアップ機能により、データベースのバックアップを安全のために作ることができます。書き出されるデータフォーマットは、REPS で読み込みやすいものになっています。他の環境へ移行したり、他のシステムで再利用する際は、<strong>エクスポート機能</strong>をご利用ください。
+                </p>
+                <p><strong>[重要]</strong>&nbsp;共有サーバー（レンタルサーバー）を御利用の場合、登録されている物件数が多いと処理の負荷が高くなり、エラーとなる場合がございます（復元する際にも）。そのような場合には、別の方法として、FTPでDBディレクトリの内容をダウンロードする事で、完全なバックアップを取る事を推奨致します。この場合、ダウンロードしたファイルを戻す事で、データを復帰する事が出来ます。</p>
+
+            </td>
+        </tr>
+        <tr align="left">
+            <td width="30">&nbsp;</td>
+            <th align="left">バックアップ項目の選択</th>
+        </tr>
+        <tr>
+            <td width="30">&nbsp;</td>
+            <td>
+<TMPL_IF NAME="r_visible">
+<TMPL_IF NAME="rl_visible">
+<a href="<TMPL_VAR NAME='script_name' ESCAPE='0'>?rl=on&_mode=mode_admin_backup&_action=backup"><img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>/icons/page_white_put.png" width="16" height="16" align="absmiddle" border="0" />&nbsp;賃貸::住居用 データ</a><br />
+</TMPL_IF>
+<TMPL_IF NAME="rb_visible">
+<a href="<TMPL_VAR NAME='script_name' ESCAPE='0'>?rb=on&_mode=mode_admin_backup&_action=backup"><img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>/icons/page_white_put.png" width="16" height="16" align="absmiddle" border="0" />&nbsp;賃貸::事業用 データ</a><br />
+</TMPL_IF>
+</TMPL_IF>
+<TMPL_IF NAME="b_visible">
+<TMPL_IF NAME="bl_visible">
+<a href="<TMPL_VAR NAME='script_name' ESCAPE='0'>?bl=on&_mode=mode_admin_backup&_action=backup"><img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>/icons/page_white_put.png" width="16" height="16" align="absmiddle" border="0" />&nbsp;売買::土地 データ</a><br />
+</TMPL_IF>
+<TMPL_IF NAME="bm_visible">
+<a href="<TMPL_VAR NAME='script_name' ESCAPE='0'>?bm=on&_mode=mode_admin_backup&_action=backup"><img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>/icons/page_white_put.png" width="16" height="16" align="absmiddle" border="0" />&nbsp;売買::マンション データ</a><br />
+</TMPL_IF>
+<TMPL_IF NAME="bh_visible">
+<a href="<TMPL_VAR NAME='script_name' ESCAPE='0'>?bh=on&_mode=mode_admin_backup&_action=backup"><img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>/icons/page_white_put.png" width="16" height="16" align="absmiddle" border="0" />&nbsp;売買::一戸建て データ</a><br />
+</TMPL_IF>
+<TMPL_IF NAME="bb_visible">
+<a href="<TMPL_VAR NAME='script_name' ESCAPE='0'>?bb=on&_mode=mode_admin_backup&_action=backup"><img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>/icons/page_white_put.png" width="16" height="16" align="absmiddle" border="0" />&nbsp;売買::投資用 データ</a><br />
+</TMPL_IF>
+</TMPL_IF>
+<a href="<TMPL_VAR NAME='script_name' ESCAPE='0'>?up=on&_mode=mode_admin_backup&_action=backup"><img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>/icons/page_white_put.png" width="16" height="16" align="absmiddle" border="0" />&nbsp;ユーザー データ</a><br />
+<a href="<TMPL_VAR NAME='script_name' ESCAPE='0'>?cs=on&_mode=mode_admin_backup&_action=backup"><img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>/icons/page_white_put.png" width="16" height="16" align="absmiddle" border="0" />&nbsp;会社情報 データ</a>
+
+
+<!--
+                <label for="b-rl"><input type="checkbox" id="b-rl" name="rl" value="on" />&nbsp;賃貸::住居用 データ</label><br />
+                <label for="b-rb"><input type="checkbox" id="b-rb" name="rb" value="on" />&nbsp;賃貸::事業用 データ</label><br />
+                <label for="b-bl"><input type="checkbox" id="b-bl" name="bl" value="on" />&nbsp;売買::土地 データ</label><br />
+                <label for="b-bm"><input type="checkbox" id="b-bm" name="bm" value="on" />&nbsp;売買::マンション データ</label><br />
+                <label for="b-bh"><input type="checkbox" id="b-bh" name="bh" value="on" />&nbsp;売買::一戸建て データ</label><br />
+                <label for="b-up"><input type="checkbox" id="b-up" name="up" value="on" />&nbsp;ユーザー データ</label><br />
+                <label for="b-cs"><input type="checkbox" id="b-cs" name="cs" value="on" />&nbsp;会社情報 データ</label><br />
+                <input type="hidden" name="_mode" value="mode_admin_backup" />
+                <input type="hidden" name="_action" value="backup" />
+-->
+                <br />
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2">
+<!--
+                <p>チェックしたデータを&nbsp;&nbsp;<input type="submit" name="sb" value="バックアップ" /></p>
+-->
+                <p>&nbsp;</p>
+            </td>
+        </tr>
+
+    </table>
+    </form>
+    
+    <form method="get" action="<TMPL_VAR NAME='script_name' ESCAPE='0'>" enctype="application/x-www-form-urlencoded" name="backup">
+    <table border="1" class="main_table">
+        <tr>
+            <th align="left" colspan="2" style="background-color:#9BD1FA;padding:0px;"><b class="rtop"><b class="r1"></b><b class="r2"></b><b class="r3"></b><b class="r4"></b></b>&nbsp;&nbsp;<img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>/icons/database_connect.png" width="16" height="16" align="top" border="0" />&nbsp;バックアップデータの復元</th>
+        </tr>
+        <tr>
+            <td colspan="2">
+    <p>
+        バックアップデータの復元機能により、バックアップ機能で作成したデータベースのバックアップを復元することができます。
+        <br />
+        <span style="color:red">(*御注意：バックアップを取った時点でのデータに復元されますので、それ以降の変更内容は無くなってしまいますので御注意ください)</span>
+    </p>
+    <p>
+        バックアップデータを復元するには、まずFTPクライアントソフトウェアで「インストールディレクトリ/app/backup」にアクセスし、バックアップファイル（*.dump）をアップロードしてください。バックアップファイルが存在するものだけ、チェックできます。
+    </p>
+    <p>
+        <strong>[重要]</strong>&nbsp;チェックボックスをチェックして、「復元」ボタンをクリックしてください。復元後は安全のため、ダウンロード後は安全のため、必ずサーバーからファイルを削除してください。
+    </p>
+
+            </td>
+        </tr>
+        <tr align="left">
+            <td width="30">&nbsp;</td>
+            <th align="left">バックアップ復元項目の選択</th>
+        </tr>
+        <tr>
+            <td width="30">&nbsp;</td>
+            <td>
+<TMPL_IF NAME="r_visible">
+<TMPL_IF NAME="rl_visible">
+        <TMPL_IF NAME="RL">
+            <label for="r-rl"><input type="checkbox" id="r-rl" name="rl" value="on" />&nbsp;賃貸::住居用 データ (reps-rl-backup.dump)</label>
+        <TMPL_ELSE>
+            <label for="r-rl"><input type="checkbox" id="r-rl" name="rl" value="on" disabled />&nbsp;賃貸::住居用 データ (reps-rl-backup.dump)</label>
+        </TMPL_IF>
+        <br />
+</TMPL_IF>
+<TMPL_IF NAME="rb_visible">
+        <TMPL_IF NAME="RB">
+            <label for="r-rb"><input type="checkbox" id="r-rb" name="rb" value="on" />&nbsp;賃貸::事業用 データ (reps-rb-backup.dump)</label>
+        <TMPL_ELSE>
+            <label for="r-rb"><input type="checkbox" id="r-rb" name="rb" value="on" disabled />&nbsp;賃貸::事業用 データ (reps-rb-backup.dump)</label>
+        </TMPL_IF>
+        <br />
+</TMPL_IF>
+</TMPL_IF>
+<TMPL_IF NAME="b_visible">
+<TMPL_IF NAME="bl_visible">
+        <TMPL_IF NAME="BL">
+            <label for="r-bl"><input type="checkbox" id="r-bl" name="bl" value="on" />&nbsp;売買::土地 データ (reps-bl-backup.dump)</label>
+        <TMPL_ELSE>
+            <label for="r-bl"><input type="checkbox" name="r-bl" name="bl" value="on" disabled />&nbsp;売買::土地 データ (reps-bl-backup.dump)</label>
+        </TMPL_IF>
+        <br />
+</TMPL_IF>
+<TMPL_IF NAME="bm_visible">
+        <TMPL_IF NAME="BM">
+            <label for="r-bm"><input type="checkbox" id="r-bm" name="bm" value="on" />&nbsp;売買::マンション データ (reps-bm-backup.dump)</label>
+        <TMPL_ELSE>
+            <label for="r-bm"><input type="checkbox" id="r-bm" value="on" disabled />&nbsp;売買::マンション データ (reps-bm-backup.dump)</label>
+        </TMPL_IF>
+        <br />
+</TMPL_IF>
+<TMPL_IF NAME="bh_visible">
+        <TMPL_IF NAME="BH">
+            <label for="r-bh"><input type="checkbox" id="r-bh" name="bh" value="on" />&nbsp;売買::一戸建て データ (reps-bh-backup.dump)</label>
+        <TMPL_ELSE>
+            <label for="r-bh"><input type="checkbox" id="r-bh" name="bh" value="on" disabled />&nbsp;売買::一戸建て データ (reps-bh-backup.dump)</label>
+        </TMPL_IF>
+        <br />
+</TMPL_IF>
+<TMPL_IF NAME="bb_visible">
+        <TMPL_IF NAME="BB">
+            <label for="r-bb"><input type="checkbox" id="r-bb" name="bb" value="on" />&nbsp;売買::投資用 データ (reps-bh-backup.dump)</label>
+        <TMPL_ELSE>
+            <label for="r-bb"><input type="checkbox" id="r-bb" name="bb" value="on" disabled />&nbsp;売買::投資用 データ (reps-bb-backup.dump)</label>
+        </TMPL_IF>
+        <br />
+</TMPL_IF>
+</TMPL_IF>
+        <TMPL_IF NAME="UP">
+            <label for="r-up"><input type="checkbox" id="r-up" name="up" value="on" />&nbsp;ユーザー データ (reps-up-backup.dump)</label>
+        <TMPL_ELSE>
+            <label for="r-up"><input type="checkbox" id="r-up" name="up" value="on" disabled />&nbsp;ユーザー データ (reps-up-backup.dump)</label>
+        </TMPL_IF>
+        <br />
+
+        <TMPL_IF NAME="CS">
+            <label for="r-cs"><input type="checkbox" id="r-cs" name="cs" value="on" />&nbsp;会社情報 データ (reps-cs-backup.dump)</label>
+        <TMPL_ELSE>
+            <label for="r-cs"><input type="checkbox" id="r-cs" name="cs" value="on" disabled />&nbsp;会社情報 データ (reps-cs-backup.dump)</label>
+        </TMPL_IF>
+        <br />
+
+        <input type="hidden" name="_mode" value="mode_admin_backup" />
+        <input type="hidden" name="_action" value="restore" />
+        <br />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <p>チェックしたデータを&nbsp;&nbsp;<input type="submit" name="restore" value="復元する" /></p></p>
+            </td>
+        </tr>
+    </table>
+    </form>
+
+
+</div>
+
+<TMPL_INCLUDE NAME="footer.tmpl">

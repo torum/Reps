@@ -1,0 +1,47 @@
+<TMPL_INCLUDE NAME="mob_header.tmpl">
+売買物件&nbsp;::&nbsp;事業用一覧<br /><br />
+<TMPL_VAR NAME="page_data" ESCAPE='0'>
+<br /><br />
+
+<TMPL_IF NAME="result_count">
+<form method="get" name="rsearch" id="rsearch" action="<TMPL_VAR NAME='script_name' ESCAPE='0'>" >
+
+<TMPL_LOOP NAME='main_loop'>
+所在地:<TMPL_VAR NAME="BUSINESS_LOCATION" ESCAPE='1'><br />
+<TMPL_IF NAME="BUSINESS_KIND">物件種別:<TMPL_VAR NAME="BUSINESS_KIND" ESCAPE='1'><TMPL_IF NAME="BUSINESS_KIND_DETAIL"> (<TMPL_VAR NAME="BUSINESS_KIND_DETAIL" ESCAPE='1'>)</TMPL_IF></TMPL_IF><br />
+価格:<TMPL_VAR NAME="BUSINESS_PRICE" ESCAPE='1'>万円<br />
+最寄駅:<TMPL_VAR NAME="BUSINESS_STATION_1" ESCAPE='1'><TMPL_IF NAME="BUSINESS_STATION_2"><br /><TMPL_VAR NAME="BUSINESS_STATION_2" ESCAPE='1'></TMPL_IF><br />
+バス・徒歩:<TMPL_IF NAME="BUSINESS_BUS_MINUTES_1"><TMPL_VAR NAME="BUSINESS_BUS_MINUTES_1" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>・<TMPL_IF NAME="BUSINESS_WALK_MINUTES_1"><TMPL_VAR NAME="BUSINESS_WALK_MINUTES_1" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF><br />
+専有面積平米:<TMPL_IF NAME="BUSINESS_SQUARE"><TMPL_VAR NAME="BUSINESS_SQUARE" ESCAPE='1'>平米<TMPL_ELSE>--</TMPL_IF><br />
+<a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_detail&_type=bb&_object_id=<TMPL_VAR NAME="BUSINESS_ID" ESCAPE='0'>">詳細</a><br />
+<br />
+</TMPL_LOOP>
+
+<!-- 検索条件等の次ページへの持ち越し（削除しないでください） -->
+<input type="hidden" name="search_object" value="<TMPL_VAR NAME="search_object" ESCAPE='1'>" />
+
+    <input type="hidden" name="business_address" value="<TMPL_VAR NAME="business_address" ESCAPE='1'>" />
+    <input type="hidden" name="business_price_1" value="<TMPL_VAR NAME="business_price_1" ESCAPE='1'>" />
+    <input type="hidden" name="business_price_2" value="<TMPL_VAR NAME="business_price_2" ESCAPE='1'>" />
+    <input type="hidden" name="business_station" value="<TMPL_VAR NAME="business_station" ESCAPE='1'>" />
+    <input type="hidden" name="business_square_1" value="<TMPL_VAR NAME="business_square_1" ESCAPE='1'>" />
+    <input type="hidden" name="business_square_2" value="<TMPL_VAR NAME="business_square_2" ESCAPE='1'>" />
+    <input type="hidden" name="business_options_parking" value="<TMPL_VAR NAME="business_options_parking" ESCAPE='1'>" />
+    <input type="hidden" name="business_has_" value="<TMPL_VAR NAME="business_has_" ESCAPE='1'>" />
+    <input type="hidden" name="business_kind" value="<TMPL_VAR NAME="business_kind" ESCAPE='1'>" />
+    <input type="hidden" name="business_kind_detail" value="<TMPL_VAR NAME="business_kind_detail" ESCAPE='1'>" />
+
+<input type="hidden" name="_mode" value="<TMPL_VAR NAME="_mode" ESCAPE='1'>" />
+<input type="hidden" name="_type" value="<TMPL_VAR NAME="_type" ESCAPE='1'>" />
+<input type="hidden" name="off_set" value="<TMPL_VAR NAME="off_set" ESCAPE='1'>" />
+<input type="hidden" name="sort_by" value="<TMPL_VAR NAME="sort_by" ESCAPE='1'>"  />
+
+<TMPL_IF NAME="items_per_page_next">
+<input type="hidden" name="off_set_next" value="<TMPL_VAR NAME="off_set_next" ESCAPE='1'>" />
+<input type="submit" name="search_object" value="次の<TMPL_VAR NAME="items_per_page_next" ESCAPE='1'>件" />
+</TMPL_IF>
+</form>
+<TMPL_ELSE>
+<p>現在の所、公開中の物件が見付かりませんでした。</p>
+</TMPL_IF>
+<TMPL_INCLUDE NAME="mob_footer.tmpl">

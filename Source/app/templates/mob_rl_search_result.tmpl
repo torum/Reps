@@ -1,0 +1,59 @@
+<TMPL_INCLUDE NAME="mob_header.tmpl">
+
+
+    <a href="<TMPL_VAR NAME='script_name' ESCAPE='0'>?_mode=mode_search&_type=rl" class="nav">賃貸住居検索</a>
+    <TMPL_VAR NAME="page_data" ESCAPE='0'>
+    <br /><br />
+    <TMPL_IF NAME="result_count">
+
+    <form method="get" name="rsearch" id="rsearch" action="<TMPL_VAR NAME='script_name' ESCAPE='0'>" >
+
+        <TMPL_LOOP NAME='main_loop'>
+
+<a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_detail&_type=rl&_object_id=<TMPL_VAR NAME="APART_ID" ESCAPE='0'>"><TMPL_VAR NAME="APART_KIND" ESCAPE='1'>、<TMPL_VAR NAME="APART_PRICE" ESCAPE='1'>円</a><br />
+
+敷金・礼金:<TMPL_IF NAME="APART_PRICE_SIKIKIN"><TMPL_VAR NAME="APART_PRICE_SIKIKIN" ESCAPE='1'><TMPL_VAR NAME="APART_PRICE_SIKIKIN_UNIT" ESCAPE='1'><TMPL_ELSE>--</TMPL_IF>・<TMPL_IF NAME="APART_PRICE_REIKIN"><TMPL_VAR NAME="APART_PRICE_REIKIN" ESCAPE='1'><TMPL_VAR NAME="APART_PRICE_REIKIN_UNIT" ESCAPE='1'><TMPL_ELSE>--</TMPL_IF><br />
+所在地:<TMPL_VAR NAME="APART_LOCATION" ESCAPE='1'><br />
+最寄駅:<TMPL_VAR NAME="APART_STATION_1" ESCAPE='1'><br />
+バス・徒歩:<TMPL_IF NAME="APART_BUS_MINUTES_1"><TMPL_VAR NAME="APART_BUS_MINUTES_1" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>・<TMPL_IF NAME="APART_WALK_MINUTES_1"><TMPL_VAR NAME="APART_WALK_MINUTES_1" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF><br />
+<br />
+
+        </TMPL_LOOP>
+
+        <input type="hidden" name="search_object" value="<TMPL_VAR NAME="search_object" ESCAPE='1'>" />
+        <input type="hidden" name="apart_address" value="<TMPL_VAR NAME="apart_address" ESCAPE='1'>" />
+        <input type="hidden" name="apart_price_2" value="<TMPL_VAR NAME="apart_price_2" ESCAPE='1'>" />
+        <input type="hidden" name="apart_public" value="<TMPL_VAR NAME="apart_public" ESCAPE='1'>" />
+        <input type="hidden" name="apart_age" value="<TMPL_VAR NAME="apart_age" ESCAPE='1'>" />
+        <input type="hidden" name="apart_square_2" value="<TMPL_VAR NAME="apart_square_2" ESCAPE='1'>" />
+        <input type="hidden" name="apart_price_1" value="<TMPL_VAR NAME="apart_price_1" ESCAPE='1'>" />
+        <input type="hidden" name="apart_square_1" value="<TMPL_VAR NAME="apart_square_1" ESCAPE='1'>" />
+        <input type="hidden" name="apart_walk_minutes" value="<TMPL_VAR NAME="apart_walk_minutes" ESCAPE='1'>" />
+        <input type="hidden" name="include_k_k" value="<TMPL_VAR NAME="include_k_k" ESCAPE='1'>" />
+        <input type="hidden" name="apart_no_sikikin" value="<TMPL_VAR NAME="apart_no_sikikin" ESCAPE='1'>" />
+        <input type="hidden" name="apart_school" value="<TMPL_VAR NAME="apart_school" ESCAPE='1'>" />
+        <input type="hidden" name="apart_no_reikin" value="<TMPL_VAR NAME="apart_no_reikin" ESCAPE='1'>" />
+        <input type="hidden" name="apart_jisyakannri" value="<TMPL_VAR NAME="apart_jisyakannri" ESCAPE='1'>" />
+        <input type="hidden" name="apart_jisyatouroku" value="<TMPL_VAR NAME="apart_jisyatouroku" ESCAPE='1'>" />
+        <input type="hidden" name="apart_station" value="<TMPL_VAR NAME="apart_station" ESCAPE='1'>" />
+        <input type="hidden" name="apart_madori" value="<TMPL_VAR NAME="apart_madori" ESCAPE='1'>" />
+        <input type="hidden" name="apart_kind" value="<TMPL_VAR NAME="apart_kind" ESCAPE='1'>" />
+        <input type="hidden" name="apart_has_" value="<TMPL_VAR NAME="apart_has_" ESCAPE='1'>" />
+        <input type="hidden" name="_mode" value="<TMPL_VAR NAME="_mode" ESCAPE='1'>" />
+        <input type="hidden" name="_type" value="<TMPL_VAR NAME="_type" ESCAPE='1'>" />
+        <input type="hidden" name="off_set" value="<TMPL_VAR NAME="off_set" ESCAPE='1'>" />
+        <input type="hidden" name="sort_by" value="<TMPL_VAR NAME="sort_by" ESCAPE='1'>"  />
+
+        <TMPL_IF NAME="items_per_page_next">
+            <input type="hidden" name="off_set_next" value="<TMPL_VAR NAME="off_set_next" ESCAPE='1'>" />
+            <input type="submit" name="search_object" value="次の<TMPL_VAR NAME="items_per_page_next" ESCAPE='1'>件" />
+        </TMPL_IF>
+
+
+    </form>
+
+    <TMPL_ELSE>
+        <p>見付かりませんでした。条件を変えて再度検索してください。</p>
+    </TMPL_IF>
+
+<TMPL_INCLUDE NAME="mob_footer.tmpl">

@@ -1,0 +1,233 @@
+<TMPL_INCLUDE NAME="site_header.tmpl">
+
+<div id="container">
+    <!-- 売買マンションサイドバー読み込み -->
+    <TMPL_INCLUDE NAME="site_bm_sidebar.tmpl">
+    <div id="content">
+        <TMPL_VAR NAME="page_data" ESCAPE='0'>
+        <!-- 売買マンション検索フォーム 始まり-->
+        <form method="get" action="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_search&amp;_type=bm" enctype="application/x-www-form-urlencoded" name="mansion">
+
+            <table class="main_table" border="0" align="center" width="567">
+                <tr align="left">
+                    <th class="list" align="right">住所: </th>
+                    <td><input type="text" name="mansion_address"  size="50" maxlength="50" /></td>
+                </tr>
+                <tr align="left">
+                    <th class="list" align="right">最寄り駅: </th>
+                    <td><input type="text" name="mansion_station"  size="50" maxlength="50" /></td>
+                </tr>
+                <tr>
+                    <th class="list" align="right">価格: </th>
+                    <td>
+                        <select name="mansion_price_1">
+                            <option label="下限なし" value="0" selected="selected">下限なし</option><option label="500 万円" value="500">500 万円</option><option label="1000 万円" value="1000">1000 万円</option><option label="1500 万円" value="1500">1500 万円</option><option label="2000 万円" value="2000">2000 万円</option><option label="2500 万円" value="2500">2500 万円</option><option label="3000 万円" value="3000">3000 万円</option><option label="3500 万円" value="3500">3500 万円</option><option label="4000 万円" value="4000">4000 万円</option><option label="5000 万円" value="5000">5000 万円</option><option label="6000 万円" value="6000">6000 万円</option><option label="7000 万円" value="7000">7000 万円</option><option label="8000 万円" value="8000">8000 万円</option><option label="9000 万円" value="9000">9000 万円</option><option label="10000 万円" value="10000">10000 万円</option><option label="15000 万円" value="15000">15000 万円</option><option label="20000 万円" value="20000">20000 万円</option>
+        
+                        </select>
+            〜
+                        <select name="mansion_price_2">
+                            <option label="500 万円" value="500">500 万円</option><option label="1000 万円" value="1000">1000 万円</option><option label="1500 万円" value="1500">1500 万円</option><option label="2000 万円" value="2000">2000 万円</option><option label="2500 万円" value="2500">2500 万円</option><option label="3000 万円" value="3000">3000 万円</option><option label="3500 万円" value="3500">3500 万円</option><option label="4000 万円" value="4000">4000 万円</option><option label="5000 万円" value="5000">5000 万円</option><option label="6000 万円" value="6000">6000 万円</option><option label="7000 万円" value="7000">7000 万円</option><option label="8000 万円" value="8000">8000 万円</option><option label="9000 万円" value="9000">9000 万円</option><option label="10000 万円" value="10000">10000 万円</option><option label="15000 万円" value="15000">15000 万円</option><option label="20000 万円" value="20000">20000 万円</option><option label="上限なし" value="0" selected="selected">上限なし</option>
+        
+                        
+                        </select>
+                        
+                    </td>
+            
+                </tr>
+                <tr>
+                    <th class="list" align="right">面積: </th>
+            
+                    <td>
+                        <select name="mansion_square_1">
+                            <option label="下限なし" value="0" selected="selected">下限なし</option><option label="10 m&sup2;" value="10">10 m&sup2;</option><option label="15 m&sup2;" value="15">15 m&sup2;</option><option label="20 m&sup2;" value="20">20 m&sup2;</option><option label="25 m&sup2;" value="25">25 m&sup2;</option><option label="30 m&sup2;" value="30">30 m&sup2;</option><option label="35 m&sup2;" value="35">35 m&sup2;</option><option label="40 m&sup2;" value="40">40 m&sup2;</option><option label="50 m&sup2;" value="50">50 m&sup2;</option><option label="60 m&sup2;" value="60">60 m&sup2;</option><option label="70 m&sup2;" value="70">70 m&sup2;</option><option label="80 m&sup2;" value="80">80 m&sup2;</option><option label="90 m&sup2;" value="90">90 m&sup2;</option><option label="100 m&sup2;" value="100">100 m&sup2;</option><option label="200 m&sup2;" value="200">200 m&sup2;</option><option label="300 m&sup2;" value="300">300 m&sup2;</option><option label="400 m&sup2;" value="400">400 m&sup2;</option><option label="500 m&sup2;" value="500">500 m&sup2;</option><option label="600 m&sup2;" value="600">600 m&sup2;</option><option label="700 m&sup2;" value="700">700 m&sup2;</option><option label="800 m&sup2;" value="800">800 m&sup2;</option><option label="900 m&sup2;" value="900">900 m&sup2;</option><option label="1000 m&sup2;" value="1000">1000 m&sup2;</option>
+        
+            
+                        </select>
+            〜
+                        <select name="mansion_square_2">
+                            <option label="10 m&sup2;" value="10">10 m&sup2;</option><option label="15 m&sup2;" value="15">15 m&sup2;</option><option label="20 m&sup2;" value="20">20 m&sup2;</option><option label="25 m&sup2;" value="25">25 m&sup2;</option><option label="30 m&sup2;" value="30">30 m&sup2;</option><option label="35 m&sup2;" value="35">35 m&sup2;</option><option label="40 m&sup2;" value="40">40 m&sup2;</option><option label="50 m&sup2;" value="50">50 m&sup2;</option><option label="60 m&sup2;" value="60">60 m&sup2;</option><option label="70 m&sup2;" value="70">70 m&sup2;</option><option label="80 m&sup2;" value="80">80 m&sup2;</option><option label="90 m&sup2;" value="90">90 m&sup2;</option><option label="100 m&sup2;" value="100">100 m&sup2;</option><option label="200 m&sup2;" value="200">200 m&sup2;</option><option label="300 m&sup2;" value="300">300 m&sup2;</option><option label="400 m&sup2;" value="400">400 m&sup2;</option><option label="500 m&sup2;" value="500">500 m&sup2;</option><option label="600 m&sup2;" value="600">600 m&sup2;</option><option label="700 m&sup2;" value="700">700 m&sup2;</option><option label="800 m&sup2;" value="800">800 m&sup2;</option><option label="900 m&sup2;" value="900">900 m&sup2;</option><option label="1000 m&sup2;" value="1000">1000 m&sup2;</option><option label="上限なし" value="0" selected="selected">上限なし</option>
+        
+                
+                        </select>
+                        &nbsp;&nbsp;※「m&sup2;」は「平米」と同じです
+                    </td>
+                </tr>
+                <tr>
+                    <th class="list" align="right">間取り: </th>
+                    <td>
+                        <table border="0" cellpadding="1" cellspacing="2" class="List">
+        
+                        <tr>
+                            <td width="90">
+                                <label><input type="checkbox" name="mansion_madori" value="1R" id="1R" />ワンルーム</label>
+                            </td><td width="90">
+                                <label><input type="checkbox" name="mansion_madori" value="1K" id="1K" />1K</label>
+                            </td><td width="90">
+                                <label><input type="checkbox" name="mansion_madori" value="1DK" id="1DK" />1DK</label>
+        
+                            </td><td width="90">
+                                <label><input type="checkbox" name="mansion_madori" value="1LDK" id="1LDK" />1LDK</label>
+                            </td>
+                            
+                        </tr>
+                        <tr>
+                            <td width="90">
+                                <label><input type="checkbox" name="mansion_madori" value="2K" id="2K" />2K</label>
+                            </td><td width="90">
+        
+                                <label><input type="checkbox" name="mansion_madori" value="2DK" id="2DK" />2DK</label>
+                            </td><td width="90">
+                                <label><input type="checkbox" name="mansion_madori" value="2LDK" id="2LDK" />2LDK</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label><input type="checkbox" name="mansion_madori" value="3K" id="3K" />3K</label>
+        
+                            </td><td>
+                                <label><input type="checkbox" name="mansion_madori" value="3DK" id="3DK" />3DK</label>
+                            </td><td>
+                                <label><input type="checkbox" name="mansion_madori" value="3LDK" id="3LDK" />3LDK</label>
+                            </td>
+                        <tr>
+                            <td>
+                                <label><input type="checkbox" name="mansion_madori" value="4K" id="4K" />4K</label>
+        
+                            </td><td>
+                                <label><input type="checkbox" name="mansion_madori" value="4DK" id="4DK" />4DK</label>
+                            </td><td>
+                                <label><input type="checkbox" name="mansion_madori" value="4LDK+" id="4LDK" />4LDK以上</label>
+                            </td>
+                        </tr>
+            
+                        </table>
+        
+        
+        
+                    </td>
+                </tr>
+                <tr>
+                    <th class="list" align="right">築年数: </th>
+                    <td>
+                        <select name="mansion_age">
+                            <option label="指定なし" value="0">指定なし</option>
+                            <option label="1年以内" value="1">1年以内</option>
+                            <option label="3年以内" value="3">3年以内</option>
+                            <option label="5年以内" value="5">5年以内</option>
+                            <option label="10年以内" value="10">10年以内</option>
+                            <option label="15年以内" value="15">15年以内</option>
+                            <option label="20年以内" value="20">20年以内</option>
+                        </select>
+        
+                    </td>
+            
+                </tr>
+                <tr>
+        
+            
+                    <th class="list" align="right">駅徒歩分</th>
+                    <td>
+                        <select name="mansion_walk_minutes">
+                            <option label="指定なし" value="0">指定なし</option>
+                            <option label="1分以内" value="1">1分以内</option>
+                            <option label="5分以内" value="5">5分以内</option>
+                            <option label="7分以内" value="7">7分以内</option>
+                            <option label="10分以内" value="10">10分以内</option>
+                            <option label="15分以内" value="15">15分以内</option>
+                            <option label="20分以内" value="20">20分以内</option>
+                        </select>
+        
+                    </td>
+                </tr>
+                <tr>
+                    <th class="list" align="right">画像: </th>
+                    <td>
+                        <label><input type="checkbox" name="mansion_has_" value="1" />間取り図あり</label>&nbsp;&nbsp;
+        
+                        <label><input type="checkbox" name="mansion_has_" value="2" />画像あり</label>&nbsp;&nbsp;
+                        <label><input type="checkbox" name="mansion_has_" value="3" />動画あり</label>
+                    </td>
+                    
+                </tr>
+                <tr>
+            
+                    <th class="list" align="right">詳細条件: </th>
+                    <td>
+                        <table border="0" cellpadding="1" cellspacing="1" class="List">
+                            <tbody>
+                            <tr>
+                                <th class="list" >位置</th>
+                                <td><label><input name="mansion_options_ikkai" value="on" type="checkbox">1階</label></td>
+                                <td><label><input name="mansion_options_nikaiijyou" value="on" type="checkbox">2階以上</label></td>
+                                <td><label><input name="mansion_options_saijyoukai" value="on" type="checkbox">最上階</label></td>
+                            
+                                <td><label><input name="mansion_options_kakubeya" value="on" type="checkbox">角部屋</label></td>
+                            </tr>
+                            <tr>
+                                <th class="list" >設備</th>
+                                <td><label><input name="mansion_options_autolock" value="on" type="checkbox">オートロック</label></td>
+                                <td><label><input name="mansion_options_elevator" value="on" type="checkbox">エレベータ</label></td>
+                                <td><label><input name="mansion_options_tvphone" value="on" type="checkbox">TVドアフォン</label></td>
+                            
+                                <td><label><input name="mansion_options_system_kitchin" value="on" type="checkbox">システムキッチン</label></td>
+                            
+                            </tr>
+                            <tr>
+                                <th class="list" >&nbsp;</th>
+                                <td><label><input name="mansion_options_parking_byke" value="on" type="checkbox">バイク置き場有</label></td>
+                                <td><label><input name="mansion_options_showertoilete" value="on" type="checkbox">シャワートイレ</label></td>
+                                <td><label><input name="mansion_options_yukadanbou" value="on" type="checkbox">床暖房</label></td>
+                            
+                                <td><label><input name="mansion_options_senyouniwa" value="on" type="checkbox">専用庭</label></td>
+                            </tr>
+                            
+                            <tr>
+                                <th class="list" >&nbsp;</th>
+                                <td><label><input name="mansion_options_parking_jitensya" value="on" type="checkbox">駐輪場有</label></td>
+                                <td><label><input name="mansion_options_barukoni" value="on" type="checkbox">バルコニー</label></td>
+                                <td><label><input name="mansion_options_bariafuri" value="on" type="checkbox">バリアフリー</label></td>
+                            
+                                <td><label><input name="mansion_options_tosigasu" value="on" type="checkbox">都市ガス</label></td>
+                            
+                            </tr>
+                            
+                            <tr>
+                                <th class="list" >&nbsp;</th>
+                                <td><label><input name="mansion_options_parking" value="on" type="checkbox">駐車場有</label></td>
+                                <td colspan="2"><label><input name="mansion_options_walkin_closet" value="on" type="checkbox">ウォークイン クローゼット</label></td>
+                                <td><label><input name="mansion_options_yukasita_syuunou" value="on" type="checkbox">床下収納</label></td>
+                            
+                            </tr>
+                            <tr>
+                                <th class="list" >&nbsp;</th>
+                                <td><label><input name="mansion_options_pet" value="on" type="checkbox">ペット相談</label></td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+
+                <tr align="center">
+                    <td colspan="2">
+                        <input type="hidden" name="sort_by" value=""  />
+                        <input type="hidden" name="_mode" value="mode_search"  />
+                        <input type="hidden" name="_type" value="bm"  />
+                        <input type="submit" name="search_object" value="指定した条件で検索する" class="submit" />
+                    </td>
+                </tr>
+            </table>
+
+        </form>
+        <!-- ページの表示時に住所入力欄にフォーカスをあてるスクリプト -->
+        <script type="text/javascript">
+            <!-- 
+                document.mansion.mansion_address.focus(); 
+            // -->
+        </script>
+    </div>
+</div>
+
+<TMPL_INCLUDE NAME="site_footer.tmpl">

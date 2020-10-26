@@ -1,0 +1,171 @@
+<div id="sidemenu">
+
+<TMPL_IF NAME="r_visible">
+
+<b style="background-color: rgb(255, 255, 255);" class="artop">
+<b style="border-color: rgb(136, 216, 79); background-color: rgb(205, 255, 170);" class="rer1"></b>
+<b style="border-color: rgb(136, 216, 79); background-color: rgb(205, 255, 170);" class="rer2"></b>
+<b style="border-color: rgb(136, 216, 79); background-color: rgb(205, 255, 170);" class="rer3"></b>
+<b style="border-color: rgb(136, 216, 79); background-color: rgb(205, 255, 170);" class="rer4"></b>
+</b>
+    <div id="side-container">
+
+        <div id="user-menu">
+            <TMPL_IF NAME="rl_visible">
+            賃貸::住居用
+            <ul>
+                <li><img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>icons/24-book-orange-add.png" width="24" height="24" border="0" align="absmiddle" /><a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_add&_type=rl">新規物件追加</a></li>
+                <li><img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>icons/24-book-orange-check.png" width="24" height="24" border="0" align="absmiddle" /><a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_list&_type=rl">登録物件一覧</a></li>
+                <li><img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>icons/24-zoom.png" width="24" height="24" border="0" align="absmiddle" /><a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_search&_type=rl">物件検索</a></li>
+            </ul>
+            </TMPL_IF>
+            <TMPL_IF NAME="rb_visible">
+            賃貸::事業用
+            <ul>
+                <li><img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>icons/24-book-orange-add.png" width="24" height="24" border="0" align="absmiddle" /><a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_add&_type=rb">新規物件追加</a></li>
+                <li><img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>icons/24-book-orange-check.png" width="24" height="24" border="0" align="absmiddle" /><a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_list&_type=rb">登録物件一覧</a></li>
+                <li><img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>icons/24-zoom.png" width="24" height="24" border="0" align="absmiddle" /><a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_search&_type=rb">物件検索</a></li>
+            </ul>
+            </TMPL_IF>
+        </div>
+
+    </div>
+
+<b style="background-color: rgb(255, 255, 255);" class="artop">
+<b style="border-color: rgb(136, 216, 79); background-color: rgb(205, 255, 170);" class="rel4"></b>
+<b style="border-color: rgb(136, 216, 79); background-color: rgb(205, 255, 170);" class="rel3"></b>
+<b style="border-color: rgb(136, 216, 79); background-color: rgb(205, 255, 170);" class="rel2"></b>
+<b style="border-color: rgb(136, 216, 79); background-color: rgb(205, 255, 170);" class="rel1"></b>
+</b>
+
+<br />
+</TMPL_IF>
+
+<TMPL_IF NAME="b_visible">
+
+<b style="background-color: rgb(255, 255, 255);" class="artop">
+<b style="border-color: rgb(136, 216, 79); background-color: rgb(205, 255, 170);" class="rer1"></b>
+<b style="border-color: rgb(136, 216, 79); background-color: rgb(205, 255, 170);" class="rer2"></b>
+<b style="border-color: rgb(136, 216, 79); background-color: rgb(205, 255, 170);" class="rer3"></b>
+<b style="border-color: rgb(136, 216, 79); background-color: rgb(205, 255, 170);" class="rer4"></b>
+</b>
+    <div id="side-container">
+
+        <div id="user-menu">
+            <TMPL_IF NAME="bl_visible">
+            売買::土地
+            <ul>
+                <li><img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>icons/24-book-orange-add.png" width="24" height="24" border="0" align="absmiddle" /><a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_add&_type=bl">新規物件追加</a></li>
+                <li><img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>icons/24-book-orange-check.png" width="24" height="24" border="0" align="absmiddle" /><a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_list&_type=bl">登録物件一覧</a></li>
+                <li><img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>icons/24-zoom.png" width="24" height="24" border="0" align="absmiddle" /><a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_search&_type=bl">物件検索</a></li>
+            </ul>
+            </TMPL_IF>
+            <TMPL_IF NAME="bm_visible">
+            売買::マンション
+            <ul>
+                <li><img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>icons/24-book-orange-add.png" width="24" height="24" border="0" align="absmiddle" /><a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_add&_type=bm">新規物件追加</a></li>
+                <li><img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>icons/24-book-orange-check.png" width="24" height="24" border="0" align="absmiddle" /><a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_list&_type=bm">登録物件一覧</a></li>
+                <li><img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>icons/24-zoom.png" width="24" height="24" border="0" align="absmiddle" /><a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_search&_type=bm">物件検索</a></li>
+
+            </ul>
+            </TMPL_IF>
+            <TMPL_IF NAME="bh_visible">
+            売買::一戸建て
+            <ul>
+                <li><img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>icons/24-book-orange-add.png" width="24" height="24" border="0" align="absmiddle" /><a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_add&_type=bh">新規物件追加</a></li>
+                <li><img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>icons/24-book-orange-check.png" width="24" height="24" border="0" align="absmiddle" /><a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_list&_type=bh">登録物件一覧</a></li>
+                <li><img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>icons/24-zoom.png" width="24" height="24" border="0" align="absmiddle" /><a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_search&_type=bh">物件検索</a></li>
+
+            </ul>
+            </TMPL_IF>
+            <TMPL_IF NAME="bb_visible">
+            売買::投資用
+            <ul>
+                <li><img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>icons/24-book-orange-add.png" width="24" height="24" border="0" align="absmiddle" /><a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_add&_type=bb">新規物件追加</a></li>
+                <li><img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>icons/24-book-orange-check.png" width="24" height="24" border="0" align="absmiddle" /><a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_list&_type=bb">登録物件一覧</a></li>
+                <li><img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>icons/24-zoom.png" width="24" height="24" border="0" align="absmiddle" /><a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_search&_type=bb">物件検索</a></li>
+
+            </ul>
+            </TMPL_IF>
+        </div>
+
+
+
+    </div>
+
+<b style="background-color: rgb(255, 255, 255);" class="artop">
+<b style="border-color: rgb(136, 216, 79); background-color: rgb(205, 255, 170);" class="rel4"></b>
+<b style="border-color: rgb(136, 216, 79); background-color: rgb(205, 255, 170);" class="rel3"></b>
+<b style="border-color: rgb(136, 216, 79); background-color: rgb(205, 255, 170);" class="rel2"></b>
+<b style="border-color: rgb(136, 216, 79); background-color: rgb(205, 255, 170);" class="rel1"></b>
+</b>
+
+<br />
+</TMPL_IF>
+
+<b style="background-color: rgb(255, 255, 255);" class="artop">
+<b style="border-color: rgb(136, 216, 79); background-color: rgb(205, 255, 170);" class="rer1"></b>
+<b style="border-color: rgb(136, 216, 79); background-color: rgb(205, 255, 170);" class="rer2"></b>
+<b style="border-color: rgb(136, 216, 79); background-color: rgb(205, 255, 170);" class="rer3"></b>
+<b style="border-color: rgb(136, 216, 79); background-color: rgb(205, 255, 170);" class="rer4"></b>
+</b>
+    <div id="side-container">
+        <div id="user-menu">
+
+            設定
+            <ul>
+                <li><img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>icons/24-member.png" width="24" height="24" border="0" align="absmiddle" /><a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_profile">ユーザー情報</a></li>
+<TMPL_IF NAME="admin">
+                <li><img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>icons/24-settings-blue.png" width="24" height="24"  align="absmiddle" border="0" /><strong><a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_admin_settings">会社情報</a></strong></li>
+</TMPL_IF>
+            </ul>
+
+        </div>
+
+    </div>
+
+<b style="background-color: rgb(255, 255, 255);" class="artop">
+<b style="border-color: rgb(136, 216, 79); background-color: rgb(205, 255, 170);" class="rel4"></b>
+<b style="border-color: rgb(136, 216, 79); background-color: rgb(205, 255, 170);" class="rel3"></b>
+<b style="border-color: rgb(136, 216, 79); background-color: rgb(205, 255, 170);" class="rel2"></b>
+<b style="border-color: rgb(136, 216, 79); background-color: rgb(205, 255, 170);" class="rel1"></b>
+</b>
+
+<br />
+
+<TMPL_IF NAME="admin">
+<b style="background-color: rgb(255, 255, 255);" class="artop">
+<b style="border-color: rgb(136, 216, 79); background-color: rgb(205, 255, 170);" class="rer1"></b>
+<b style="border-color: rgb(136, 216, 79); background-color: rgb(205, 255, 170);" class="rer2"></b>
+<b style="border-color: rgb(136, 216, 79); background-color: rgb(205, 255, 170);" class="rer3"></b>
+<b style="border-color: rgb(136, 216, 79); background-color: rgb(205, 255, 170);" class="rer4"></b>
+</b>
+
+    <div id="side-container">
+
+
+        
+        <div id="admin-menu">
+            管理
+            <ul>
+                <li><img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>icons/24-member-add.png" width="24" height="24"  border="0" align="absmiddle" /><a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_admin_addUser" class="admin">ユーザー追加</a></li> 
+                <li><img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>icons/24-member-check.png" width="24" height="24"  border="0" align="absmiddle" /><a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_admin_showUsers_list" class="admin">ユーザー一覧</a></li>
+<br />
+                <li><img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>icons/server_database.png" width="16" height="16"  border="0" align="absmiddle" /><a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_admin_inexport" class="admin">インポート・<br />エクスポート</a></li>
+
+                <li><img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>icons/database_lightning.png" width="16" height="16"  border="0" align="absmiddle" /><a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_admin_backup" class="admin">バックアップ・<br />リストア</a></li>
+            </ul>
+        </div>
+
+    </div>
+<b style="background-color: rgb(255, 255, 255);" class="artop">
+<b style="border-color: rgb(136, 216, 79); background-color: rgb(205, 255, 170);" class="rel4"></b>
+<b style="border-color: rgb(136, 216, 79); background-color: rgb(205, 255, 170);" class="rel3"></b>
+<b style="border-color: rgb(136, 216, 79); background-color: rgb(205, 255, 170);" class="rel2"></b>
+<b style="border-color: rgb(136, 216, 79); background-color: rgb(205, 255, 170);" class="rel1"></b>
+</b>
+</TMPL_IF>
+
+</div>
+
+

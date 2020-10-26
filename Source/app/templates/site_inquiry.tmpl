@@ -1,0 +1,73 @@
+<TMPL_INCLUDE NAME="site_header.tmpl">
+
+	<div id="content_full">
+
+        <TMPL_IF NAME="show_form">
+          <!-- お問い合わせフォームを表示 -->
+		  <form method="post" id="inquiry" action="<TMPL_VAR NAME='cgi_url' ESCAPE='0'>site.cgi" name="inquiry">
+		  <table style="padding:2em;margin-left:50px;" border="0" align="left">
+			 <tr>
+				    <td>&nbsp;</td>
+				    <td><h4>お問い合わせフォーム</h4></td>
+			 </tr>
+			 <tr>
+				    <td align="right" class="list">お名前:</td>
+				    <td align="left">
+					   <input type="text" name="c_name" size="40">&nbsp;&nbsp;
+				    </td>
+			 
+			 </tr>
+			 <tr>
+				    <td align="right" class="list">電話番号:</td>
+				    <td align="left">
+					   <input type="text" name="c_phone" size="40">&nbsp;&nbsp;
+				    </td>
+			 </tr>
+			 <tr>
+				    <td align="right" class="list">メールアドレス:</td>
+		  
+				    <td align="left">
+					   <input type="text" name="c_email" size="40">&nbsp;&nbsp;
+				    </td>
+			 </tr>
+			 <tr>
+				    <td valign="top" align="right" class="list"><br />お問い合わせ文:</td>
+				    <td align="left" class="list">
+				    <br />
+		  
+				    <textarea name="c_text"  rows="10" cols="50"></textarea><br />
+		  
+				    <br />
+				    </td>
+			 </tr>
+			 <tr>
+				    <td align="right" class="list">連絡方法:</td>
+				    <td align="left">
+					   ご希望の連絡方法は、<label><input name="contact_pref" value="1" type="radio" />メール</label> <label><input name="contact_pref" value="2" type="radio" />電話</label> <label><input name="contact_pref" value="3" type="radio" checked="checked" />どちらでも</label>
+		  
+				    </td>
+			 </tr>
+			 <tr>
+				    <td align="left">&nbsp;</td>
+				    <td align="right">
+                        <input value="mode_inquiry" type="hidden" name="_mode">
+                        <input value="お問い合わせ送信" type="submit" name="submit_Inquiry" class="submit" />
+				    </td>
+			 </tr>
+		  </table>
+		  </form>
+		  <script type="text/javascript">
+            <!-- 
+			 document.inquiry.c_name.focus(); 
+		  // -->
+          </script>
+          <!-- お問い合わせフォーム 終わり -->
+        <TMPL_ELSE>
+            <!-- 問い合わせ完了表示またはエラー等があった場合に下に文章が表示されます。 -->
+            <br /><br />
+            <TMPL_VAR NAME='page_data' ESCAPE='0'>
+        </TMPL_IF>
+
+	</div>
+
+<TMPL_INCLUDE NAME="site_footer.tmpl">

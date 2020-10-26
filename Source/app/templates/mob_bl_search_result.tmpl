@@ -1,0 +1,47 @@
+<TMPL_INCLUDE NAME="mob_header.tmpl">
+売買物件&nbsp;::&nbsp;土地一覧<br /><br />
+<TMPL_VAR NAME="page_data" ESCAPE='0'>
+<br /><br />
+<TMPL_IF NAME="result_count">
+<form method="get" action="<TMPL_VAR NAME='script_name' ESCAPE='0'>" >
+<TMPL_LOOP NAME='main_loop'>
+所在地:<TMPL_VAR NAME="LAND_LOCATION" ESCAPE='1'><br />
+最寄駅:<TMPL_VAR NAME="LAND_STATION_1" ESCAPE='1'><TMPL_IF NAME="LAND_STATION_2"><br /><TMPL_VAR NAME="LAND_STATION_2" ESCAPE='1'></TMPL_IF><br />
+バス・徒歩:<TMPL_IF NAME="LAND_BUS_MINUTES_1"><TMPL_VAR NAME="LAND_BUS_MINUTES_1" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>・<TMPL_IF NAME="LAND_WALK_MINUTES_1"><TMPL_VAR NAME="LAND_WALK_MINUTES_1" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF><br />
+価格:<TMPL_VAR NAME="LAND_PRICE" ESCAPE='1'>万円<br />
+土地面積:<TMPL_IF NAME="LAND_SQUARE"><TMPL_VAR NAME="LAND_SQUARE" ESCAPE='1'>平米<TMPL_ELSE>--</TMPL_IF><br />
+<a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_detail&_type=bl&_object_id=<TMPL_VAR NAME="LAND_ID" ESCAPE='0'>">詳細</a><br />
+<br />
+</TMPL_LOOP>
+<br />
+<input type="hidden" name="search_object" value="<TMPL_VAR NAME="search_object" ESCAPE='1'>" />
+
+<input type="hidden" name="land_address" value="<TMPL_VAR NAME="land_address" ESCAPE='1'>" />
+<input type="hidden" name="land_price_1" value="<TMPL_VAR NAME="land_price_1" ESCAPE='1'>" />
+<input type="hidden" name="land_price_2" value="<TMPL_VAR NAME="land_price_2" ESCAPE='1'>" />
+<input type="hidden" name="land_public" value="<TMPL_VAR NAME="land_public" ESCAPE='1'>" />
+<input type="hidden" name="land_square_1" value="<TMPL_VAR NAME="land_square_1" ESCAPE='1'>" />
+<input type="hidden" name="land_square_2" value="<TMPL_VAR NAME="land_square_2" ESCAPE='1'>" />
+<input type="hidden" name="land_walk_minutes" value="<TMPL_VAR NAME="land_walk_minutes" ESCAPE='1'>" />
+<input type="hidden" name="land_options_gus" value="<TMPL_VAR NAME="land_options_gus" ESCAPE='1'>" />
+<input type="hidden" name="land_options_suidou" value="<TMPL_VAR NAME="land_options_suidou" ESCAPE='1'>" />
+<input type="hidden" name="land_options_osui" value="<TMPL_VAR NAME="land_options_osui" ESCAPE='1'>" />
+<input type="hidden" name="land_options_haisui" value="<TMPL_VAR NAME="land_options_haisui" ESCAPE='1'>" />
+<input type="hidden" name="land_options_kakuti" value="<TMPL_VAR NAME="land_options_kakuti" ESCAPE='1'>" />
+<input type="hidden" name="land_station" value="<TMPL_VAR NAME="land_station" ESCAPE='1'>" />
+<input type="hidden" name="land_has_" value="<TMPL_VAR NAME="land_has_" ESCAPE='1'>" />
+
+<input type="hidden" name="_mode" value="<TMPL_VAR NAME="_mode" ESCAPE='1'>" />
+<input type="hidden" name="_type" value="<TMPL_VAR NAME="_type" ESCAPE='1'>" />
+<input type="hidden" name="off_set" value="<TMPL_VAR NAME="off_set" ESCAPE='1'>" />
+<input type="hidden" name="sort_by" value="<TMPL_VAR NAME="sort_by" ESCAPE='1'>"  />
+<TMPL_IF NAME="items_per_page_next">
+<input type="hidden" name="off_set_next" value="<TMPL_VAR NAME="off_set_next" ESCAPE='1'>" />
+<input type="submit" name="search_object" value="次の<TMPL_VAR NAME="items_per_page_next" ESCAPE='1'>件" />
+</TMPL_IF>
+</form>
+<br />
+<TMPL_ELSE>
+<p>現在の所、公開中の物件が見付かりませんでした。</p>
+</TMPL_IF>
+<TMPL_INCLUDE NAME="mob_footer.tmpl">

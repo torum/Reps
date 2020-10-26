@@ -1,0 +1,386 @@
+<TMPL_INCLUDE NAME="site_header.tmpl">
+
+<div id="container">
+
+    <!-- ÄÂÂß½»µïÍÑ¥µ¥¤¥É¥Ð¡¼ÆÉ¤ß¹þ¤ß -->
+    <TMPL_INCLUDE NAME="site_rl_sidebar.tmpl">
+
+    <div id="content">
+
+        <TMPL_VAR NAME="page_data" ESCAPE='0'>
+
+        <!-- ÄÂÂß½»µïÍÑ¸¡º÷¥Õ¥©¡¼¥à »Ï¤Þ¤ê-->
+        <form method="get" action="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_search&amp;_type=rl" enctype="application/x-www-form-urlencoded" name="apart">
+
+            <table class="main_table" border="0" width="567">
+                <tr align="left">
+                    <th class="list" align="right">½»½ê: </th>
+                    <td>
+                        <!-- Ê¸»úÎóÆþÎÏÊý¼° -->
+                        <input type="text" name="apart_address"  size="50" maxlength="50" />
+
+                        <!-- Ê£¿ôÁªÂòÊý¼° -->
+                        <!-- <select multiple name="apart_address">
+                            <option value="Â¿Ëà»Ô">Â¿Ëà»Ô</option>
+                            <option value="ÅìµþÅÔÂ¿Ëà»Ô´Ø¸Í">ÅìµþÅÔÂ¿Ëà»Ô´Ø¸Í</option>
+                            <option value="asdf">asdf</option>
+                            <option value="asdfasdf">asdfasdf</option>
+                        </select> -->
+
+                        <!-- Ê£¿ô¥Á¥§¥Ã¥¯Êý¼° -->
+                        <!-- <label><input type="checkbox" name="apart_address" value="Â¿Ëà»Ô" />Â¿Ëà»Ô</label>
+                        <label><input type="checkbox" name="apart_address" value="asdf" />asdf</label> -->
+                    </td>
+                </tr>
+                <tr align="left">
+                    <th class="list" align="right">ºÇ´ó¤ê±Ø: </th>
+                    <td>
+                        <input type="text" name="apart_station" size="50" maxlength="50" />
+                        <!-- <select multiple name="apart_station">
+                            <option value="À»ÀØºù¥öµÖ">À»ÀØºù¥öµÖ</option>
+                            <option value="µþ²¦ÀþÀ»ÀØºù¥öµÖ±Ø">µþ²¦ÀþÀ»ÀØºù¥öµÖ±Ø</option>
+                            <option value="AFDS">AFDS</option>
+                        </select>
+                         -->
+                    </td>
+                </tr>
+                <tr>
+                    <th class="list" align="right">Êª·ï¼ïÊÌ: </th>
+                    <td>
+                        <label><input type="checkbox" name="apart_kind" value="1" />¥¢¥Ñ¡¼¥È</label>&nbsp;&nbsp;
+                        <label><input type="checkbox" name="apart_kind" value="2" />¥Þ¥ó¥·¥ç¥ó</label>&nbsp;&nbsp;
+                        <label><input type="checkbox" name="apart_kind" value="3" />°ì¸Í·ú¤Æ</label>&nbsp;&nbsp;
+                        <label><input type="checkbox" name="apart_kind" value="4" />¥Æ¥é¥¹¥Ï¥¦¥¹</label>&nbsp;&nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <th class="list" align="right">ÄÂÎÁ: </th>
+                    <td>
+                        <select name="apart_price_1">
+                            <option label="²¼¸Â¤Ê¤·" value="0" selected="selected">²¼¸Â¤Ê¤·</option>
+                            <option label="3.0 Ëü±ß" value="3.0">3.0 Ëü±ß</option>
+            
+                            <option label="3.5 Ëü±ß" value="3.5">3.5 Ëü±ß</option>
+                            <option label="4.0 Ëü±ß" value="4.0">4.0 Ëü±ß</option>
+                            <option label="4.5 Ëü±ß" value="4.5">4.5 Ëü±ß</option>
+                            <option label="5.0 Ëü±ß" value="5.0">5.0 Ëü±ß</option>
+                            
+                            <option label="5.5 Ëü±ß" value="5.5">5.5 Ëü±ß</option>
+                            <option label="6.0 Ëü±ß" value="6.0">6.0 Ëü±ß</option>
+            
+                            <option label="6.5 Ëü±ß" value="6.5">6.5 Ëü±ß</option>
+                            <option label="7.0 Ëü±ß" value="7.0">7.0 Ëü±ß</option>
+                            <option label="7.5 Ëü±ß" value="7.5">7.5 Ëü±ß</option>
+                            <option label="8.0 Ëü±ß" value="8.0">8.0 Ëü±ß</option>
+                            <option label="8.5 Ëü±ß" value="8.5">8.5 Ëü±ß</option>
+                            <option label="9.0 Ëü±ß" value="9.0">9.0 Ëü±ß</option>
+            
+                            <option label="9.5 Ëü±ß" value="9.5">9.5 Ëü±ß</option>
+                            
+                            <option label="10 Ëü±ß" value="10">10 Ëü±ß</option>
+                            <option label="11 Ëü±ß" value="11">11 Ëü±ß</option>
+                            <option label="12 Ëü±ß" value="12">12 Ëü±ß</option>
+                            <option label="13 Ëü±ß" value="13">13 Ëü±ß</option>
+                            <option label="14 Ëü±ß" value="14">14 Ëü±ß</option>
+            
+                            <option label="15 Ëü±ß" value="15">15 Ëü±ß</option>
+                            <option label="16 Ëü±ß" value="16">16 Ëü±ß</option>
+                            <option label="17 Ëü±ß" value="17">17 Ëü±ß</option>
+                            <option label="18 Ëü±ß" value="18">18 Ëü±ß</option>
+                            
+                            <option label="19 Ëü±ß" value="19">19 Ëü±ß</option>
+                            <option label="20 Ëü±ß" value="20">20 Ëü±ß</option>
+            
+                            <option label="30 Ëü±ß" value="30">30 Ëü±ß</option>
+                            <option label="50 Ëü±ß" value="50">50 Ëü±ß</option>
+                            <option label="100 Ëü±ß" value="100">100 Ëü±ß</option>
+                        </select>
+            ¡Á
+                        <select name="apart_price_2">
+                            <option label="3.0 Ëü±ß" value="3.0">3.0 Ëü±ß</option>
+            
+                        
+                            <option label="3.5 Ëü±ß" value="3.5">3.5 Ëü±ß</option>
+                            <option label="4.0 Ëü±ß" value="4.0">4.0 Ëü±ß</option>
+                            <option label="4.5 Ëü±ß" value="4.5">4.5 Ëü±ß</option>
+                            <option label="5.0 Ëü±ß" value="5.0">5.0 Ëü±ß</option>
+                            <option label="5.5 Ëü±ß" value="5.5">5.5 Ëü±ß</option>
+                            <option label="6.0 Ëü±ß" value="6.0">6.0 Ëü±ß</option>
+            
+                            <option label="6.5 Ëü±ß" value="6.5">6.5 Ëü±ß</option>
+                            <option label="7.0 Ëü±ß" value="7.0">7.0 Ëü±ß</option>
+                            <option label="7.5 Ëü±ß" value="7.5">7.5 Ëü±ß</option>
+                            
+                            <option label="8.0 Ëü±ß" value="8.0">8.0 Ëü±ß</option>
+                            <option label="8.5 Ëü±ß" value="8.5">8.5 Ëü±ß</option>
+                            <option label="9.0 Ëü±ß" value="9.0">9.0 Ëü±ß</option>
+            
+                            <option label="9.5 Ëü±ß" value="9.5">9.5 Ëü±ß</option>
+                            <option label="10 Ëü±ß" value="10">10 Ëü±ß</option>
+                            <option label="11 Ëü±ß" value="11">11 Ëü±ß</option>
+                            <option label="12 Ëü±ß" value="12">12 Ëü±ß</option>
+                            <option label="13 Ëü±ß" value="13">13 Ëü±ß</option>
+                            <option label="14 Ëü±ß" value="14">14 Ëü±ß</option>
+                
+                            <option label="15 Ëü±ß" value="15">15 Ëü±ß</option>
+                            <option label="16 Ëü±ß" value="16">16 Ëü±ß</option>
+                            <option label="17 Ëü±ß" value="17">17 Ëü±ß</option>
+                            <option label="18 Ëü±ß" value="18">18 Ëü±ß</option>
+                            <option label="19 Ëü±ß" value="19">19 Ëü±ß</option>
+                            <option label="20 Ëü±ß" value="20">20 Ëü±ß</option>
+            
+                            <option label="30 Ëü±ß" value="30">30 Ëü±ß</option>
+                            <option label="50 Ëü±ß" value="50">50 Ëü±ß</option>
+                            <option label="100 Ëü±ß" value="100">100 Ëü±ß</option>
+                            
+                            <option label="¾å¸Â¤Ê¤·" value="0" selected="selected">¾å¸Â¤Ê¤·</option>
+                        
+                        </select>
+                        <br />
+                        <label><input type="checkbox" name="include_k_k" value="1" id="include_k_k" />¶¦±×Èñ¡¿´ÉÍýÈñ¤ò´Þ¤à</label>
+            
+                        &nbsp;
+                        <label><input type="checkbox" name="apart_no_reikin" value="1" id="apart_no_reikin" />Îé¶â¤Ê¤·</label>&nbsp;&nbsp;
+                        <label><input type="checkbox" name="apart_no_sikikin" value="1" id="apart_no_sikikin" />Éß¶â¤Ê¤·</label>
+                    </td>
+            
+                </tr>
+        
+                <tr>
+                    <th class="list" align="right">´Ö¼è¤ê: </th>
+                    <td>
+                        <table border="0" cellpadding="1" cellspacing="2" class="List">
+                            <tr>
+                                <td width="90">
+                                    <label><input type="checkbox" name="apart_madori" value="1R" />¥ï¥ó¥ë¡¼¥à</label>
+                                </td><td width="90">
+                                    <label><input type="checkbox" name="apart_madori" value="1K" />1K</label>
+                                </td><td width="90">
+                                    <label><input type="checkbox" name="apart_madori" value="1DK" />1DK</label>
+                                </td><td width="90">
+                                    <label><input type="checkbox" name="apart_madori" value="1LDK" />1LDK</label>
+                                </td>
+                                
+                            </tr>
+                            <tr>
+                                <td width="90">
+                                    <label><input type="checkbox" name="apart_madori" value="2K" />2K</label>
+                                </td><td width="90">
+                                    <label><input type="checkbox" name="apart_madori" value="2DK" />2DK</label>
+                                </td><td width="90">
+                                    <label><input type="checkbox" name="apart_madori" value="2LDK" />2LDK</label>
+                                </td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label><input type="checkbox" name="apart_madori" value="3K" />3K</label>
+                                </td><td>
+                                    <label><input type="checkbox" name="apart_madori" value="3DK" />3DK</label>
+                                </td><td>
+                                    <label><input type="checkbox" name="apart_madori" value="3LDK" />3LDK</label>
+                                </td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label><input type="checkbox" name="apart_madori" value="4K" />4K</label>
+                                </td><td>
+                                    <label><input type="checkbox" name="apart_madori" value="4DK" />4DK</label>
+                                </td><td>
+                                    <label><input type="checkbox" name="apart_madori" value="4LDK+" />4LDK°Ê¾å</label>
+                                </td>
+                                <td>&nbsp;</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="list" align="right">ÌÌÀÑ: </th>
+                    <td>
+                        <select name="apart_square_1">
+                            <option label="²¼¸Â¤Ê¤·" value="0" selected="selected">²¼¸Â¤Ê¤·</option>
+                            <option label="10 m&sup2;" value="10">10 m&sup2;</option>
+                            <option label="15 m&sup2;" value="15">15 m&sup2;</option>
+                            <option label="20 m&sup2;" value="20">20 m&sup2;</option>
+                            <option label="25 m&sup2;" value="25">25 m&sup2;</option>
+                            <option label="30 m&sup2;" value="30">30 m&sup2;</option>
+                            <option label="35 m&sup2;" value="35">35 m&sup2;</option>
+                            <option label="40 m&sup2;" value="40">40 m&sup2;</option>
+                            <option label="50 m&sup2;" value="50">50 m&sup2;</option>
+                            <option label="60 m&sup2;" value="60">60 m&sup2;</option>
+                            <option label="70 m&sup2;" value="70">70 m&sup2;</option>
+                            <option label="80 m&sup2;" value="80">80 m&sup2;</option>
+                            <option label="90 m&sup2;" value="90">90 m&sup2;</option>
+                            <option label="100 m&sup2;" value="100">100 m&sup2;</option>
+                            <option label="200 m&sup2;" value="200">200 m&sup2;</option>
+                            <option label="300 m&sup2;" value="300">300 m&sup2;</option>
+                            <option label="400 m&sup2;" value="400">400 m&sup2;</option>
+                            <option label="500 m&sup2;" value="500">500 m&sup2;</option>
+                            <option label="600 m&sup2;" value="600">600 m&sup2;</option>
+                            <option label="700 m&sup2;" value="700">700 m&sup2;</option>
+                            <option label="800 m&sup2;" value="800">800 m&sup2;</option>
+                            <option label="900 m&sup2;" value="900">900 m&sup2;</option>
+                            <option label="1000 m&sup2;" value="1000">1000 m&sup2;</option>
+                        </select>
+            ¡Á
+                        <select name="apart_square_2">
+                            <option label="10 m&sup2;" value="10">10 m&sup2;</option>
+                            <option label="15 m&sup2;" value="15">15 m&sup2;</option>
+                            <option label="20 m&sup2;" value="20">20 m&sup2;</option>
+                            <option label="25 m&sup2;" value="25">25 m&sup2;</option>
+                            <option label="30 m&sup2;" value="30">30 m&sup2;</option>
+                            <option label="35 m&sup2;" value="35">35 m&sup2;</option>
+                            <option label="40 m&sup2;" value="40">40 m&sup2;</option>
+                            <option label="50 m&sup2;" value="50">50 m&sup2;</option>
+                            <option label="60 m&sup2;" value="60">60 m&sup2;</option>
+                            <option label="70 m&sup2;" value="70">70 m&sup2;</option>
+                            <option label="80 m&sup2;" value="80">80 m&sup2;</option>
+                            <option label="90 m&sup2;" value="90">90 m&sup2;</option>
+                            <option label="100 m&sup2;" value="100">100 m&sup2;</option>
+                            <option label="200 m&sup2;" value="200">200 m&sup2;</option>
+                            <option label="300 m&sup2;" value="300">300 m&sup2;</option>
+                            <option label="400 m&sup2;" value="400">400 m&sup2;</option>
+                            <option label="500 m&sup2;" value="500">500 m&sup2;</option>
+                            <option label="600 m&sup2;" value="600">600 m&sup2;</option>
+                            <option label="700 m&sup2;" value="700">700 m&sup2;</option>
+                            <option label="800 m&sup2;" value="800">800 m&sup2;</option>
+                            <option label="900 m&sup2;" value="900">900 m&sup2;</option>
+                            <option label="1000 m&sup2;" value="1000">1000 m&sup2;</option>
+                            <option label="¾å¸Â¤Ê¤·" value="0" selected="selected">¾å¸Â¤Ê¤·</option>
+                        </select>
+                        &nbsp;&nbsp;¢¨¡Öm&sup2;¡×¤Ï¡ÖÊ¿ÊÆ¡×¤ÈÆ±¤¸¤Ç¤¹
+                    </td>
+                </tr>
+                <tr>
+                    <th class="list" align="right">ÃÛÇ¯¿ô: </th>
+                    <td>
+                        <select name="apart_age">
+                            <option label="»ØÄê¤Ê¤·" value="0">»ØÄê¤Ê¤·</option>
+                            <option label="¿·ÃÛ" value="1">¿·ÃÛ</option>
+                            <option label="3Ç¯°ÊÆâ" value="3">3Ç¯°ÊÆâ</option>
+                            <option label="5Ç¯°ÊÆâ" value="5">5Ç¯°ÊÆâ</option>
+                            <option label="10Ç¯°ÊÆâ" value="10">10Ç¯°ÊÆâ</option>
+                            <option label="15Ç¯°ÊÆâ" value="15">15Ç¯°ÊÆâ</option>
+                            <option label="20Ç¯°ÊÆâ" value="20">20Ç¯°ÊÆâ</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="list" align="right">±ØÅÌÊâÊ¬</th>
+                    <td>
+                        <select name="apart_walk_minutes">
+                            <option label="»ØÄê¤Ê¤·" value="0">»ØÄê¤Ê¤·</option>
+                            <option label="1Ê¬°ÊÆâ" value="1">1Ê¬°ÊÆâ</option>
+                            <option label="5Ê¬°ÊÆâ" value="5">5Ê¬°ÊÆâ</option>
+                            <option label="7Ê¬°ÊÆâ" value="7">7Ê¬°ÊÆâ</option>
+                            <option label="10Ê¬°ÊÆâ" value="10">10Ê¬°ÊÆâ</option>
+                            <option label="15Ê¬°ÊÆâ" value="15">15Ê¬°ÊÆâ</option>
+                            <option label="20Ê¬°ÊÆâ" value="20">20Ê¬°ÊÆâ</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="list" align="right">²èÁü: </th>
+                    <td>
+                        <label><input type="checkbox" name="apart_has_" value="1" />´Ö¼è¤ê¿Þ¤¢¤ê</label>&nbsp;&nbsp;
+                        <label><input type="checkbox" name="apart_has_" value="2" />²èÁü¤¢¤ê</label>&nbsp;&nbsp;
+                        <label><input type="checkbox" name="apart_has_" value="3" />Æ°²è¤¢¤ê</label>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="list" align="right">¾ÜºÙ¾ò·ï: </th>
+                    <td>
+                        <table border="0" cellpadding="1" cellspacing="2" class="List">
+                            <tbody>
+                            <tr>
+                                <th class="list" >°ÌÃÖ</th>
+                                <td><label><input name="apart_options_ikkai" value="on" type="checkbox" />1³¬</label></td>
+                                <td><label><input name="apart_options_nikaiijyou" value="on" type="checkbox" />2³¬°Ê¾å</label></td>
+                                <td><label><input name="apart_options_saijyoukai" value="on" type="checkbox" />ºÇ¾å³¬</label></td>
+                                <td><label><input name="apart_options_kakubeya" value="on" type="checkbox" />³ÑÉô²°</label></td>
+                            </tr>
+                            <tr>
+                                <th class="list" >&nbsp;</th>
+                                <td><label><input name="apart_options_minami" value="on" type="checkbox" />Æî¸þ¤­</label></td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <th class="list" >ÀßÈ÷</th>
+                                <td><label><input name="apart_options_autolock" value="on" type="checkbox" />¥ª¡¼¥È¥í¥Ã¥¯</label></td>
+                                <td><label><input name="apart_options_elevator" value="on" type="checkbox" />¥¨¥ì¥Ù¡¼¥¿</label></td>
+                                <td><label><input name="apart_options_tvphone" value="on" type="checkbox" />TV¥É¥¢¥Õ¥©¥ó</label></td>
+                                <td><label><input name="apart_options_bathtoilet" value="on" type="checkbox" />¥Ð¥¹¡¦¥È¥¤¥ìÊÌ</label></td>
+                            
+                            </tr>
+                            <tr>
+                                <th class="list" >&nbsp;</th>
+                                <td><label><input name="apart_options_aircon" value="on" type="checkbox" />¥¨¥¢¥³¥ó</label></td>
+                                <td><label><input name="apart_options_loft" value="on" type="checkbox" />¥í¥Õ¥ÈÉÕ¤­</label></td>
+                                <td><label><input name="apart_options_flooring" value="on" type="checkbox" />¥Õ¥í¡¼¥ê¥ó¥°</label></td>
+                                <td><label><input name="apart_options_oitaki" value="on" type="checkbox" />ÄÉ¤¤Ê²¤­</label></td>
+                            </tr>
+                            
+                            <tr>
+                                <th class="list" >&nbsp;</th>
+                                <td><label><input name="apart_options_gasconro" value="on" type="checkbox" />¥¬¥¹¥³¥ó¥í</label></td>
+                                <td><label><input name="apart_options_situnaisentakuki" value="on" type="checkbox" />¼¼ÆâÀöÂõµ¡ÃÖ¾ì</label></td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <th class="list" >&nbsp;</th>
+                                <td><label><input name="apart_options_bs" value="on" type="checkbox" />BS¥¢¥ó¥Æ¥Ê</label></td>
+                                <td><label><input name="apart_options_cs" value="on" type="checkbox" />CS¥¢¥ó¥Æ¥Ê</label></td>
+                                <td><label><input name="apart_options_catv" value="on" type="checkbox" />CATV</label></td>
+                                <td><label><input name="apart_options_internet" value="on" type="checkbox" />¥¤¥ó¥¿¡¼¥Í¥Ã¥ÈÍøÍÑ²Ä</label></td>
+                            </tr>
+                            <tr>
+                                <th class="list" >Â¾</th>
+                                <td><label><input name="apart_options_parking" value="on" type="checkbox" />Ãó¼Ö¾ìÍ­</label></td>
+                                <td><label><input name="apart_options_bicycle" value="on" type="checkbox" />ÃóÎØ¾ìÍ­</label></td>
+                                <td><label><input name="apart_options_pet" value="on" type="checkbox" />¥Ú¥Ã¥ÈÁêÃÌ</label></td>
+
+                                <td><label><input name="apart_options_instrument" value="on" type="checkbox" />³Ú´ïÁêÃÌ</label></td>
+                            </tr>
+                            <tr>
+                                <th class="list" >&nbsp;</th>
+                                <td><label><input name="apart_options_jimusyoka" value="on" type="checkbox" />»öÌ³½ê²Ä</label></td>
+                                <td><label><input name="apart_options_hosyounin" value="on" type="checkbox" />ÊÝ¾Ú¿ÍÉÔÍ×Í­</label></td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr align="left">
+                    <th class="list" align="right">¶áÎÙ³Ø¹»: </th>
+                    <td><input type="text" name="apart_school"  size="50" maxlength="50" /></td>
+                </tr>
+                <tr align="center">
+                    <td colspan="2">
+                        <input type="hidden" name="sort_by" value=""  />
+                        <input type="hidden" name="_mode" value="mode_search"  />
+                        <input type="hidden" name="_type" value="rl"  />
+                        <input type="submit" name="search_object" value="»ØÄê¤·¤¿¾ò·ï¤Ç¸¡º÷¤¹¤ë" class="submit" />
+                    </td>
+                </tr>
+            </table>
+
+        </form>
+
+        <!-- ¥Ú¡¼¥¸¤ÎÉ½¼¨»þ¤Ë½»½êÆþÎÏÍó¤Ë¥Õ¥©¡¼¥«¥¹¤ò¤¢¤Æ¤ë¥¹¥¯¥ê¥×¥È -->
+        <script type="text/javascript">
+            <!-- 
+                document.apart.apart_address.focus(); 
+            // -->
+        </script>
+
+    </div>
+
+</div>
+
+<TMPL_INCLUDE NAME="site_footer.tmpl">

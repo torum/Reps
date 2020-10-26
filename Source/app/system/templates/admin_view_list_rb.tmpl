@@ -1,0 +1,61 @@
+<TMPL_INCLUDE NAME="header.tmpl">
+
+<TMPL_INCLUDE NAME="menu.tmpl">
+<div id="content">
+<TMPL_VAR NAME="page_over_data" ESCAPE='0'>
+<TMPL_VAR NAME="page_nav_paging" ESCAPE='0'>
+
+<table border="1" class="main_table">
+    <tr><!-- 385 -->
+        <th width="40" rowspan="2" class="list" valign="middle">削除</th>
+        <th class="list" width="375"><a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_admin_showUser_items&_sort_by=name&_type=rb&_usr_id=<TMPL_VAR NAME="target_user_id" ESCAPE='1'>&_limit=<TMPL_VAR NAME="limit" ESCAPE='1'>">物件名</a></th>
+        <th width="85" class="list"><a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_admin_showUser_items&_sort_by=price&_type=rb&_usr_id=<TMPL_VAR NAME="target_user_id" ESCAPE='1'>&_limit=<TMPL_VAR NAME="limit" ESCAPE='1'>">賃料</a></th>
+        <th width="35" class="list" valign="middle" rowspan="2">状態</th>
+
+    </tr>
+    <tr>
+        <th class="list"><a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_admin_showUser_items&_sort_by=location&_type=rb&_usr_id=<TMPL_VAR NAME="target_user_id" ESCAPE='1'>&_limit=<TMPL_VAR NAME="limit" ESCAPE='1'>">所在地</a></th>
+        <th width="85" class="list"><a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_admin_showUser_items&_sort_by=date&_type=rb&_usr_id=<TMPL_VAR NAME="target_user_id" ESCAPE='1'>&_limit=<TMPL_VAR NAME="limit" ESCAPE='1'>">最終更新日</a></th>
+
+    </tr>
+    <TMPL_LOOP NAME='main_loop'>
+    <tr valign="top">
+        <td width="35" rowspan="2" align="center" valign="middle"><input name="_object_id_to_be_deleted" value="<TMPL_VAR NAME="BUSINESS_ID" ESCAPE='0'>" type="checkbox" /></td>
+        <td><a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_edit&_type=rb&_object_id=<TMPL_VAR NAME="BUSINESS_ID" ESCAPE='0'>"><strong><TMPL_VAR NAME="BUSINESS_NAME" ESCAPE='1'></strong></a>&nbsp;&nbsp;[RB<TMPL_VAR NAME="BUSINESS_ID" ESCAPE='0'>]</td>
+        <td><strong><TMPL_VAR NAME="BUSINESS_PRICE" ESCAPE='1'>円</strong></td>
+        <td width="35" align="center" valign="middle" rowspan="2">
+            <TMPL_IF NAME="BUSINESS_PUBLISHED">公開<TMPL_ELSE>-</TMPL_IF>
+            <TMPL_IF NAME="BUSINESS_IS_SPECIAL"><br /><img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>icons/16-heart-gold-m.png" width="16" height="16" /></TMPL_IF>
+            <TMPL_IF NAME="BUSINESS_NEW"><img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>icons/New-006-009.gif" /></TMPL_IF>
+            <TMPL_IF NAME="BUSINESS_UPDATED"><img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>icons/updated-005-002.gif" /></TMPL_IF>
+        </td>
+    </tr>
+    <tr>
+        <td><TMPL_VAR NAME="BUSINESS_LOCATION" ESCAPE='1'></td>
+        <td><TMPL_IF NAME="BUSINESS_LAST_UPDATED"><TMPL_VAR NAME="BUSINESS_LAST_UPDATED" ESCAPE='1'><TMPL_ELSE><TMPL_VAR NAME="BUSINESS_CREATED" ESCAPE='1'></TMPL_IF></td>
+
+    </tr>
+    </TMPL_LOOP>
+
+    <tr>
+        <td colspan="4" align="left"><br />
+            <input type="button" onclick="doCheckAll(this.form,true)" name="check_all" value="すべて選択する" />
+            <input type="button" onclick="doCheckAll(this.form,false)" name="uncheck_all" value="すべて選択を解除" />
+            
+        </td>
+    </tr>
+    <tr>
+        <td colspan="4" align="left">
+            <TMPL_VAR NAME="page_lower_delete" ESCAPE='0'>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="4" align="right">
+            <TMPL_VAR NAME="page_lower_paging" ESCAPE='0'>
+        </td>
+    </tr>
+</table>
+<TMPL_VAR NAME="page_lower_end" ESCAPE='0'>
+</div>
+
+<TMPL_INCLUDE NAME="footer.tmpl">

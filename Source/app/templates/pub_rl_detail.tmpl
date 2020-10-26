@@ -1,0 +1,322 @@
+<TMPL_INCLUDE NAME="site_header.tmpl">
+
+<div id="content_full">
+    <!-- ナビゲーションメニュー -->
+    <a href="<TMPL_VAR NAME="site_url" ESCAPE='0'>index.html" class="nav">ホーム</a>&nbsp;::&nbsp;<a href="<TMPL_VAR NAME='cgi_url' ESCAPE='0'>search.cgi?_mode=mode_search&amp;_type=rl" class="nav">賃貸住居用物件検索</a>&nbsp;::&nbsp;詳細表示<br /><br />
+    <TMPL_VAR NAME="page_data" ESCAPE='0'>
+    <!-- もし物件情報が０件以上あれば -->
+    <TMPL_IF NAME="result_count">
+    <!-- 問い合わせフォームを表示するためのフォーム -->
+    <form method="get" name="rsearch" id="rsearch" action="<TMPL_VAR NAME='script_name' ESCAPE='0'>?_mode=mode_inquiry&amp;_type=rl" >
+
+        <table border="0" class="detail_table" align="left" width="735">
+            <tr>
+                <td colspan="6" align="right">
+                    <input type="hidden" name="_mode" value="mode_inquiry" />
+                    <input name="_type" value="rl" type="hidden" />
+                    <TMPL_IF NAME="result_one">
+                        <TMPL_IF NAME="aid">
+                            <input name="_object_id" value="<TMPL_VAR NAME="aid" ESCAPE='0'>" type="hidden" />
+                            <input value="この物件についてお問い合わせ" class="submit" onclick="formInquiry()" type="submit" />
+                        </TMPL_IF>
+                    <TMPL_ELSE>
+                        <input value="選択した物件について一括してお問い合わせ" onclick="formInquiry()" class="submit" type="submit" />
+                    </TMPL_IF>
+                </td>
+            </tr>
+            <!-- 繰り返しLoop開始（複数の物件の詳細を表示） -->
+            <TMPL_LOOP NAME='main_loop'>
+            <!-- 複数の物件情報を表示する場合、選択用のチェックボタンを表示 -->
+            <TMPL_UNLESS NAME="ONLY_ONE">
+            <tr>
+                <td colspan="6" align="right">
+                    <label for="ID<TMPL_VAR NAME="APART_ID" ESCAPE='0'>"><input name="_object_id" id="ID<TMPL_VAR NAME="APART_ID" ESCAPE='0'>" value="<TMPL_VAR NAME="APART_ID" ESCAPE='0'>" type="checkbox" /><strong>&nbsp;この物件を選択</strong>&nbsp;▽&nbsp;</label></td>
+            </tr>
+            </TMPL_UNLESS>
+            <tr>
+                <th class="title" style="font-size:small;">&nbsp;物件番号:<br />&nbsp;RL<TMPL_VAR NAME="APART_ID" ESCAPE='1'></th>
+                <th class="title" colspan="5"><h3><strong><TMPL_IF NAME="APART_ADS_TEXT"><TMPL_VAR NAME="APART_ADS_TEXT" ESCAPE='1'><TMPL_ELSE>&nbsp;</TMPL_IF></strong></h3><!-- <TMPL_IF NAME="APART_IS_SPECIAL">お薦め</TMPL_IF> --></th>
+            </tr>
+            <tr>
+                <th width="12%" class="items">所在地</th>
+                <td colspan="3">
+                    <TMPL_VAR NAME="APART_LOCATION" ESCAPE='1'>&nbsp;(<a href="http://maps.google.co.jp/maps?q=loc:+<TMPL_VAR NAME="APART_LOCATION_URLENCODED" ESCAPE='1'>&amp;spn=0.022785,0.039343&amp;hl=ja" target="_blank"><small>付近の地図</small></a>)</td>
+    
+                <td width="16%" class="items">オートロック</td>
+                <td width="3%">
+                    <TMPL_IF NAME="APART_OPTIONS_AUTOLOCK">●<TMPL_ELSE>&nbsp;</TMPL_IF></td>
+            </tr>
+            <tr>
+                <th rowspan="2" class="items">交通</th>
+                <td rowspan="2" colspan="3">
+                    <span style="font-size:130%;font-weight:normal;"><TMPL_VAR NAME="APART_STATION_1" ESCAPE='1'></span>
+                    <TMPL_IF NAME="APART_BUS_1">&nbsp;<TMPL_VAR NAME="APART_BUS_1" ESCAPE='1'>&nbsp;<TMPL_ELSE>&nbsp;</TMPL_IF>
+                    <TMPL_IF NAME="APART_BUS_MINUTES_1">バス<TMPL_VAR NAME="APART_BUS_MINUTES_1" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>
+                    <TMPL_IF NAME="APART_BUSWALK_MINUTES_1">(停歩<TMPL_VAR NAME="APART_BUSWALK_MINUTES_1" ESCAPE='1'>分)</TMPL_IF>
+                    ・
+                    <TMPL_IF NAME="APART_WALK_MINUTES_1">駅徒歩<TMPL_VAR NAME="APART_WALK_MINUTES_1" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>
+                    <TMPL_IF NAME="APART_STATION_2"><br /><span style="font-size:130%;font-weight:normal;"><TMPL_VAR NAME="APART_STATION_2" ESCAPE='1'></span>&nbsp;
+                        <TMPL_IF NAME="APART_BUS_2">&nbsp;<TMPL_VAR NAME="APART_BUS_2" ESCAPE='1'>&nbsp;<TMPL_ELSE></TMPL_IF>
+                        <TMPL_IF NAME="APART_BUS_MINUTES_2">バス<TMPL_VAR NAME="APART_BUS_MINUTES_2" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>
+                        <TMPL_IF NAME="APART_BUSWALK_MINUTES_2">(停歩<TMPL_VAR NAME="APART_BUSWALK_MINUTES_2" ESCAPE='1'>分)</TMPL_IF>
+                        ・
+                        <TMPL_IF NAME="APART_WALK_MINUTES_2">徒歩<TMPL_VAR NAME="APART_WALK_MINUTES_2" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>
+                    </TMPL_IF>
+                </td>
+                <td class="items">エレベーター</td>
+                <td><TMPL_IF NAME="APART_OPTIONS_ELEVATOR">●<TMPL_ELSE>&nbsp;</TMPL_IF></td>
+            </tr>
+            <tr>
+                <td align="center" class="items">南向き</td>
+                <td><TMPL_IF NAME="APART_OPTIONS_MINAMI">●<TMPL_ELSE>&nbsp;</TMPL_IF></td>
+            </tr>
+            <tr>
+                <th align="right" class="items">賃料</th>
+                <td><span style="font-size:140%;color:red;font-weight:bold;"><TMPL_VAR NAME="APART_PRICE" ESCAPE='1'></span>円</td>
+                <th width="14%" align="right" class="items">敷金</th>
+                <td width="12%"><TMPL_IF NAME="APART_PRICE_SIKIKIN"><TMPL_VAR NAME="APART_PRICE_SIKIKIN" ESCAPE='1'><TMPL_VAR NAME="APART_PRICE_SIKIKIN_UNIT" ESCAPE='1'>
+                    <TMPL_ELSE>--</TMPL_IF></td>
+                <td align="center" class="items">バストイレ別</td>
+                <td><TMPL_IF NAME="APART_OPTIONS_BATHTOILET">●<TMPL_ELSE>&nbsp;</TMPL_IF></td>
+            </tr>
+            <tr>
+                <th align="right" class="items">物件種別</th>
+                <td><TMPL_IF NAME="APART_KIND"><TMPL_VAR NAME="APART_KIND" ESCAPE='1'><TMPL_ELSE>--</TMPL_IF></td>
+                <th align="right" class="items">礼金</th>
+                <td><TMPL_IF NAME="APART_PRICE_REIKIN"><TMPL_VAR NAME="APART_PRICE_REIKIN" ESCAPE='1'><TMPL_VAR NAME="APART_PRICE_REIKIN_UNIT" ESCAPE='1'>
+                    <TMPL_ELSE>--</TMPL_IF></td>
+                <td align="center" class="items">エアコン</td>
+                <td><TMPL_IF NAME="APART_OPTIONS_AIRCON">●<TMPL_ELSE>&nbsp;</TMPL_IF></td>
+            </tr>
+            <tr>
+                <th align="right" class="items">間取り</th>
+                <td><TMPL_IF NAME="APART_MADORI"><TMPL_VAR NAME="APART_MADORI" ESCAPE='1'><TMPL_ELSE>--</TMPL_IF></td>
+                <th align="right" class="items">保証金</th>
+                <td><TMPL_IF NAME="APART_PRICE_HOSYOUKIN"><TMPL_VAR NAME="APART_PRICE_HOSYOUKIN" ESCAPE='1'>円<TMPL_ELSE>--</TMPL_IF></td>
+                <td align="center" class="items">TVフォン</td>
+                <td><TMPL_IF NAME="APART_OPTIONS_TVPHONE">●<TMPL_ELSE>&nbsp;</TMPL_IF></td>
+            </tr>
+            <tr>
+                <th align="right" class="items">間取り内訳</th>
+                <td><TMPL_IF NAME="APART_MADORI_DETAIL"><TMPL_VAR NAME="APART_MADORI_DETAIL" ESCAPE='1'><TMPL_ELSE>--</TMPL_IF></td>
+                <th align="right" class="items">敷引</th>
+                <td><TMPL_IF NAME="APART_PRICE_SIKIBIKI"><TMPL_VAR NAME="APART_PRICE_SIKIBIKI" ESCAPE='1'>円<TMPL_ELSE>--</TMPL_IF></td>
+                <td align="center" class="items">追い焚き</td>
+                <td><TMPL_IF NAME="APART_OPTIONS_OITAKI">●<TMPL_ELSE>&nbsp;</TMPL_IF></td>
+            </tr>
+            <tr>
+                <th align="right" class="items">階建・階</th>
+                <td><TMPL_IF NAME="APART_STORY"><TMPL_VAR NAME="APART_STORY" ESCAPE='1'>階建<TMPL_ELSE>--</TMPL_IF>・<TMPL_IF NAME="APART_FLOOR"><TMPL_VAR NAME="APART_FLOOR" ESCAPE='1'>階<TMPL_ELSE>--</TMPL_IF></td>
+    
+                <th align="right" class="items">管理費等</th>
+                <td><TMPL_IF NAME="APART_PRICE_KANRIHI"><TMPL_VAR NAME="APART_PRICE_KANRIHI" ESCAPE='1'>円<TMPL_ELSE>--</TMPL_IF></td>
+                <td align="center" class="items">ガスコンロ</td>
+                <td><TMPL_IF NAME="APART_OPTIONS_GASCONRO">●<TMPL_ELSE>&nbsp;</TMPL_IF></td>
+            </tr>
+            <tr>
+                <th align="right" class="items">建物構造</th>
+                <td><TMPL_IF NAME="APART_BUILDING_STRUCTURE"><TMPL_VAR NAME="APART_BUILDING_STRUCTURE" ESCAPE='1'><TMPL_ELSE>--</TMPL_IF></td>
+    
+                <th align="right" class="items">他一時金</th>
+                <td><TMPL_IF NAME="APART_PRICE_OTHER"><TMPL_VAR NAME="APART_PRICE_OTHER" ESCAPE='1'>ヶ月<TMPL_ELSE>--</TMPL_IF></td>
+                <td align="center" class="items">ロフト付き</td>
+                <td><TMPL_IF NAME="APART_OPTIONS_LOFT">●<TMPL_ELSE>&nbsp;</TMPL_IF></td>
+            </tr>
+            <tr>
+                <th align="right" class="items">面積</th>
+                <td><TMPL_IF NAME="APART_SQUARE"><TMPL_VAR NAME="APART_SQUARE" ESCAPE='1'>m&sup2;&nbsp;<TMPL_ELSE></TMPL_IF><TMPL_IF NAME="APART_SQUARE_TUBO"><TMPL_VAR NAME="APART_SQUARE_TUBO" ESCAPE='1'>坪<TMPL_ELSE></TMPL_IF></td>
+                <th align="right" class="items">取引態様</th>
+                <td><TMPL_IF NAME="APART_TORIHIKITAIYOU"><TMPL_VAR NAME="APART_TORIHIKITAIYOU" ESCAPE='1'><TMPL_ELSE>&nbsp;</TMPL_IF></td>
+    
+                <td align="center" class="items">フローリング</td>
+                <td><TMPL_IF NAME="APART_OPTIONS_FLOORING">●<TMPL_ELSE>&nbsp;</TMPL_IF></td>
+            </tr>
+            <tr>
+                <th align="right" class="items">築年月</th>
+                <td><TMPL_IF NAME="APART_AGE"><TMPL_VAR NAME="APART_AGE" ESCAPE='1'><TMPL_ELSE>--</TMPL_IF></td>
+    
+                <th align="right" class="items">入居可能時期</th>
+                <td><TMPL_IF NAME="APART_NYUUKYOJIKI"><TMPL_VAR NAME="APART_NYUUKYOJIKI" ESCAPE='1'><TMPL_ELSE>&nbsp;</TMPL_IF></td>
+                <td align="center" class="items">駐車場</td>
+                <td><TMPL_IF NAME="APART_OPTIONS_PARKING">●<TMPL_ELSE>&nbsp;</TMPL_IF></td>
+    
+            </tr>
+            <tr>
+                <th align="right" class="items">小学校</th>
+                <td><TMPL_IF NAME="APART_SHOUGAKKOUKU"><TMPL_VAR NAME="APART_SHOUGAKKOUKU" ESCAPE='1'><TMPL_ELSE>&nbsp;</TMPL_IF></td>
+                <th align="right" class="items">最終更新日</th>
+                <td><TMPL_IF NAME="APART_LAST_UPDATED"><TMPL_VAR NAME="APART_LAST_UPDATED" ESCAPE='1'><TMPL_ELSE><TMPL_VAR NAME="APART_CREATED" ESCAPE='1'></TMPL_IF></td>
+                <td align="center" class="items">駐輪場</td>
+                <td><TMPL_IF NAME="APART_OPTIONS_BICYCLE">●<TMPL_ELSE>&nbsp;</TMPL_IF></td>
+            </tr>
+            <tr>
+                <th align="right" class="items">中学校</th>
+                <td><TMPL_IF NAME="APART_CYUUGAKKOUKU"><TMPL_VAR NAME="APART_CYUUGAKKOUKU" ESCAPE='1'><TMPL_ELSE>&nbsp;</TMPL_IF></td>
+                <td colspan="2">&nbsp;</td>
+                <td align="center" class="items">CS</td>
+                <td><TMPL_IF NAME="APART_OPTIONS_CS">●<TMPL_ELSE>&nbsp;</TMPL_IF></td>
+            </tr>
+            <tr>
+                <th align="right" class="items">近隣大学</th>
+                <td colspan="3"><TMPL_IF NAME="APART_DAIGAKU_LIST"><TMPL_VAR NAME="APART_DAIGAKU_LIST" ESCAPE='1'><TMPL_ELSE>&nbsp;</TMPL_IF></td>
+                <td align="center" class="items">BS</td>
+                <td><TMPL_IF NAME="APART_OPTIONS_BS">●<TMPL_ELSE>&nbsp;</TMPL_IF></td>
+            </tr>
+            <tr>
+                <th align="right" class="items">保険等</th>
+                <td colspan="3"><TMPL_IF NAME="APART_INSURANCE"><TMPL_VAR NAME="APART_INSURANCE" ESCAPE='1'><TMPL_ELSE>--</TMPL_IF></td>
+                <td align="center" class="items">CATV</td>
+                <td><TMPL_IF NAME="APART_OPTIONS_CATV">●<TMPL_ELSE>&nbsp;</TMPL_IF></td>
+            </tr>
+            <tr>
+                <th rowspan="2" align="right" class="items">条件等</th>
+                <td rowspan="2" colspan="3"><TMPL_IF NAME="APART_CONDITION"><TMPL_VAR NAME="APART_CONDITION" ESCAPE='1'><TMPL_ELSE>--</TMPL_IF></td>
+                <td align="center" class="items">インターネット可</td>
+                <td><TMPL_IF NAME="APART_OPTIONS_INTERNET">●<TMPL_ELSE>&nbsp;</TMPL_IF></td>
+            </tr>
+            <tr>
+                <td align="center" class="items">楽器相談</td>
+                <td><TMPL_IF NAME="APART_OPTIONS_INSTRUMENT">●<TMPL_ELSE>&nbsp;</TMPL_IF></td>
+            </tr>
+            <tr>
+                <th rowspan="2" align="right" class="items">他設備</th>
+                <td rowspan="2" colspan="3"><TMPL_IF NAME="APART_SETUBI"><TMPL_VAR NAME="APART_SETUBI" ESCAPE='1'><TMPL_ELSE>&nbsp;</TMPL_IF></td>
+                <td align="center" class="items">ペット相談</td>
+                <td><TMPL_IF NAME="APART_OPTIONS_PET">●<TMPL_ELSE>&nbsp;</TMPL_IF></td>
+            </tr>
+            <tr>
+                <td align="center" class="items">保証人不要有</td>
+                <td><TMPL_IF NAME="APART_OPTIONS_HOSYOUNIN">●<TMPL_ELSE>&nbsp;</TMPL_IF></td>
+            </tr>
+            <tr>
+                <th rowspan="3" align="right" class="items">備考</th>
+                <td rowspan="3" colspan="3"><TMPL_IF NAME="APART_BIKOU"><TMPL_VAR NAME="APART_BIKOU" ESCAPE='1'><TMPL_ELSE>&nbsp;</TMPL_IF></td>
+                <td align="center" class="items">角部屋</td>
+                <td><TMPL_IF NAME="APART_OPTIONS_KAKUBEYA">●<TMPL_ELSE>&nbsp;</TMPL_IF></td>
+            </tr>
+            <tr>
+                <td align="center" class="items">事務所可</td>
+                <td><TMPL_IF NAME="APART_OPTIONS_JIMUSYOKA">●<TMPL_ELSE>&nbsp;</TMPL_IF></td>
+            </tr>
+            <tr>
+                <td align="center" class="items">室内洗濯機置場</td>
+                <td><TMPL_IF NAME="APART_OPTIONS_SITUNAISENTAKUKI">●<TMPL_ELSE>&nbsp;</TMPL_IF></td>
+            </tr>
+            <tr>
+                <td colspan="6" align="center">
+                    <table cellpadding="3" cellspacing="1" class="none_border_table" align="center">
+                        <tr valign="top">
+                            <td>
+                                <TMPL_IF NAME="APART_PICS_OUTSIDE"><!-- もし外観画像が登録されていたら -->
+                                    <div class="photo">
+                                        <a href="<TMPL_VAR NAME="APART_PICS_OUTSIDE" ESCAPE='1'>" target="_blank" title="クリックして拡大">
+                                        <TMPL_IF NAME="APART_PICS_OUTSIDE_THUMB"><!-- もしサムネイル画像があったら表示 -->
+                                            <img style="z-index:3;" src="<TMPL_VAR NAME="APART_PICS_OUTSIDE_THUMB" ESCAPE='1'>" alt="外観写真" />
+                                            </a>
+                                            <br />外観写真
+                                        <TMPL_ELSE>
+                                            外観写真
+                                            </a><br />
+                                        </TMPL_IF>
+                                    </div>
+                                <TMPL_ELSE>&nbsp;<!-- 外観画像なし --></TMPL_IF>
+                            </td>
+                            <td>
+                                <TMPL_IF NAME="APART_PICS_INSIDE"><!-- もし内観画像が登録されていたら -->
+                                    <div class="photo">
+                                        <a href="<TMPL_VAR NAME="APART_PICS_INSIDE" ESCAPE='1'>" target="_blank" title="クリックして拡大">
+                                        <TMPL_IF NAME="APART_PICS_INSIDE_THUMB"><!-- もしサムネイル画像があったら表示 -->
+                                            <img style="z-index:1;" src="<TMPL_VAR NAME="APART_PICS_INSIDE_THUMB" ESCAPE='1'>" alt="内観写真" />
+                                            </a>
+                                            <br />内観写真
+                                        <TMPL_ELSE>
+                                            内観写真
+                                            </a><br />
+                                        </TMPL_IF>
+                                    </div>
+                                <TMPL_ELSE>&nbsp;<!-- 内観画像なし --></TMPL_IF>
+                            </td>
+                            <td>
+                                <TMPL_IF NAME="APART_PICS_MADORIZU"><!-- もし間取り図が登録されていたら -->
+                                    <div class="photo">
+                                        <a href="<TMPL_VAR NAME="APART_PICS_MADORIZU" ESCAPE='1'>" target="_blank" title="クリックして拡大">
+                                        <TMPL_IF NAME="APART_PICS_MADORIZU_THUMB"><!-- もしサムネイル画像があったら表示 -->
+                                            <img style="z-index:2;" src="<TMPL_VAR NAME="APART_PICS_MADORIZU_THUMB" ESCAPE='1'>" alt="間取図" />
+                                            </a>
+                                            <br />間取図
+                                        <TMPL_ELSE>
+                                            間取図
+                                            </a><br />
+                                        </TMPL_IF>
+                                    </div>
+                                <TMPL_ELSE>&nbsp;</TMPL_IF>
+                            </td>
+
+                        </tr>
+                        <TMPL_IF NAME="APART_PICS_TIZU"><!-- もし地図が登録されていたら -->
+                        <tr valign="top">
+                            <td colspan="3">
+                                <div class="photo">
+                                    <a href="<TMPL_VAR NAME="APART_PICS_TIZU" ESCAPE='1'>" target="_blank" title="クリックして拡大">
+                                    <TMPL_IF NAME="APART_PICS_TIZU_THUMB"><!-- もしサムネイル画像があったら表示 -->
+                                        <img style="z-index:2;" src="<TMPL_VAR NAME="APART_PICS_TIZU_THUMB" ESCAPE='1'>" alt="地図" />
+                                        </a>
+                                        <br />地図
+                                    <TMPL_ELSE>
+                                        地図
+                                        </a><br />
+                                    </TMPL_IF>
+                                </div>
+                            </td>
+                        </tr>
+                        </TMPL_IF>
+
+                        <TMPL_IF NAME="APART_MOVIE_FILE_URL"><!-- もし動画が登録されていたら -->
+                        <tr valign="top">
+                            <td colspan="3">
+                                <TMPL_IF NAME="APART_MOVIE_FILE_URL"><a href="<TMPL_VAR NAME="APART_MOVIE_FILE_URL" ESCAPE='1'>">動画閲覧</a><TMPL_ELSE>&nbsp;</TMPL_IF>
+                            </td>
+                        </tr>
+                        </TMPL_IF>
+
+                    </table>
+
+                </td>
+            </tr>
+            <tr><!-- 取り扱い会社情報 -->
+                <td colspan="6">
+                    <address>
+                    &nbsp;&nbsp;&nbsp;取扱会社：<TMPL_VAR NAME="APART_COMPANY_NAME" ESCAPE='1'><br />
+                    &nbsp;&nbsp;&nbsp;免許番号：<TMPL_VAR NAME="APART_COMPANY_LICENSE" ESCAPE='1'><br />
+                    &nbsp;&nbsp;&nbsp;住所:<TMPL_VAR NAME="APART_COMPANY_ADDRESS" ESCAPE='1'><br />
+                    &nbsp;&nbsp;&nbsp;電話番号：<TMPL_VAR NAME="APART_COMPANY_TEL" ESCAPE='1'><br />
+                    <TMPL_IF NAME="APART_COMPANY_HP">
+                    &nbsp;&nbsp;&nbsp;ホームページ：<a href="<TMPL_VAR NAME="APART_COMPANY_HP" ESCAPE='1'>"><TMPL_VAR NAME="APART_COMPANY_HP" ESCAPE='1'></a><br />
+                    </TMPL_IF>
+                    </address>
+                </td>
+            </tr>
+            <!-- 繰り返しLoop終わり -->
+            </TMPL_LOOP>
+            <tr>
+                <td colspan="6" align="right">
+                    <TMPL_IF NAME="result_one">
+                    &nbsp;<!-- 一つの物件情報だけの場合、何も表示しない -->
+                    <TMPL_ELSE>
+                    <!-- 複数の物件情報を表示する場合、選択用のチェックボタンを表示 -->
+                    <input value="選択した物件について一括してお問い合わせ" onclick="formInquiry()" class="submit" type="submit" />
+                    </TMPL_IF>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <br />
+    <TMPL_ELSE>
+    <!-- 物件情報が０件の場合 -->
+    <p>物件が選択されていないか、既に削除された、または問題があり表示できません。</p>
+    </TMPL_IF>
+
+</div>
+
+
+<TMPL_INCLUDE NAME="site_footer.tmpl">

@@ -1,0 +1,18 @@
+<TMPL_INCLUDE NAME="header.tmpl">
+
+<TMPL_INCLUDE NAME="menu.tmpl">
+<div id="content">
+<TMPL_VAR NAME="page_data" ESCAPE='0'>
+<form method="post" action="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_infostring" name="info">
+
+            <input name="info_text" size="60" maxlength="150" type="text" value="<TMPL_VAR NAME="info_string" ESCAPE='0'>" />
+                <input type="hidden" name="_mode" value="mode_infostring"  /><br />
+                <input type="submit" name="update_info" value="文章を更新する" class="submit" />
+                
+</form>
+<script type="text/javascript"><!-- 
+document.info.info_text.focus(); 
+// --></script>
+</div>
+
+<TMPL_INCLUDE NAME="footer.tmpl">

@@ -1,0 +1,183 @@
+<TMPL_INCLUDE NAME="site_header.tmpl">
+
+<div id="content_full">
+    <!-- ナビゲーションメニュー -->
+    <a href="<TMPL_VAR NAME="site_url" ESCAPE='0'>index.html" class="nav">ホーム</a>&nbsp;::&nbsp;<a href="<TMPL_VAR NAME='cgi_url' ESCAPE='0'>search.cgi?_mode=mode_search&amp;_type=rl" class="nav">賃貸住居用物件検索</a>&nbsp;::&nbsp;検索結果一覧<br /><br />
+
+    <TMPL_VAR NAME="page_data" ESCAPE='0'>
+
+    <!-- もし物件が０以上選択されていたら -->
+    <TMPL_IF NAME="result_count">
+    <!-- 詳細表示フォーム開始 -->
+    <form method="get" name="rsearch" id="rsearch" action="<TMPL_VAR NAME='script_name' ESCAPE='0'>?_mode=mode_search&amp;_type=rl" >
+    
+        <table border="0" class="main_table" align="left" width="735">
+            <tr>
+                <td colspan="6" align="right">
+                    <!-- スクリプトが無効の場合の時の処理 -->
+                    <noscript>
+                        <!-- もし検索結果で次のページがあったら -->
+                        <TMPL_IF NAME="items_per_page_next">
+                        <!-- 次へボタンを表示 -->
+                        <input type="hidden" name="off_set_next" value="<TMPL_VAR NAME="off_set_next" ESCAPE='1'>" />
+                        <input type="submit" name="search_object" value="次の<TMPL_VAR NAME="items_per_page_next" ESCAPE='1'>件" />
+                        </TMPL_IF>
+                    </noscript>
+                    <!-- スクリプトで次へ、前へのメニュー表示 -->
+                    <script type="text/javascript">
+                        <!--
+                            document.write('[&nbsp;<TMPL_IF NAME="items_per_page_pre"><a href="javascript:formSubmit(<TMPL_VAR NAME="off_set_pre" ESCAPE='1'>)">前の<TMPL_VAR NAME="items_per_page_pre" ESCAPE='1'>件</a><TMPL_ELSE>前の0件</TMPL_IF>&nbsp;|&nbsp;<TMPL_IF NAME="items_per_page_next"><a href="javascript:formSubmit(<TMPL_VAR NAME="off_set_next" ESCAPE='1'>)">次の<TMPL_VAR NAME="items_per_page_next" ESCAPE='1'>件</a><TMPL_ELSE>次の0件</TMPL_IF>&nbsp;]&nbsp;&nbsp;');
+                        //-->
+                    </script>
+                </td>
+            </tr>
+            <tr>
+                <th class="list" rowspan="2" width="60"><small>物件種別</small></th>
+                <th class="list"><a href="javascript:formSortSubmit('station')">最寄駅</a></th>
+                <th width="100" class="list"><a href="javascript:formSortSubmit('price')">賃料</a></th>
+                <th class="list" width="70"><small>敷金・礼金</small></th>
+                <th class="list" width="95"><small>間取り・面積m&sup2;</small></th>
+                <th rowspan="2" width="70" class="list">詳細</th>
+            </tr>
+            <tr>
+                <th class="list"><a href="javascript:formSortSubmit('location')">所在地</a></th>
+                <th class="list"><small>バス・徒歩</small></th>
+                <th class="list"><small>管理費等</small></th>
+                <th class="list"><a href="javascript:formSortSubmit('date')">最終更新日</a></th>
+            </tr>
+            <!-- 検索結果の繰り返しLoop開始 -->
+            <TMPL_LOOP NAME='main_loop'>
+            <tr valign="top" class="items">
+                <td rowspan="2" align="center" valign="middle">
+                    <TMPL_IF NAME="APART_NEW">NEW!<br /></TMPL_IF>
+                    <TMPL_IF NAME="APART_UPDATED">更新!<br /></TMPL_IF>
+                    <TMPL_VAR NAME="APART_KIND" ESCAPE='1'>
+                </td>
+                <td><span style="font-size:130%;font-weight:normal;"><TMPL_VAR NAME="APART_STATION_1" ESCAPE='1'></span><TMPL_IF NAME="APART_STATION_2"><br /><span style="font-size:130%;font-weight:normal;"><TMPL_VAR NAME="APART_STATION_2" ESCAPE='1'></span></TMPL_IF></td>
+                <td align="center" valign="middle"><span style="font-size:140%;color:red;font-weight:bold;"><TMPL_VAR NAME="APART_PRICE" ESCAPE='1'></span>円</td>
+                <td align="center"><TMPL_IF NAME="APART_PRICE_SIKIKIN"><TMPL_VAR NAME="APART_PRICE_SIKIKIN" ESCAPE='1'><small><TMPL_VAR NAME="APART_PRICE_SIKIKIN_UNIT" ESCAPE='1'></small><TMPL_ELSE>--</TMPL_IF>・<TMPL_IF NAME="APART_PRICE_REIKIN"><TMPL_VAR NAME="APART_PRICE_REIKIN" ESCAPE='1'><small><TMPL_VAR NAME="APART_PRICE_REIKIN_UNIT" ESCAPE='1'></small><TMPL_ELSE>--</TMPL_IF></td>
+                <td align="center">
+                <TMPL_IF NAME="APART_MADORI"><TMPL_VAR NAME="APART_MADORI" ESCAPE='1'><TMPL_ELSE>--</TMPL_IF>・<TMPL_IF NAME="APART_SQUARE"><TMPL_VAR NAME="APART_SQUARE" ESCAPE='1'><small>m&sup2;</small><TMPL_ELSE>--</TMPL_IF>
+                </td>
+                <td rowspan="2" valign="middle" align="center"><a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_detail&amp;_type=rl&amp;_object_id=<TMPL_VAR NAME="APART_ID" ESCAPE='0'>"><span style="font-size:110%;">詳細</span></a>&nbsp;<input name="_object_id" value="<TMPL_VAR NAME="APART_ID" ESCAPE='0'>" type="checkbox" /></td>
+            </tr>
+            <tr>
+                <td valign="middle"><TMPL_VAR NAME="APART_LOCATION" ESCAPE='1'></td>
+                <td align="center">
+                    <TMPL_IF NAME="APART_BUS_MINUTES_1"><TMPL_VAR NAME="APART_BUS_MINUTES_1" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>・<TMPL_IF NAME="APART_WALK_MINUTES_1"><TMPL_VAR NAME="APART_WALK_MINUTES_1" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>
+                    <TMPL_IF NAME="APART_STATION_2"><br /><TMPL_IF NAME="APART_BUS_MINUTES_2"><TMPL_VAR NAME="APART_BUS_MINUTES_2" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>・<TMPL_IF NAME="APART_WALK_MINUTES_2"><TMPL_VAR NAME="APART_WALK_MINUTES_2" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>
+                    </TMPL_IF>
+                </td>
+                <td align="center"><TMPL_IF NAME="APART_PRICE_KANRIHI"><TMPL_VAR NAME="APART_PRICE_KANRIHI" ESCAPE='1'>円<TMPL_ELSE>--</TMPL_IF></td>
+                <td align="center"><TMPL_IF NAME="APART_LAST_UPDATED"><TMPL_VAR NAME="APART_LAST_UPDATED" ESCAPE='1'><TMPL_ELSE><TMPL_VAR NAME="APART_CREATED" ESCAPE='1'></TMPL_IF></td>
+            </tr>
+
+<!-- 他に使える変数
+外観写真:<TMPL_VAR NAME="APART_PICS_OUTSIDE" ESCAPE='1'><br />
+外観写真サムネイル:<TMPL_VAR NAME="APART_PICS_OUTSIDE_THUMB" ESCAPE='1'><br />
+内観写真:<TMPL_VAR NAME="APART_PICS_INSIDE" ESCAPE='1'><br />
+内観写真サムネイル:<TMPL_VAR NAME="APART_PICS_INSIDE_THUMB" ESCAPE='1'><br />
+間取り図:<TMPL_VAR NAME="APART_PICS_MADORIZU" ESCAPE='1'><br />
+間取り図サムネイル:<TMPL_VAR NAME="APART_PICS_MADORIZU_THUMB" ESCAPE='1'><br />
+地図:<TMPL_VAR NAME="APART_PICS_TIZU" ESCAPE='1'><br />
+地図サムネイル:<TMPL_VAR NAME="APART_PICS_TIZU_THUMB" ESCAPE='1'><br />
+
+建物構造:<TMPL_VAR NAME="APART_BUILDING_STRUCTURE" ESCAPE='1'><br />
+管理番号:<TMPL_VAR NAME="APART_YOUR_ID" ESCAPE='1'><br />
+バス停名1:<TMPL_VAR NAME="APART_BUS_1" ESCAPE='1'><br />
+バス停名2:<TMPL_VAR NAME="APART_BUS_2" ESCAPE='1'><br />
+停歩1:<TMPL_VAR NAME="APART_BUSWALK_MINUTES_1" ESCAPE='1'><br />
+停歩2:<TMPL_VAR NAME="APART_BUSWALK_MINUTES_2" ESCAPE='1'><br />
+築年月:<TMPL_VAR NAME="APART_AGE" ESCAPE='1'><br />
+階:<TMPL_VAR NAME="APART_STORY" ESCAPE='1'><br />
+宣伝文句:<TMPL_VAR NAME="APART_ADS_TEXT" ESCAPE='1'><br />
+<TMPL_IF NAME="APART_IS_SPECIAL">お薦め</TMPL_IF>
+-->
+
+            </TMPL_LOOP>
+            <!-- 検索結果の繰り返しLoop終わり -->
+            <tr>
+                <td colspan="6" align="right">
+                    <!-- 検索条件等の次ページへの持ち越し（削除しないでください） -->
+                    <input type="hidden" name="search_object" value="<TMPL_VAR NAME="search_object" ESCAPE='1'>" />
+                    <input type="hidden" name="apart_address" value="<TMPL_VAR NAME="apart_address" ESCAPE='1'>" />
+                    <input type="hidden" name="apart_options_gasconro" value="<TMPL_VAR NAME="apart_options_gasconro" ESCAPE='1'>" />
+                    <input type="hidden" name="apart_price_2" value="<TMPL_VAR NAME="apart_price_2" ESCAPE='1'>" />
+                    <input type="hidden" name="apart_public" value="<TMPL_VAR NAME="apart_public" ESCAPE='1'>" />
+                    <input type="hidden" name="apart_options_kakubeya" value="<TMPL_VAR NAME="apart_options_kakubeya" ESCAPE='1'>" />
+                    <input type="hidden" name="apart_options_situnaisentakuki" value="<TMPL_VAR NAME="apart_options_situnaisentakuki" ESCAPE='1'>" />
+                    <input type="hidden" name="apart_age" value="<TMPL_VAR NAME="apart_age" ESCAPE='1'>" />
+                    <input type="hidden" name="apart_square_2" value="<TMPL_VAR NAME="apart_square_2" ESCAPE='1'>" />
+                    <input type="hidden" name="apart_price_1" value="<TMPL_VAR NAME="apart_price_1" ESCAPE='1'>" />
+                    <input type="hidden" name="apart_square_1" value="<TMPL_VAR NAME="apart_square_1" ESCAPE='1'>" />
+                    <input type="hidden" name="apart_options_nikaiijyou" value="<TMPL_VAR NAME="apart_options_nikaiijyou" ESCAPE='1'>" />
+                    <input type="hidden" name="apart_options_tvphone" value="<TMPL_VAR NAME="apart_options_tvphone" ESCAPE='1'>" />
+                    <input type="hidden" name="apart_options_elevator" value="<TMPL_VAR NAME="apart_options_elevator" ESCAPE='1'>" />
+                    <input type="hidden" name="apart_options_catv" value="<TMPL_VAR NAME="apart_options_catv" ESCAPE='1'>" />
+                    <input type="hidden" name="apart_options_oitaki" value="<TMPL_VAR NAME="apart_options_oitaki" ESCAPE='1'>" />
+                    <input type="hidden" name="apart_walk_minutes" value="<TMPL_VAR NAME="apart_walk_minutes" ESCAPE='1'>" />
+                    <input type="hidden" name="apart_options_bs" value="<TMPL_VAR NAME="apart_options_bs" ESCAPE='1'>" />
+                    <input type="hidden" name="apart_options_ikkai" value="<TMPL_VAR NAME="apart_options_ikkai" ESCAPE='1'>" />
+                    <input type="hidden" name="include_k_k" value="<TMPL_VAR NAME="include_k_k" ESCAPE='1'>" />
+                    <input type="hidden" name="apart_options_flooring" value="<TMPL_VAR NAME="apart_options_flooring" ESCAPE='1'>" />
+                    <input type="hidden" name="apart_options_parking" value="<TMPL_VAR NAME="apart_options_parking" ESCAPE='1'>" />
+                    <input type="hidden" name="apart_options_internet" value="<TMPL_VAR NAME="apart_options_internet" ESCAPE='1'>" />
+                    <input type="hidden" name="apart_options_bicycle" value="<TMPL_VAR NAME="apart_options_bicycle" ESCAPE='1'>" />
+
+                    <input type="hidden" name="apart_options_jimusyoka" value="<TMPL_VAR NAME="apart_options_jimusyoka" ESCAPE='1'>" />
+                    <input type="hidden" name="apart_no_sikikin" value="<TMPL_VAR NAME="apart_no_sikikin" ESCAPE='1'>" />
+                    <input type="hidden" name="apart_options_saijyoukai" value="<TMPL_VAR NAME="apart_options_saijyoukai" ESCAPE='1'>" />
+                    <input type="hidden" name="apart_school" value="<TMPL_VAR NAME="apart_school" ESCAPE='1'>" />
+                    <input type="hidden" name="apart_no_reikin" value="<TMPL_VAR NAME="apart_no_reikin" ESCAPE='1'>" />
+                    <input type="hidden" name="apart_options_pet" value="<TMPL_VAR NAME="apart_options_pet" ESCAPE='1'>" />
+                    <input type="hidden" name="apart_options_bathtoilet" value="<TMPL_VAR NAME="apart_options_bathtoilet" ESCAPE='1'>" />
+                    <input type="hidden" name="apart_options_autolock" value="<TMPL_VAR NAME="apart_options_autolock" ESCAPE='1'>" />
+                    <input type="hidden" name="apart_jisyakannri" value="<TMPL_VAR NAME="apart_jisyakannri" ESCAPE='1'>" />
+                    <input type="hidden" name="apart_jisyatouroku" value="<TMPL_VAR NAME="apart_jisyatouroku" ESCAPE='1'>" />
+                    <input type="hidden" name="apart_options_aircon" value="<TMPL_VAR NAME="apart_options_aircon" ESCAPE='1'>" />
+                    <input type="hidden" name="apart_options_loft" value="<TMPL_VAR NAME="apart_options_loft" ESCAPE='1'>" />
+                    <input type="hidden" name="apart_options_cs" value="<TMPL_VAR NAME="apart_options_cs" ESCAPE='1'>" />
+                    <input type="hidden" name="apart_options_hosyounin" value="<TMPL_VAR NAME="apart_options_hosyounin" ESCAPE='1'>" />
+                    <input type="hidden" name="apart_options_minami" value="<TMPL_VAR NAME="apart_options_minami" ESCAPE='1'>" />
+                    <input type="hidden" name="apart_station" value="<TMPL_VAR NAME="apart_station" ESCAPE='1'>" />
+                    <input type="hidden" name="apart_madori" value="<TMPL_VAR NAME="apart_madori" ESCAPE='1'>" />
+                    <input type="hidden" name="apart_kind" value="<TMPL_VAR NAME="apart_kind" ESCAPE='1'>" />
+                    <input type="hidden" name="apart_has_" value="<TMPL_VAR NAME="apart_has_" ESCAPE='1'>" />
+                    <input type="hidden" name="apart_new" value="<TMPL_VAR NAME="apart_new" ESCAPE='1'>" />
+                    <input type="hidden" name="_mode" value="<TMPL_VAR NAME="_mode" ESCAPE='1'>" />
+                    <input type="hidden" name="_type" value="<TMPL_VAR NAME="_type" ESCAPE='1'>" />
+                    <input type="hidden" name="off_set" value="<TMPL_VAR NAME="off_set" ESCAPE='1'>" />
+                    <input type="hidden" name="sort_by" value="<TMPL_VAR NAME="sort_by" ESCAPE='1'>"  />
+                    <!-- 検索条件等の次ページへの持ち越し 終わり -->
+
+
+                    <!-- スクリプトが無効の場合次へボタンを表示 -->
+                    <noscript>
+                    <TMPL_IF NAME="items_per_page_next">
+                        <input type="hidden" name="off_set_next" value="<TMPL_VAR NAME="off_set_next" ESCAPE='1'>" />
+                        <input type="submit" name="search_object" value="次の<TMPL_VAR NAME="items_per_page_next" ESCAPE='1'>件" />
+                    </TMPL_IF>
+                    </noscript>
+                    <!-- スクリプトで次へ、前へのメニュー表示 -->
+                    <script type="text/javascript">
+                        <!--
+                        document.write('[&nbsp;<TMPL_IF NAME="items_per_page_pre"><a href="javascript:formSubmit(<TMPL_VAR NAME="off_set_pre" ESCAPE='1'>)">前の<TMPL_VAR NAME="items_per_page_pre" ESCAPE='1'>件</a><TMPL_ELSE>前の0件</TMPL_IF>&nbsp;|&nbsp;<TMPL_IF NAME="items_per_page_next"><a href="javascript:formSubmit(<TMPL_VAR NAME="off_set_next" ESCAPE='1'>)">次の<TMPL_VAR NAME="items_per_page_next" ESCAPE='1'>件</a><TMPL_ELSE>次の0件</TMPL_IF>&nbsp;]&nbsp;&nbsp;');
+                        document.write('<br /><input type="submit" name="listview" value="選択した物件の詳細を表示" class="submit"  onclick="formShow()" />');
+                        //-->
+                    </script>
+    
+                </td>
+            </tr>
+        </table>
+    </form>
+    <br />
+    
+    <TMPL_ELSE>
+        <!-- 検索結果が０件の場合 -->
+        <p>ご希望の条件にマッチする物件が見付かりませんでした。<a href="<TMPL_VAR NAME='cgi_url' ESCAPE='0'>search.cgi?_mode=mode_search&amp;_type=rl">条件を変えて再度検索</a>してください。</p>
+    </TMPL_IF>
+
+</div>
+
+
+<TMPL_INCLUDE NAME="site_footer.tmpl">

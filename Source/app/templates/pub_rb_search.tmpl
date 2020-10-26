@@ -1,0 +1,233 @@
+<TMPL_INCLUDE NAME="site_header.tmpl">
+
+<div id="container">
+
+    <!-- 穆逻祸度脱サイドバ〖粕み哈み -->
+    <TMPL_INCLUDE NAME="site_rb_sidebar.tmpl">
+    
+    <div id="content">
+    
+        <TMPL_VAR NAME="page_data" ESCAPE='0'>
+
+        <!-- 穆逻祸度脱浮瑚フォ〖ム 幌まり-->
+        <form method="get" action="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_search&amp;_type=rb" enctype="application/x-www-form-urlencoded" name="business">
+
+            <table class="main_table" border="0" align="center" width="567">
+                <tr align="left">
+                    <th class="list" align="right">交疥: </th>
+                    <td><input type="text" name="business_address"  size="50" maxlength="50" /></td>
+                </tr>
+                <tr align="left">
+                    <th class="list" align="right">呵大り必: </th>
+                    <td><input type="text" name="business_station"  size="50" maxlength="50" /></td>
+                </tr>
+                <tr>
+                    <th class="list" align="right">湿凤硷侍: </th>
+                    <td>
+                        <label><input type="checkbox" name="business_kind" value="1" id="ak1" />殴兽</label>&nbsp;&nbsp;
+                        <label><input type="checkbox" name="business_kind" value="2" id="ak2" />祸坛疥</label>&nbsp;&nbsp;
+                        <label><input type="checkbox" name="business_kind" value="3" id="ak3" />戮</label>&nbsp;&nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <th class="list" align="right">穆瘟: </th>
+                    <td>
+                        <select name="business_price_1">
+                            <option label="布嘎なし" value="0" selected="selected">布嘎なし</option>
+                            <option label="3.0 它边" value="3.0">3.0 它边</option>
+                            <option label="3.5 它边" value="3.5">3.5 它边</option>
+                            <option label="4.0 它边" value="4.0">4.0 它边</option>
+                            <option label="4.5 它边" value="4.5">4.5 它边</option>
+                            <option label="5.0 它边" value="5.0">5.0 它边</option>
+                            <option label="5.5 它边" value="5.5">5.5 它边</option>
+                            <option label="6.0 它边" value="6.0">6.0 它边</option>
+                            <option label="6.5 它边" value="6.5">6.5 它边</option>
+                            <option label="7.0 它边" value="7.0">7.0 它边</option>
+                            <option label="7.5 它边" value="7.5">7.5 它边</option>
+                            <option label="8.0 它边" value="8.0">8.0 它边</option>
+                            <option label="8.5 它边" value="8.5">8.5 它边</option>
+                            <option label="9.0 它边" value="9.0">9.0 它边</option>
+                            <option label="9.5 它边" value="9.5">9.5 它边</option>
+                            <option label="10 它边" value="10">10 它边</option>
+                            <option label="11 它边" value="11">11 它边</option>
+                            <option label="12 它边" value="12">12 它边</option>
+                            <option label="13 它边" value="13">13 它边</option>
+                            <option label="14 它边" value="14">14 它边</option>
+                            <option label="15 它边" value="15">15 它边</option>
+                            <option label="16 它边" value="16">16 它边</option>
+                            <option label="17 它边" value="17">17 它边</option>
+                            <option label="18 它边" value="18">18 它边</option>
+                            <option label="19 它边" value="19">19 它边</option>
+                            <option label="20 它边" value="20">20 它边</option>
+                            <option label="30 它边" value="30">30 它边</option>
+                            <option label="50 它边" value="50">50 它边</option>
+                            <option label="100 它边" value="100">100 它边</option>
+                        </select>
+            ×
+                        <select name="business_price_2">
+                            <option label="3.0 它边" value="3.0">3.0 它边</option>
+                            <option label="3.5 它边" value="3.5">3.5 它边</option>
+                            <option label="4.0 它边" value="4.0">4.0 它边</option>
+                            <option label="4.5 它边" value="4.5">4.5 它边</option>
+                            <option label="5.0 它边" value="5.0">5.0 它边</option>
+                            <option label="5.5 它边" value="5.5">5.5 它边</option>
+                            <option label="6.0 它边" value="6.0">6.0 它边</option>
+                            <option label="6.5 它边" value="6.5">6.5 它边</option>
+                            <option label="7.0 它边" value="7.0">7.0 它边</option>
+                            <option label="7.5 它边" value="7.5">7.5 它边</option>
+                            <option label="8.0 它边" value="8.0">8.0 它边</option>
+                            <option label="8.5 它边" value="8.5">8.5 它边</option>
+                            <option label="9.0 它边" value="9.0">9.0 它边</option>
+                            <option label="9.5 它边" value="9.5">9.5 它边</option>
+                            <option label="10 它边" value="10">10 它边</option>
+                            <option label="11 它边" value="11">11 它边</option>
+                            <option label="12 它边" value="12">12 它边</option>
+                            <option label="13 它边" value="13">13 它边</option>
+                            <option label="14 它边" value="14">14 它边</option>
+                            <option label="15 它边" value="15">15 它边</option>
+                            <option label="16 它边" value="16">16 它边</option>
+                            <option label="17 它边" value="17">17 它边</option>
+                            <option label="18 它边" value="18">18 它边</option>
+                            <option label="19 它边" value="19">19 它边</option>
+                            <option label="20 它边" value="20">20 它边</option>
+                            <option label="30 它边" value="30">30 它边</option>
+                            <option label="50 它边" value="50">50 它边</option>
+                            <option label="100 它边" value="100">100 它边</option>
+                            <option label="惧嘎なし" value="0" selected="selected">惧嘎なし</option>
+                        </select>
+                        <br />
+                        <label><input type="checkbox" name="include_k_k" value="1" id="include_k_k" />瓷妄锐霹を崔む</label>
+                        &nbsp;
+                        <label><input type="checkbox" name="business_no_reikin" value="1" id="business_no_reikin" />伍垛なし</label>&nbsp;&nbsp;
+                        <label><input type="checkbox" name="business_no_sikikin" value="1" id="business_no_sikikin" />蛇垛なし</label>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="list" align="right">烫姥: </th>
+                    <td>
+                        <select name="business_square_1">
+                            <option label="布嘎なし" value="0" selected="selected">布嘎なし</option>
+                            <option label="10 m&sup2;" value="10">10 m&sup2;</option>
+                            <option label="15 m&sup2;" value="15">15 m&sup2;</option>
+                            <option label="20 m&sup2;" value="20">20 m&sup2;</option>
+                            <option label="25 m&sup2;" value="25">25 m&sup2;</option>
+                            <option label="30 m&sup2;" value="30">30 m&sup2;</option>
+                            <option label="35 m&sup2;" value="35">35 m&sup2;</option>
+                            <option label="40 m&sup2;" value="40">40 m&sup2;</option>
+                            <option label="50 m&sup2;" value="50">50 m&sup2;</option>
+                            <option label="60 m&sup2;" value="60">60 m&sup2;</option>
+                            <option label="70 m&sup2;" value="70">70 m&sup2;</option>
+                            <option label="80 m&sup2;" value="80">80 m&sup2;</option>
+                            <option label="90 m&sup2;" value="90">90 m&sup2;</option>
+                            <option label="100 m&sup2;" value="100">100 m&sup2;</option>
+                            <option label="200 m&sup2;" value="200">200 m&sup2;</option>
+                            <option label="300 m&sup2;" value="300">300 m&sup2;</option>
+                            <option label="400 m&sup2;" value="400">400 m&sup2;</option>
+                            <option label="500 m&sup2;" value="500">500 m&sup2;</option>
+                            <option label="600 m&sup2;" value="600">600 m&sup2;</option>
+                            <option label="700 m&sup2;" value="700">700 m&sup2;</option>
+                            <option label="800 m&sup2;" value="800">800 m&sup2;</option>
+                            <option label="900 m&sup2;" value="900">900 m&sup2;</option>
+                            <option label="1000 m&sup2;" value="1000">1000 m&sup2;</option>
+                        </select>
+            ×
+                        <select name="business_square_2">
+                            <option label="10 m&sup2;" value="10">10 m&sup2;</option>
+                            <option label="15 m&sup2;" value="15">15 m&sup2;</option>
+                            <option label="20 m&sup2;" value="20">20 m&sup2;</option>
+                            <option label="25 m&sup2;" value="25">25 m&sup2;</option>
+                            <option label="30 m&sup2;" value="30">30 m&sup2;</option>
+                            <option label="35 m&sup2;" value="35">35 m&sup2;</option>
+                            <option label="40 m&sup2;" value="40">40 m&sup2;</option>
+                            <option label="50 m&sup2;" value="50">50 m&sup2;</option>
+                            <option label="60 m&sup2;" value="60">60 m&sup2;</option>
+                            <option label="70 m&sup2;" value="70">70 m&sup2;</option>
+                            <option label="80 m&sup2;" value="80">80 m&sup2;</option>
+                            <option label="90 m&sup2;" value="90">90 m&sup2;</option>
+                            <option label="100 m&sup2;" value="100">100 m&sup2;</option>
+                            <option label="200 m&sup2;" value="200">200 m&sup2;</option>
+                            <option label="300 m&sup2;" value="300">300 m&sup2;</option>
+                            <option label="400 m&sup2;" value="400">400 m&sup2;</option>
+                            <option label="500 m&sup2;" value="500">500 m&sup2;</option>
+                            <option label="600 m&sup2;" value="600">600 m&sup2;</option>
+                            <option label="700 m&sup2;" value="700">700 m&sup2;</option>
+                            <option label="800 m&sup2;" value="800">800 m&sup2;</option>
+                            <option label="900 m&sup2;" value="900">900 m&sup2;</option>
+                            <option label="1000 m&sup2;" value="1000">1000 m&sup2;</option>
+                            <option label="惧嘎なし" value="0" selected="selected">惧嘎なし</option>
+                        </select>
+                        &nbsp;&nbsp;ⅷ≈m&sup2;∽は≈士势∽と票じです
+                    </td>
+                </tr>
+                <tr>
+                    <th class="list" align="right">蜜钳眶: </th>
+                    <td>
+                        <select name="business_age">
+                            <option label="回年なし" value="0">回年なし</option>
+                            <option label="糠蜜" value="1">糠蜜</option>
+                            <option label="3钳笆柒" value="3">3钳笆柒</option>
+                            <option label="5钳笆柒" value="5">5钳笆柒</option>
+                            <option label="10钳笆柒" value="10">10钳笆柒</option>
+                            <option label="15钳笆柒" value="15">15钳笆柒</option>
+                            <option label="20钳笆柒" value="20">20钳笆柒</option>
+                        </select>
+
+                    </td>
+                </tr>
+                <tr>
+                    <th class="list" align="right">必盘殊尸</th>
+                    <td>
+                        <select name="business_walk_minutes">
+                            <option label="回年なし" value="0">回年なし</option>
+                            <option label="1尸笆柒" value="1">1尸笆柒</option>
+                            <option label="5尸笆柒" value="5">5尸笆柒</option>
+                            <option label="7尸笆柒" value="7">7尸笆柒</option>
+                            <option label="10尸笆柒" value="10">10尸笆柒</option>
+                            <option label="15尸笆柒" value="15">15尸笆柒</option>
+                            <option label="20尸笆柒" value="20">20尸笆柒</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="list" align="right">茶咙: </th>
+                    <td>
+                        <label><input type="checkbox" name="business_has_" value="1" />粗艰り哭あり</label>&nbsp;&nbsp;
+                        <label><input type="checkbox" name="business_has_" value="2" />茶咙あり</label>&nbsp;&nbsp;
+                        <label><input type="checkbox" name="business_has_" value="3" />瓢茶あり</label>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="list" align="right">拒嘿掘凤: </th>
+                    <td>
+                        <table border="0" cellpadding="1" cellspacing="1" class="List">
+                            <tbody>
+                            <tr>
+                                <th class="list">肋洒</th>
+                                <td><label><input name="business_options_parking" value="on" type="checkbox" />皿贾眷铜</label></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr align="center">
+                    <td colspan="2">
+                        <input type="hidden" name="sort_by" value=""  />
+                        <input type="hidden" name="_mode" value="mode_search"  />
+                        <input type="hidden" name="_type" value="rb"  />
+                        <input type="submit" name="search_object" value="回年した掘凤で浮瑚する" class="submit" />
+                    </td>
+                </tr>
+            </table>
+
+        </form>
+        <!-- ペ〖ジの山绩箕に交疥掐蜗腕にフォ〖カスをあてるスクリプト -->
+        <script type="text/javascript">
+            <!-- 
+            document.business.business_address.focus(); 
+            // -->
+        </script>
+    </div>
+
+</div>
+
+<TMPL_INCLUDE NAME="site_footer.tmpl">

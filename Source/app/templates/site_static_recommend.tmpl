@@ -1,0 +1,359 @@
+<TMPL_INCLUDE NAME="site_header.tmpl">
+
+<div id="container">
+
+    <!-- 賃貸住居用お薦め物件表示始まり -->
+    <table border="1">
+        <tr>
+        <!-- 賃貸住居用お薦め物件繰り返しloop始まり -->
+        <TMPL_LOOP NAME='rl_recommend'>
+            <td valign="top">
+                <!-- 画像(リンク付き)表示 -->
+                <TMPL_IF NAME="APART_PICS_OUTSIDE_THUMB">
+                    <a href="<TMPL_VAR NAME='cgi_url' ESCAPE='0'>search.cgi?_mode=mode_detail&_type=rl&_object_id=<TMPL_VAR NAME="APART_ID" ESCAPE='0'>" >
+                        <img src="<TMPL_VAR NAME="APART_PICS_OUTSIDE_THUMB" ESCAPE='1'>" width="140" border="0" /></a><br />
+                <TMPL_ELSE>
+                    <TMPL_IF NAME="APART_PICS_INSIDE_THUMB">
+                        <a href="<TMPL_VAR NAME='cgi_url' ESCAPE='0'>search.cgi?_mode=mode_detail&_type=rl&_object_id=<TMPL_VAR NAME="APART_ID" ESCAPE='0'>" >
+                            <img src="<TMPL_VAR NAME="APART_PICS_INSIDE_THUMB" ESCAPE='1'>" width="140" border="0" /></a><br />
+                    <TMPL_ELSE>
+                        <TMPL_IF NAME="APART_PICS_MADORIZU_THUMB">
+                            <a href="<TMPL_VAR NAME='cgi_url' ESCAPE='0'>search.cgi?_mode=mode_detail&_type=rl&_object_id=<TMPL_VAR NAME="APART_ID" ESCAPE='0'>" >
+                                <img src="<TMPL_VAR NAME="APART_PICS_MADORIZU_THUMB" ESCAPE='1'>" width="140" border="0" /></a><br />
+                        </TMPL_IF>
+                    </TMPL_IF>
+                </TMPL_IF>
+
+                <!-- 間取りと種別と賃料(リンク付き)表示 -->
+                <a href="<TMPL_VAR NAME='cgi_url' ESCAPE='0'>search.cgi?_mode=mode_detail&_type=rl&_object_id=<TMPL_VAR NAME="APART_ID" ESCAPE='0'>" >
+                    <TMPL_VAR NAME="APART_MADORI" ESCAPE='1'><TMPL_VAR NAME="APART_KIND" ESCAPE='1'>
+                    <strong><TMPL_VAR NAME="APART_PRICE" ESCAPE='1'>円</strong>
+                </a>
+                <br />
+
+                所在地：<TMPL_VAR NAME="APART_LOCATION" ESCAPE='1'><br />
+
+                <TMPL_VAR NAME="APART_STATION_1" ESCAPE='1'></span>
+                <TMPL_IF NAME="APART_BUS_1">&nbsp;<TMPL_VAR NAME="APART_BUS_1" ESCAPE='1'>&nbsp;<TMPL_ELSE>&nbsp;</TMPL_IF>
+                <TMPL_IF NAME="APART_BUS_MINUTES_1">バス<TMPL_VAR NAME="APART_BUS_MINUTES_1" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>
+                <TMPL_IF NAME="APART_BUSWALK_MINUTES_1">(停歩<TMPL_VAR NAME="APART_BUSWALK_MINUTES_1" ESCAPE='1'>分)</TMPL_IF>
+                ・
+                <TMPL_IF NAME="APART_WALK_MINUTES_1">駅徒歩<TMPL_VAR NAME="APART_WALK_MINUTES_1" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>
+                <TMPL_IF NAME="APART_STATION_2"><br /><TMPL_VAR NAME="APART_STATION_2" ESCAPE='1'>&nbsp;
+                    <TMPL_IF NAME="APART_BUS_2">&nbsp;<TMPL_VAR NAME="APART_BUS_2" ESCAPE='1'>&nbsp;<TMPL_ELSE></TMPL_IF>
+                    <TMPL_IF NAME="APART_BUS_MINUTES_2">バス<TMPL_VAR NAME="APART_BUS_MINUTES_2" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>
+                    <TMPL_IF NAME="APART_BUSWALK_MINUTES_2">(停歩<TMPL_VAR NAME="APART_BUSWALK_MINUTES_2" ESCAPE='1'>分)</TMPL_IF>
+                    ・
+                    <TMPL_IF NAME="APART_WALK_MINUTES_2">徒歩<TMPL_VAR NAME="APART_WALK_MINUTES_2" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>
+                </TMPL_IF>
+                <br />
+
+                敷金／礼金：<TMPL_IF NAME="APART_PRICE_SIKIKIN">
+                            <TMPL_VAR NAME="APART_PRICE_SIKIKIN" ESCAPE='1'><TMPL_VAR NAME="APART_PRICE_SIKIKIN_UNIT" ESCAPE='1'>
+                            <TMPL_ELSE>-</TMPL_IF>
+                            ／
+                           <TMPL_IF NAME="APART_PRICE_REIKIN">
+                            <TMPL_VAR NAME="APART_PRICE_REIKIN" ESCAPE='1'><TMPL_VAR NAME="APART_PRICE_REIKIN_UNIT" ESCAPE='1'>
+                            <TMPL_ELSE>-</TMPL_IF>
+                <br />
+                <TMPL_IF NAME="APART_PRICE_KANRIHI">
+                    管理費等：<TMPL_VAR NAME="APART_PRICE_KANRIHI" ESCAPE='1'>円<br />
+                </TMPL_IF>
+
+                <TMPL_IF NAME="APART_ADS_TEXT">
+                    <TMPL_VAR NAME="APART_ADS_TEXT" ESCAPE='1'><br />
+                </TMPL_IF>
+
+            </td>
+
+        </TMPL_LOOP>
+        </tr>
+    </table>
+    <br /><br />
+
+
+    <!-- 賃貸事業用お薦め物件表示始まり -->
+    <table border="1">
+        <tr>
+        <!-- 賃貸事業用お薦め物件繰り返しloop始まり -->
+        <TMPL_LOOP NAME='rb_recommend'>
+            <td valign="top">
+                <!-- 画像(リンク付き)表示 -->
+                <TMPL_IF NAME="BUSINESS_PICS_OUTSIDE_THUMB">
+                    <a href="<TMPL_VAR NAME='cgi_url' ESCAPE='0'>search.cgi?_mode=mode_detail&_type=rb&_object_id=<TMPL_VAR NAME="BUSINESS_ID" ESCAPE='0'>" >
+                        <img src="<TMPL_VAR NAME="BUSINESS_PICS_OUTSIDE_THUMB" ESCAPE='1'>" width="140" border="0" /></a><br />
+                <TMPL_ELSE>
+                    <TMPL_IF NAME="BUSINESS_PICS_INSIDE_THUMB">
+                        <a href="<TMPL_VAR NAME='cgi_url' ESCAPE='0'>search.cgi?_mode=mode_detail&_type=rb&_object_id=<TMPL_VAR NAME="BUSINESS_ID" ESCAPE='0'>" >
+                            <img src="<TMPL_VAR NAME="BUSINESS_PICS_INSIDE_THUMB" ESCAPE='1'>" width="140" border="0" /></a><br />
+                    <TMPL_ELSE>
+                        <TMPL_IF NAME="BUSINESS_PICS_MADORIZU_THUMB">
+                            <a href="<TMPL_VAR NAME='cgi_url' ESCAPE='0'>search.cgi?_mode=mode_detail&_type=rb&_object_id=<TMPL_VAR NAME="BUSINESS_ID" ESCAPE='0'>" >
+                                <img src="<TMPL_VAR NAME="BUSINESS_PICS_MADORIZU_THUMB" ESCAPE='1'>" width="140" border="0" /></a><br />
+                        </TMPL_IF>
+                    </TMPL_IF>
+                </TMPL_IF>
+
+                <!-- 種別と賃料(リンク付き)表示 -->
+                <a href="<TMPL_VAR NAME='cgi_url' ESCAPE='0'>search.cgi?_mode=mode_detail&_type=rb&_object_id=<TMPL_VAR NAME="BUSINESS_ID" ESCAPE='0'>" >
+                    <TMPL_VAR NAME="BUSINESS_KIND" ESCAPE='1'>
+                    <strong><TMPL_VAR NAME="BUSINESS_PRICE" ESCAPE='1'>円</strong>
+                </a>
+                <br />
+
+                所在地：<TMPL_VAR NAME="BUSINESS_LOCATION" ESCAPE='1'><br />
+
+                <TMPL_VAR NAME="BUSINESS_STATION_1" ESCAPE='1'></span>
+                <TMPL_IF NAME="BUSINESS_BUS_1">&nbsp;<TMPL_VAR NAME="BUSINESS_BUS_1" ESCAPE='1'>&nbsp;<TMPL_ELSE>&nbsp;</TMPL_IF>
+                <TMPL_IF NAME="BUSINESS_BUS_MINUTES_1">バス<TMPL_VAR NAME="BUSINESS_BUS_MINUTES_1" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>
+                <TMPL_IF NAME="BUSINESS_BUSWALK_MINUTES_1">(停歩<TMPL_VAR NAME="BUSINESS_BUSWALK_MINUTES_1" ESCAPE='1'>分)</TMPL_IF>
+                ・
+                <TMPL_IF NAME="BUSINESS_WALK_MINUTES_1">駅徒歩<TMPL_VAR NAME="BUSINESS_WALK_MINUTES_1" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>
+                <TMPL_IF NAME="BUSINESS_STATION_2"><br /><TMPL_VAR NAME="BUSINESS_STATION_2" ESCAPE='1'>&nbsp;
+                    <TMPL_IF NAME="BUSINESS_BUS_2">&nbsp;<TMPL_VAR NAME="BUSINESS_BUS_2" ESCAPE='1'>&nbsp;<TMPL_ELSE></TMPL_IF>
+                    <TMPL_IF NAME="BUSINESS_BUS_MINUTES_2">バス<TMPL_VAR NAME="BUSINESS_BUS_MINUTES_2" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>
+                    <TMPL_IF NAME="BUSINESS_BUSWALK_MINUTES_2">(停歩<TMPL_VAR NAME="BUSINESS_BUSWALK_MINUTES_2" ESCAPE='1'>分)</TMPL_IF>
+                    ・
+                    <TMPL_IF NAME="BUSINESS_WALK_MINUTES_2">徒歩<TMPL_VAR NAME="BUSINESS_WALK_MINUTES_2" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>
+                </TMPL_IF>
+                <br />
+
+
+                <TMPL_IF NAME="BUSINESS_ADS_TEXT">
+                    <TMPL_VAR NAME="BUSINESS_ADS_TEXT" ESCAPE='1'><br />
+                </TMPL_IF>
+
+            </td>
+
+        </TMPL_LOOP>
+        </tr>
+    </table>
+    <br /><br />
+
+
+    <!-- 売買土地用お薦め物件表示始まり -->
+    <table border="1">
+        <tr>
+        <!-- 売買土地用お薦め物件繰り返しloop始まり -->
+        <TMPL_LOOP NAME='bl_recommend'>
+            <td valign="top">
+                <!-- 画像(リンク付き)表示 -->
+                <TMPL_IF NAME="LAND_PICS_OUTSIDE_THUMB">
+                    <a href="<TMPL_VAR NAME='cgi_url' ESCAPE='0'>search.cgi?_mode=mode_detail&_type=bl&_object_id=<TMPL_VAR NAME="LAND_ID" ESCAPE='0'>" >
+                        <img src="<TMPL_VAR NAME="LAND_PICS_OUTSIDE_THUMB" ESCAPE='1'>" width="140" border="0" /></a><br />
+                <TMPL_ELSE>
+                    <TMPL_IF NAME="LAND_PICS_INSIDE_THUMB">
+                        <a href="<TMPL_VAR NAME='cgi_url' ESCAPE='0'>search.cgi?_mode=mode_detail&_type=bl&_object_id=<TMPL_VAR NAME="LAND_ID" ESCAPE='0'>" >
+                            <img src="<TMPL_VAR NAME="LAND_PICS_INSIDE_THUMB" ESCAPE='1'>" width="140" border="0" /></a><br />
+
+                    </TMPL_IF>
+                </TMPL_IF>
+
+                <!-- 価格(リンク付き)表示 -->
+                <a href="<TMPL_VAR NAME='cgi_url' ESCAPE='0'>search.cgi?_mode=mode_detail&_type=bl&_object_id=<TMPL_VAR NAME="LAND_ID" ESCAPE='0'>" >
+                    価格：<strong><TMPL_VAR NAME="LAND_PRICE" ESCAPE='1'>万円</strong>
+                </a>
+                <br />
+
+                所在地：<TMPL_VAR NAME="LAND_LOCATION" ESCAPE='1'><br />
+
+                <TMPL_VAR NAME="LAND_STATION_1" ESCAPE='1'></span>
+                <TMPL_IF NAME="LAND_BUS_1">&nbsp;<TMPL_VAR NAME="LAND_BUS_1" ESCAPE='1'>&nbsp;<TMPL_ELSE>&nbsp;</TMPL_IF>
+                <TMPL_IF NAME="LAND_BUS_MINUTES_1">バス<TMPL_VAR NAME="LAND_BUS_MINUTES_1" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>
+                <TMPL_IF NAME="LAND_BUSWALK_MINUTES_1">(停歩<TMPL_VAR NAME="LAND_BUSWALK_MINUTES_1" ESCAPE='1'>分)</TMPL_IF>
+                ・
+                <TMPL_IF NAME="LAND_WALK_MINUTES_1">駅徒歩<TMPL_VAR NAME="LAND_WALK_MINUTES_1" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>
+                <TMPL_IF NAME="LAND_STATION_2"><br /><TMPL_VAR NAME="LAND_STATION_2" ESCAPE='1'>&nbsp;
+                    <TMPL_IF NAME="LAND_BUS_2">&nbsp;<TMPL_VAR NAME="LAND_BUS_2" ESCAPE='1'>&nbsp;<TMPL_ELSE></TMPL_IF>
+                    <TMPL_IF NAME="LAND_BUS_MINUTES_2">バス<TMPL_VAR NAME="LAND_BUS_MINUTES_2" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>
+                    <TMPL_IF NAME="LAND_BUSWALK_MINUTES_2">(停歩<TMPL_VAR NAME="LAND_BUSWALK_MINUTES_2" ESCAPE='1'>分)</TMPL_IF>
+                    ・
+                    <TMPL_IF NAME="LAND_WALK_MINUTES_2">徒歩<TMPL_VAR NAME="LAND_WALK_MINUTES_2" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>
+                </TMPL_IF>
+                <br />
+
+
+                <TMPL_IF NAME="LAND_ADS_TEXT">
+                    <TMPL_VAR NAME="LAND_ADS_TEXT" ESCAPE='1'><br />
+                </TMPL_IF>
+
+            </td>
+
+        </TMPL_LOOP>
+        </tr>
+    </table>
+    <br /><br />
+
+    <!-- 売買マンション用お薦め物件表示始まり -->
+    <table border="1">
+        <tr>
+        <!-- 売買マンション用お薦め物件繰り返しloop始まり -->
+        <TMPL_LOOP NAME='bm_recommend'>
+            <td valign="top">
+                <!-- 画像(リンク付き)表示 -->
+                <TMPL_IF NAME="MANSION_PICS_OUTSIDE_THUMB">
+                    <a href="<TMPL_VAR NAME='cgi_url' ESCAPE='0'>search.cgi?_mode=mode_detail&_type=bm&_object_id=<TMPL_VAR NAME="MANSION_ID" ESCAPE='0'>" >
+                        <img src="<TMPL_VAR NAME="MANSION_PICS_OUTSIDE_THUMB" ESCAPE='1'>" width="140" border="0" /></a><br />
+                <TMPL_ELSE>
+                    <TMPL_IF NAME="MANSION_PICS_INSIDE_THUMB">
+                        <a href="<TMPL_VAR NAME='cgi_url' ESCAPE='0'>search.cgi?_mode=mode_detail&_type=bm&_object_id=<TMPL_VAR NAME="MANSION_ID" ESCAPE='0'>" >
+                            <img src="<TMPL_VAR NAME="MANSION_PICS_INSIDE_THUMB" ESCAPE='1'>" width="140" border="0" /></a><br />
+                    <TMPL_ELSE>
+                        <TMPL_IF NAME="MANSION_PICS_MADORIZU_THUMB">
+                            <a href="<TMPL_VAR NAME='cgi_url' ESCAPE='0'>search.cgi?_mode=mode_detail&_type=bm&_object_id=<TMPL_VAR NAME="MANSION_ID" ESCAPE='0'>" >
+                                <img src="<TMPL_VAR NAME="MANSION_PICS_MADORIZU_THUMB" ESCAPE='1'>" width="140" border="0" /></a><br />
+                        </TMPL_IF>
+                    </TMPL_IF>
+                </TMPL_IF>
+
+                <!-- 価格(リンク付き)表示 -->
+                <a href="<TMPL_VAR NAME='cgi_url' ESCAPE='0'>search.cgi?_mode=mode_detail&_type=bm&_object_id=<TMPL_VAR NAME="MANSION_ID" ESCAPE='0'>" >
+                    価格：<strong><TMPL_VAR NAME="MANSION_PRICE" ESCAPE='1'>万円</strong>
+                </a>
+                <br />
+
+                所在地：<TMPL_VAR NAME="MANSION_LOCATION" ESCAPE='1'><br />
+
+                <TMPL_VAR NAME="MANSION_STATION_1" ESCAPE='1'></span>
+                <TMPL_IF NAME="MANSION_BUS_1">&nbsp;<TMPL_VAR NAME="MANSION_BUS_1" ESCAPE='1'>&nbsp;<TMPL_ELSE>&nbsp;</TMPL_IF>
+                <TMPL_IF NAME="MANSION_BUS_MINUTES_1">バス<TMPL_VAR NAME="MANSION_BUS_MINUTES_1" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>
+                <TMPL_IF NAME="MANSION_BUSWALK_MINUTES_1">(停歩<TMPL_VAR NAME="MANSION_BUSWALK_MINUTES_1" ESCAPE='1'>分)</TMPL_IF>
+                ・
+                <TMPL_IF NAME="MANSION_WALK_MINUTES_1">駅徒歩<TMPL_VAR NAME="MANSION_WALK_MINUTES_1" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>
+                <TMPL_IF NAME="MANSION_STATION_2"><br /><TMPL_VAR NAME="MANSION_STATION_2" ESCAPE='1'>&nbsp;
+                    <TMPL_IF NAME="MANSION_BUS_2">&nbsp;<TMPL_VAR NAME="MANSION_BUS_2" ESCAPE='1'>&nbsp;<TMPL_ELSE></TMPL_IF>
+                    <TMPL_IF NAME="MANSION_BUS_MINUTES_2">バス<TMPL_VAR NAME="MANSION_BUS_MINUTES_2" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>
+                    <TMPL_IF NAME="MANSION_BUSWALK_MINUTES_2">(停歩<TMPL_VAR NAME="MANSION_BUSWALK_MINUTES_2" ESCAPE='1'>分)</TMPL_IF>
+                    ・
+                    <TMPL_IF NAME="MANSION_WALK_MINUTES_2">徒歩<TMPL_VAR NAME="MANSION_WALK_MINUTES_2" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>
+                </TMPL_IF>
+                <br />
+
+
+                <TMPL_IF NAME="MANSION_ADS_TEXT">
+                    <TMPL_VAR NAME="MANSION_ADS_TEXT" ESCAPE='1'><br />
+                </TMPL_IF>
+
+            </td>
+
+        </TMPL_LOOP>
+        </tr>
+    </table>
+    <br /><br />
+
+    <!-- 売買一戸建て用お薦め物件表示始まり -->
+    <table border="1">
+        <tr>
+        <!-- 売買一戸建て用お薦め物件繰り返しloop始まり -->
+        <TMPL_LOOP NAME='bh_recommend'>
+            <td valign="top">
+                <!-- 画像(リンク付き)表示 -->
+                <TMPL_IF NAME="HOUSE_PICS_OUTSIDE_THUMB">
+                    <a href="<TMPL_VAR NAME='cgi_url' ESCAPE='0'>search.cgi?_mode=mode_detail&_type=bh&_object_id=<TMPL_VAR NAME="HOUSE_ID" ESCAPE='0'>" >
+                        <img src="<TMPL_VAR NAME="HOUSE_PICS_OUTSIDE_THUMB" ESCAPE='1'>" width="140" border="0" /></a><br />
+                <TMPL_ELSE>
+                    <TMPL_IF NAME="HOUSE_PICS_INSIDE_THUMB">
+                        <a href="<TMPL_VAR NAME='cgi_url' ESCAPE='0'>search.cgi?_mode=mode_detail&_type=bh&_object_id=<TMPL_VAR NAME="HOUSE_ID" ESCAPE='0'>" >
+                            <img src="<TMPL_VAR NAME="HOUSE_PICS_INSIDE_THUMB" ESCAPE='1'>" width="140" border="0" /></a><br />
+                    <TMPL_ELSE>
+                        <TMPL_IF NAME="HOUSE_PICS_MADORIZU_THUMB">
+                            <a href="<TMPL_VAR NAME='cgi_url' ESCAPE='0'>search.cgi?_mode=mode_detail&_type=bh&_object_id=<TMPL_VAR NAME="HOUSE_ID" ESCAPE='0'>" >
+                                <img src="<TMPL_VAR NAME="HOUSE_PICS_MADORIZU_THUMB" ESCAPE='1'>" width="140" border="0" /></a><br />
+                        </TMPL_IF>
+                    </TMPL_IF>
+                </TMPL_IF>
+
+                <!-- 価格(リンク付き)表示 -->
+                <a href="<TMPL_VAR NAME='cgi_url' ESCAPE='0'>search.cgi?_mode=mode_detail&_type=bh&_object_id=<TMPL_VAR NAME="HOUSE_ID" ESCAPE='0'>" >
+                    価格：<strong><TMPL_VAR NAME="HOUSE_PRICE" ESCAPE='1'>万円</strong>
+                </a>
+                <br />
+
+                所在地：<TMPL_VAR NAME="HOUSE_LOCATION" ESCAPE='1'><br />
+
+                <TMPL_VAR NAME="HOUSE_STATION_1" ESCAPE='1'></span>
+                <TMPL_IF NAME="HOUSE_BUS_1">&nbsp;<TMPL_VAR NAME="HOUSE_BUS_1" ESCAPE='1'>&nbsp;<TMPL_ELSE>&nbsp;</TMPL_IF>
+                <TMPL_IF NAME="HOUSE_BUS_MINUTES_1">バス<TMPL_VAR NAME="HOUSE_BUS_MINUTES_1" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>
+                <TMPL_IF NAME="HOUSE_BUSWALK_MINUTES_1">(停歩<TMPL_VAR NAME="HOUSE_BUSWALK_MINUTES_1" ESCAPE='1'>分)</TMPL_IF>
+                ・
+                <TMPL_IF NAME="HOUSE_WALK_MINUTES_1">駅徒歩<TMPL_VAR NAME="HOUSE_WALK_MINUTES_1" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>
+                <TMPL_IF NAME="HOUSE_STATION_2"><br /><TMPL_VAR NAME="HOUSE_STATION_2" ESCAPE='1'>&nbsp;
+                    <TMPL_IF NAME="HOUSE_BUS_2">&nbsp;<TMPL_VAR NAME="HOUSE_BUS_2" ESCAPE='1'>&nbsp;<TMPL_ELSE></TMPL_IF>
+                    <TMPL_IF NAME="HOUSE_BUS_MINUTES_2">バス<TMPL_VAR NAME="HOUSE_BUS_MINUTES_2" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>
+                    <TMPL_IF NAME="HOUSE_BUSWALK_MINUTES_2">(停歩<TMPL_VAR NAME="HOUSE_BUSWALK_MINUTES_2" ESCAPE='1'>分)</TMPL_IF>
+                    ・
+                    <TMPL_IF NAME="HOUSE_WALK_MINUTES_2">徒歩<TMPL_VAR NAME="HOUSE_WALK_MINUTES_2" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>
+                </TMPL_IF>
+                <br />
+
+
+                <TMPL_IF NAME="HOUSE_ADS_TEXT">
+                    <TMPL_VAR NAME="HOUSE_ADS_TEXT" ESCAPE='1'><br />
+                </TMPL_IF>
+
+            </td>
+
+        </TMPL_LOOP>
+        </tr>
+    </table>
+    <br /><br />
+
+    <!-- 売買事業用お薦め物件表示始まり -->
+    <table border="1">
+        <tr>
+        <!-- 売買事業用お薦め物件繰り返しloop始まり -->
+        <TMPL_LOOP NAME='bb_recommend'>
+            <td valign="top">
+                <!-- 画像(リンク付き)表示 -->
+                <TMPL_IF NAME="BUSINESS_PICS_OUTSIDE_THUMB">
+                    <a href="<TMPL_VAR NAME='cgi_url' ESCAPE='0'>search.cgi?_mode=mode_detail&_type=bb&_object_id=<TMPL_VAR NAME="BUSINESS_ID" ESCAPE='0'>" >
+                        <img src="<TMPL_VAR NAME="BUSINESS_PICS_OUTSIDE_THUMB" ESCAPE='1'>" width="140" border="0" /></a><br />
+                <TMPL_ELSE>
+                    <TMPL_IF NAME="BUSINESS_PICS_INSIDE_THUMB">
+                        <a href="<TMPL_VAR NAME='cgi_url' ESCAPE='0'>search.cgi?_mode=mode_detail&_type=bb&_object_id=<TMPL_VAR NAME="BUSINESS_ID" ESCAPE='0'>" >
+                            <img src="<TMPL_VAR NAME="BUSINESS_PICS_INSIDE_THUMB" ESCAPE='1'>" width="140" border="0" /></a><br />
+                    <TMPL_ELSE>
+                        <TMPL_IF NAME="BUSINESS_PICS_MADORIZU_THUMB">
+                            <a href="<TMPL_VAR NAME='cgi_url' ESCAPE='0'>search.cgi?_mode=mode_detail&_type=bb&_object_id=<TMPL_VAR NAME="BUSINESS_ID" ESCAPE='0'>" >
+                                <img src="<TMPL_VAR NAME="BUSINESS_PICS_MADORIZU_THUMB" ESCAPE='1'>" width="140" border="0" /></a><br />
+                        </TMPL_IF>
+                    </TMPL_IF>
+                </TMPL_IF>
+
+                <!-- 価格(リンク付き)表示 -->
+                <a href="<TMPL_VAR NAME='cgi_url' ESCAPE='0'>search.cgi?_mode=mode_detail&_type=bb&_object_id=<TMPL_VAR NAME="BUSINESS_ID" ESCAPE='0'>" >
+                    価格：<strong><TMPL_VAR NAME="BUSINESS_PRICE" ESCAPE='1'>万円</strong>
+                </a>
+                <br />
+
+                所在地：<TMPL_VAR NAME="BUSINESS_LOCATION" ESCAPE='1'><br />
+
+                <TMPL_VAR NAME="BUSINESS_STATION_1" ESCAPE='1'></span>
+                <TMPL_IF NAME="BUSINESS_BUS_1">&nbsp;<TMPL_VAR NAME="BUSINESS_BUS_1" ESCAPE='1'>&nbsp;<TMPL_ELSE>&nbsp;</TMPL_IF>
+                <TMPL_IF NAME="BUSINESS_BUS_MINUTES_1">バス<TMPL_VAR NAME="BUSINESS_BUS_MINUTES_1" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>
+                <TMPL_IF NAME="BUSINESS_BUSWALK_MINUTES_1">(停歩<TMPL_VAR NAME="BUSINESS_BUSWALK_MINUTES_1" ESCAPE='1'>分)</TMPL_IF>
+                ・
+                <TMPL_IF NAME="BUSINESS_WALK_MINUTES_1">駅徒歩<TMPL_VAR NAME="BUSINESS_WALK_MINUTES_1" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>
+                <TMPL_IF NAME="BUSINESS_STATION_2"><br /><TMPL_VAR NAME="BUSINESS_STATION_2" ESCAPE='1'>&nbsp;
+                    <TMPL_IF NAME="BUSINESS_BUS_2">&nbsp;<TMPL_VAR NAME="BUSINESS_BUS_2" ESCAPE='1'>&nbsp;<TMPL_ELSE></TMPL_IF>
+                    <TMPL_IF NAME="BUSINESS_BUS_MINUTES_2">バス<TMPL_VAR NAME="BUSINESS_BUS_MINUTES_2" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>
+                    <TMPL_IF NAME="BUSINESS_BUSWALK_MINUTES_2">(停歩<TMPL_VAR NAME="BUSINESS_BUSWALK_MINUTES_2" ESCAPE='1'>分)</TMPL_IF>
+                    ・
+                    <TMPL_IF NAME="BUSINESS_WALK_MINUTES_2">徒歩<TMPL_VAR NAME="BUSINESS_WALK_MINUTES_2" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>
+                </TMPL_IF>
+                <br />
+
+
+                <TMPL_IF NAME="BUSINESS_ADS_TEXT">
+                    <TMPL_VAR NAME="BUSINESS_ADS_TEXT" ESCAPE='1'><br />
+                </TMPL_IF>
+
+            </td>
+
+        </TMPL_LOOP>
+        </tr>
+    </table>
+    <br /><br />
+</div>
+
+<TMPL_INCLUDE NAME="site_footer.tmpl">

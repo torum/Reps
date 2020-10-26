@@ -1,0 +1,146 @@
+<TMPL_INCLUDE NAME="header.tmpl">
+
+<TMPL_INCLUDE NAME="menu.tmpl">
+<div id="content">
+
+<TMPL_VAR NAME="page_data" ESCAPE='0'>
+
+<TMPL_IF NAME="result_count">
+
+<form method="get" name="rsearch" id="rsearch" action="<TMPL_VAR NAME='script_name' ESCAPE='0'>?_mode=<TMPL_VAR NAME="_mode" ESCAPE='1'>&_type=<TMPL_VAR NAME="_type" ESCAPE='1'>" >
+
+    <table border="1" class="main_table">
+
+        <tr>
+            <th width="40" rowspan="2" class="list" valign="middle">選択</th>
+            <th class="list" width="375"><a href="javascript:formSortSubmit('location')">所在地</a></th>
+            <th width="85" class="list"><a href="javascript:formSortSubmit('price')">価格</a></th>
+            <th width="35" class="list" rowspan="2" valign="middle">状態</th>
+        </tr>
+        <tr>
+            <th class="list"><a href="javascript:formSortSubmit('station')">最寄駅</a></th>
+            <th width="85" class="list"><a href="javascript:formSortSubmit('date')">最終更新日</a></th>
+        </tr>
+        <TMPL_LOOP NAME='main_loop'>
+        <tr valign="top" class="<TMPL_IF NAME="BUSINESS_PUBLISHED">public<TMPL_ELSE>private</TMPL_IF>">
+            <td width="35" rowspan="2" align="center" valign="middle"><TMPL_IF NAME="BUSINESS_VIEW_ONLY"><TMPL_ELSE><input name="_object_id_to_be_deleted" value="<TMPL_VAR NAME="BUSINESS_ID" ESCAPE='0'>" type="checkbox" /></TMPL_IF></td>
+            <td><a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_edit&_type=<TMPL_VAR NAME="_type" ESCAPE='1'>&_object_id=<TMPL_VAR NAME="BUSINESS_ID" ESCAPE='0'>"><strong><TMPL_VAR NAME="BUSINESS_LOCATION" ESCAPE='1'></strong></a>&nbsp;&nbsp;[BB<TMPL_VAR NAME="BUSINESS_ID" ESCAPE='0'>]
+            </td>
+            <td><strong><TMPL_VAR NAME="BUSINESS_PRICE" ESCAPE='1'>万円</strong></td>
+            <td width="35" align="center" rowspan="2" valign="middle">
+                <TMPL_IF NAME="BUSINESS_PUBLISHED">公開<TMPL_ELSE>-</TMPL_IF>
+                <TMPL_IF NAME="BUSINESS_IS_SPECIAL"><br /><img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>icons/16-heart-gold-m.png" width="16" height="16" /></TMPL_IF>
+                <TMPL_IF NAME="BUSINESS_NEW"><img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>icons/New-006-009.gif" /></TMPL_IF>
+                <TMPL_IF NAME="BUSINESS_UPDATED"><img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>icons/updated-005-002.gif" /></TMPL_IF>
+            </td>
+        </tr>
+        <tr>
+            <td><TMPL_IF NAME="BUSINESS_STATION_1"><TMPL_VAR NAME="BUSINESS_STATION_1" ESCAPE='1'><TMPL_ELSE>-</TMPL_IF><TMPL_IF NAME="BUSINESS_STATION_2"><br /><TMPL_VAR NAME="BUSINESS_STATION_2" ESCAPE='1'></TMPL_IF></td>
+            
+            <td><TMPL_IF NAME="BUSINESS_LAST_UPDATED"><TMPL_VAR NAME="BUSINESS_LAST_UPDATED" ESCAPE='1'><TMPL_ELSE><TMPL_VAR NAME="BUSINESS_CREATED" ESCAPE='1'></TMPL_IF></td>
+
+        </tr>
+        </TMPL_LOOP>
+
+        <tr>
+            <td colspan="5" align="right"><br />
+
+
+
+    <TMPL_IF NAME="delete_object">
+    <!--    
+            <input type="hidden" name="delete_object" value="<TMPL_VAR NAME="delete_object" ESCAPE='1'>" />
+            <TMPL_VAR NAME="_object_id_to_be_deleted" ESCAPE='1'>
+     -->
+    </TMPL_IF>
+    <input type="hidden" name="search_object" value="<TMPL_VAR NAME="search_object" ESCAPE='1'>" />
+
+    <input type="hidden" name="business_name" value="<TMPL_VAR NAME="business_name" ESCAPE='1'>" />
+    <input type="hidden" name="business_address" value="<TMPL_VAR NAME="business_address" ESCAPE='1'>" />
+    <input type="hidden" name="business_school" value="<TMPL_VAR NAME="business_school" ESCAPE='1'>" />
+    <input type="hidden" name="business_price_1" value="<TMPL_VAR NAME="business_price_1" ESCAPE='1'>" />
+    <input type="hidden" name="business_price_2" value="<TMPL_VAR NAME="business_price_2" ESCAPE='1'>" />
+
+    <input type="hidden" name="business_station" value="<TMPL_VAR NAME="business_station" ESCAPE='1'>" />
+    <input type="hidden" name="business_kind" value="<TMPL_VAR NAME="business_kind" ESCAPE='1'>" />
+    <input type="hidden" name="business_kind_detail" value="<TMPL_VAR NAME="business_kind_detail" ESCAPE='1'>" />
+
+    <input type="hidden" name="business_age" value="<TMPL_VAR NAME="business_age" ESCAPE='1'>" />
+    <input type="hidden" name="business_square_1" value="<TMPL_VAR NAME="business_square_1" ESCAPE='1'>" />
+    <input type="hidden" name="business_square_2" value="<TMPL_VAR NAME="business_square_2" ESCAPE='1'>" />
+    <input type="hidden" name="business_walk_minutes" value="<TMPL_VAR NAME="business_walk_minutes" ESCAPE='1'>" />
+
+    <input type="hidden" name="business_options_parking" value="<TMPL_VAR NAME="business_options_parking" ESCAPE='1'>" />
+
+    <input type="hidden" name="business_recommend" value="<TMPL_VAR NAME="business_recommend" ESCAPE='1'>" />
+    <input type="hidden" name="business_has_" value="<TMPL_VAR NAME="business_has_" ESCAPE='1'>" />
+
+    <input type="hidden" name="business_public" value="<TMPL_VAR NAME="business_public" ESCAPE='1'>" />
+    <input type="hidden" name="business_jisyakannri" value="<TMPL_VAR NAME="business_jisyakannri" ESCAPE='1'>" />
+    <input type="hidden" name="business_jisyatouroku" value="<TMPL_VAR NAME="business_jisyatouroku" ESCAPE='1'>" />
+
+    <input type="hidden" name="_type" value="<TMPL_VAR NAME="_type" ESCAPE='1'>" />
+    <input type="hidden" name="_mode" value="<TMPL_VAR NAME="_mode" ESCAPE='1'>" />
+    <input type="hidden" name="off_set" value="<TMPL_VAR NAME="off_set" ESCAPE='1'>" />
+    <input type="hidden" name="sort_by" value="<TMPL_VAR NAME="sort_by" ESCAPE='1'>"  />
+
+            </td>
+        </tr>
+        <tr>
+            <td colspan="5" align="left">
+                <input type="button" onclick="doCheckAll(this.form,true)" name="check_all" value="すべて選択する" />
+                <input type="button" onclick="doCheckAll(this.form,false)" name="uncheck_all" value="すべて選択を解除する" />
+
+            </td>
+        </tr>
+    </table>
+    <table border="1" class="main_table">
+        <tr>
+            <td width="33%" align="left">
+                <input type="submit" name="delete_object" value="削除" class="submit" onClick="return confirmDelete(document.rsearch)" />
+            </td>
+            <td width="66%" align="right">
+
+                <select name="_action">
+                    <option value="" selected="selected">その他の操作</option>
+                    <option value="public">公開</option>
+                    <option value="private">非公開</option>
+                    <option value="duplicate">複製の作成</option>
+                    <option value="make_special">お薦め物件にする</option>
+                    <option value="undo_special">お薦めを解除する</option>
+                </select>
+                <input type="submit" name="multiple_object" value="実行" />
+
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="right">
+            <noscript>
+                <TMPL_IF NAME="items_per_page_next">
+                    <input type="hidden" name="off_set_next" value="<TMPL_VAR NAME="off_set_next" ESCAPE='1'>" />
+                    <input type="submit" name="search_object" value="次の<TMPL_VAR NAME="items_per_page_next" ESCAPE='1'>件" />
+                </TMPL_IF>
+            </noscript>
+
+
+                <script type="text/javascript">
+        <!--
+                    document.write('[&nbsp;<TMPL_IF NAME="items_per_page_pre"><a href="javascript:formSubmit(<TMPL_VAR NAME="off_set_pre" ESCAPE='1'>)">前の<TMPL_VAR NAME="items_per_page_pre" ESCAPE='1'>件</a><TMPL_ELSE>前の0件</TMPL_IF>&nbsp;|&nbsp;<TMPL_IF NAME="items_per_page_next"><a href="javascript:formSubmit(<TMPL_VAR NAME="off_set_next" ESCAPE='1'>)">次の<TMPL_VAR NAME="items_per_page_next" ESCAPE='1'>件</a><TMPL_ELSE>次の0件</TMPL_IF>&nbsp;]&nbsp;&nbsp;');
+        //-->
+                </script>
+            </td>
+        </tr>
+    </table>
+    </form>
+<br />
+
+<TMPL_ELSE>
+    <p>見付かりませんでした。条件を変えて再度検索してください。</p>
+</TMPL_IF>
+
+</div>
+
+
+
+
+<TMPL_INCLUDE NAME="footer.tmpl">

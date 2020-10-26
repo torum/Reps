@@ -1,0 +1,735 @@
+<table cellspacing="3" cellpadding="4" border="0" width="735">
+    <tbody>
+        <tr>
+            <td colspan="2">
+                ▼ご購入希望条件（オレンジの色付きの項目には必ずご記入ください）
+            </td>
+        </tr>
+        <tr>
+            <td width="25%" bgcolor="#FFEFBE">
+                希望物件の種別
+            </td>
+            <td width="75%" bgcolor="#FFFAE6">
+                <label><input type="radio" value="土地" name="BUKKEN_SYUBETSU" <TMPL_IF NAME="_type_bl">checked="checked"</TMPL_IF> />土地</label>
+                <label><input type="radio" value="マンション" name="BUKKEN_SYUBETSU" <TMPL_IF NAME="_type_bm">checked="checked"</TMPL_IF> />マンション</label>
+                <label><input type="radio" value="戸建て" name="BUKKEN_SYUBETSU" <TMPL_IF NAME="_type_bh">checked="checked"</TMPL_IF> />一戸建て</label>
+                <label><input type="radio" value="事業用" name="BUKKEN_SYUBETSU" <TMPL_IF NAME="_type_bh">checked="checked"</TMPL_IF> />事業用</label> 
+                <!-- またはhiddenにして、非表示にも
+                <input type="hidden" value="未指定" name="BUKKEN_SYUBETSU" />
+                -->
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" width="25%" bgcolor="#FFEFBE">
+                ご希望のエリア・駅<br />
+                （第1希望）
+            </td>
+            <td valign="top" width="75%" bgcolor="#FFFAE6">
+                <table cellspacing="4" cellpadding="0" border="0">
+                    <tbody>
+                        <tr>
+                            <td>
+                                ▼エリア(地域)を入力（例：東京都多摩市）
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input size="50" name="BUKKEN_AREA" />
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                ▼駅を入力（例：京王線聖蹟桜ケ丘）
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <table cellspacing="0" cellpadding="0" border="0">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <input size="50" name="BUKKEN_EKI" />
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" width="25%" bgcolor="#E6E6E6">
+                <p>
+                    ご希望のエリア・駅<br />
+                    （第2希望）
+                </p>
+            </td>
+            <td valign="top" width="75%" bgcolor="#EFEFEF">
+                <table cellspacing="4" cellpadding="0" border="0">
+                    <tbody>
+                        <tr>
+                            <td>
+                                ▼エリアを入力
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input size="50" name="BUKKEN_AREA_SECOND" />
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                ▼駅を入力
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <table cellspacing="0" cellpadding="0" border="0">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <input size="50" name="BUKKEN_EKI_SECOND" />
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td bgcolor="#FFEFBE">
+                ご予算
+            </td>
+            <td bgcolor="#FFFAE6">
+                <input size="9" name="BUKKEN_YOSAN" />万円くらい
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" bgcolor="#E6E6E6">
+                マンション<br />
+                ご希望の方
+            </td>
+            <td bgcolor="#EFEFEF">
+                専有面積：<select name="MENSEKI_MANSION">
+                    <option value="" selected="selected">
+                        選択してください
+                    </option>
+                    <option value="0">
+                        0
+                    </option>
+                    <option value="40">
+                        40
+                    </option>
+                    <option value="50">
+                        50
+                    </option>
+                    <option value="55">
+                        55
+                    </option>
+                    <option value="60">
+                        60
+                    </option>
+                    <option value="65">
+                        65
+                    </option>
+                    <option value="70">
+                        70
+                    </option>
+                    <option value="75">
+                        75
+                    </option>
+                    <option value="80">
+                        80
+                    </option>
+                    <option value="85">
+                        85
+                    </option>
+                    <option value="90">
+                        90
+                    </option>
+                    <option value="95">
+                        95
+                    </option>
+                    <option value="100">
+                        100
+                    </option>
+                    <option value="110">
+                        110
+                    </option>
+                    <option value="120">
+                        120
+                    </option>
+                    <option value="130">
+                        130
+                    </option>
+                    <option value="140">
+                        140
+                    </option>
+                    <option value="160">
+                        160
+                    </option>
+                </select>平米以上
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" bgcolor="#E6E6E6">
+                土地・戸建て<br />
+                ご希望の方
+            </td>
+            <td bgcolor="#EFEFEF">
+                建物面積：<select name="MENSEKI_TATEMONO">
+                    <option value="" selected="selected">
+                        選択してください
+                    </option>
+                    <option value="0">
+                        0
+                    </option>
+                    <option value="40">
+                        40
+                    </option>
+                    <option value="50">
+                        50
+                    </option>
+                    <option value="55">
+                        55
+                    </option>
+                    <option value="60">
+                        60
+                    </option>
+                    <option value="65">
+                        65
+                    </option>
+                    <option value="70">
+                        70
+                    </option>
+                    <option value="75">
+                        75
+                    </option>
+                    <option value="80">
+                        80
+                    </option>
+                    <option value="85">
+                        85
+                    </option>
+                    <option value="90">
+                        90
+                    </option>
+                    <option value="95">
+                        95
+                    </option>
+                    <option value="100">
+                        100
+                    </option>
+                    <option value="110">
+                        110
+                    </option>
+                    <option value="120">
+                        120
+                    </option>
+                    <option value="130">
+                        130
+                    </option>
+                    <option value="140">
+                        140
+                    </option>
+                    <option value="160">
+                        160
+                    </option>
+                    <option value="180">
+                        180
+                    </option>
+                </select> 平米以上<br />
+                土地面積：<select name="MENSEKI_TOCHI">
+                    <option value="" selected="selected">
+                        選択してください
+                    </option>
+                    <option value="0">
+                        0
+                    </option>
+                    <option value="40">
+                        40
+                    </option>
+                    <option value="50">
+                        50
+                    </option>
+                    <option value="55">
+                        55
+                    </option>
+                    <option value="60">
+                        60
+                    </option>
+                    <option value="65">
+                        65
+                    </option>
+                    <option value="70">
+                        70
+                    </option>
+                    <option value="75">
+                        75
+                    </option>
+                    <option value="80">
+                        80
+                    </option>
+                    <option value="85">
+                        85
+                    </option>
+                    <option value="90">
+                        90
+                    </option>
+                    <option value="95">
+                        95
+                    </option>
+                    <option value="100">
+                        100
+                    </option>
+                    <option value="110">
+                        110
+                    </option>
+                    <option value="120">
+                        120
+                    </option>
+                    <option value="130">
+                        130
+                    </option>
+                    <option value="140">
+                        140
+                    </option>
+                    <option value="160">
+                        160
+                    </option>
+                    <option value="180">
+                        180
+                    </option>
+                    <option value="200">
+                        200
+                    </option>
+                    <option value="250">
+                        250
+                    </option>
+                    <option value="300">
+                        300
+                    </option>
+                </select>平米以上
+            </td>
+        </tr>
+        <tr>
+            <td bgcolor="#E6E6E6">
+                間取り
+            </td>
+            <td bgcolor="#EFEFEF">
+                <input maxlength="2" size="5" name="MADORI" /> <select name="MADORI_TYPE">
+                    <option selected="selected">
+                        選択してください
+                    </option>
+                    <option value="ワンルーム">
+                        ワンルーム
+                    </option>
+                    <option value="Ｋ">
+                        Ｋ
+                    </option>
+                    <option value="ＤＫ">
+                        ＤＫ
+                    </option>
+                    <option value="ＬＫ">
+                        ＬＫ
+                    </option>
+                    <option value="ＬＤＫ">
+                        ＬＤＫ
+                    </option>
+                    <option value="ＳＫ">
+                        ＳＫ
+                    </option>
+                    <option value="ＳＤＫ">
+                        ＳＤＫ
+                    </option>
+                    <option value="ＳＬＫ">
+                        ＳＬＫ
+                    </option>
+                    <option value="ＳＬＤＫ">
+                        ＳＬＤＫ
+                    </option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td bgcolor="#FFEFBE">
+                購入予定時期
+            </td>
+            <td bgcolor="#FFFAE6">
+                <input type="radio" value="至急" name="YOTEI" />至急
+                <input type="radio" value="3ヵ月以内" name="YOTEI" />3ヵ月以内
+                <input type="radio" value="半年以内" name="YOTEI" />半年以内
+                <input type="radio" value="1年以内" name="YOTEI" />1年以内
+                <input type="radio" value="未定" name="YOTEI" />未定
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+
+
+
+
+
+<table cellspacing="3" cellpadding="4" border="0" width="735">
+    <tbody>
+        <tr>
+            <td colspan="2">
+                ▼お客様のご連絡先（オレンジの色付きの項目には必ずご記入ください）
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" width="25%" bgcolor="#FFEFBE">
+                お名前（漢字）
+            </td>
+            <td valign="top" width="75%" bgcolor="#FFFAE6">
+                <input size="40" name="NAME" />
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" nowrap="nowrap" width="25%" bgcolor="#FFEFBE">
+                お名前（フリガナ）
+            </td>
+            <td valign="top" width="75%" bgcolor="#FFFAE6">
+                <input size="40" name="NAME_KANA" /><br />
+                ※全角カタカナ
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" width="25%" bgcolor="#E6E6E6">
+                E-メールアドレス
+            </td>
+            <td valign="top" width="75%" bgcolor="#EFEFEF">
+                <input size="40" name="EMAIL" /><br />
+                ※半角英数字
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" width="25%" bgcolor="#FFEFBE">
+                お電話番号
+            </td>
+            <td valign="top" width="75%" bgcolor="#FFFAE6">
+                <input size="5" name="TEL" />-<input size="5" name="TEL2" />-<input size="5" name="TEL3" /><br />
+                ※半角数字
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" width="25%" bgcolor="#E6E6E6">
+                FAX番号
+            </td>
+            <td valign="top" width="75%" bgcolor="#EFEFEF">
+                <input size="5" name="FAX" />-<input size="5" name="FAX2" />-<input size="5" name="FAX3" /><br />
+                ※半角数字
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" width="25%" bgcolor="#FFEFBE">
+                郵便番号
+            </td>
+            <td valign="top" width="75%" bgcolor="#FFFAE6">
+                <input size="5" name="YUBIN" />-<input size="7" name="YUBIN2" /><br />
+                ※半角数字（7桁）
+            </td>
+        </tr>
+        <tr valign="top">
+            <td bgcolor="#FFEFBE">
+                ご住所
+            </td>
+            <td bgcolor="#FFFAE6">
+                <select size="1" name="ADDRESS_TODOUFUKEN">
+                    <option value="" selected="selected">
+                        選択してください
+                    </option>
+                    <option value="北海道">
+                        北海道
+                    </option>
+                    <option value="青森県">
+                        青森県
+                    </option>
+                    <option value="岩手県">
+                        岩手県
+                    </option>
+                    <option value="宮城県">
+                        宮城県
+                    </option>
+                    <option value="秋田県">
+                        秋田県
+                    </option>
+                    <option value="山形県">
+                        山形県
+                    </option>
+                    <option value="福島県">
+                        福島県
+                    </option>
+                    <option value="茨城県">
+                        茨城県
+                    </option>
+                    <option value="栃木県">
+                        栃木県
+                    </option>
+                    <option value="群馬県">
+                        群馬県
+                    </option>
+                    <option value="埼玉県">
+                        埼玉県
+                    </option>
+                    <option value="千葉県">
+                        千葉県
+                    </option>
+                    <option value="東京都">
+                        東京都
+                    </option>
+                    <option value="神奈川県">
+                        神奈川県
+                    </option>
+                    <option value="新潟県">
+                        新潟県
+                    </option>
+                    <option value="富山県">
+                        富山県
+                    </option>
+                    <option value="石川県">
+                        石川県
+                    </option>
+                    <option value="福井県">
+                        福井県
+                    </option>
+                    <option value="山梨県">
+                        山梨県
+                    </option>
+                    <option value="長野県">
+                        長野県
+                    </option>
+                    <option value="岐阜県">
+                        岐阜県
+                    </option>
+                    <option value="静岡県">
+                        静岡県
+                    </option>
+                    <option value="愛知県">
+                        愛知県
+                    </option>
+                    <option value="三重県">
+                        三重県
+                    </option>
+                    <option value="滋賀県">
+                        滋賀県
+                    </option>
+                    <option value="京都府">
+                        京都府
+                    </option>
+                    <option value="大阪府">
+                        大阪府
+                    </option>
+                    <option value="兵庫県">
+                        兵庫県
+                    </option>
+                    <option value="奈良県">
+                        奈良県
+                    </option>
+                    <option value="和歌山県">
+                        和歌山県
+                    </option>
+                    <option value="鳥取県">
+                        鳥取県
+                    </option>
+                    <option value="島根県">
+                        島根県
+                    </option>
+                    <option value="岡山県">
+                        岡山県
+                    </option>
+                    <option value="広島県">
+                        広島県
+                    </option>
+                    <option value="山口県">
+                        山口県
+                    </option>
+                    <option value="徳島県">
+                        徳島県
+                    </option>
+                    <option value="香川県">
+                        香川県
+                    </option>
+                    <option value="愛媛県">
+                        愛媛県
+                    </option>
+                    <option value="高知県">
+                        高知県
+                    </option>
+                    <option value="福岡県">
+                        福岡県
+                    </option>
+                    <option value="佐賀県">
+                        佐賀県
+                    </option>
+                    <option value="長崎県">
+                        長崎県
+                    </option>
+                    <option value="熊本県">
+                        熊本県
+                    </option>
+                    <option value="大分県">
+                        大分県
+                    </option>
+                    <option value="宮崎県">
+                        宮崎県
+                    </option>
+                    <option value="鹿児島県">
+                        鹿児島県
+                    </option>
+                    <option value="沖縄県">
+                        沖縄県
+                    </option>
+                </select><br />
+                ※都道府県
+            </td>
+        </tr>
+        <tr valign="top">
+            <td bgcolor="#FFEFBE">
+                &nbsp;
+            </td>
+            <td bgcolor="#FFFAE6">
+                <input size="30" name="ADDRESS_SIKUCYOUSON" /><br />
+                ※市区町村
+            </td>
+        </tr>
+        <tr valign="top">
+            <td bgcolor="#FFEFBE">
+                &nbsp;
+            </td>
+            <td bgcolor="#FFFAE6">
+                
+                    <input size="30" name="ADDRESS_CHYOUME" /><br />
+                ※町・丁目
+            </td>
+        </tr>
+        <tr valign="top">
+            <td bgcolor="#FFEFBE">
+                &nbsp;
+            </td>
+            <td bgcolor="#FFFAE6">
+                <input size="30" name="ADDRESS_BANCHI" /><br />
+                ※番地・号
+            </td>
+        </tr>
+        <tr valign="top">
+            <td bgcolor="#E6E6E6">
+                &nbsp;
+            </td>
+            <td bgcolor="#EFEFEF">
+                <input size="30" name="ADDRESS_MANSYON" /><br />
+                ※マンション名など
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" width="25%" bgcolor="#E6E6E6">
+                生年月日
+            </td>
+            <td valign="top" width="75%" bgcolor="#EFEFEF">
+                西暦<input size="7" name="BIRTHDAY_Y" />年<input size="5" name="BIRTHDAY_M" />月<input size="5" name="BIRTHDAY_D" />日
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" width="25%" bgcolor="#FFEFBE">
+                ご希望のご連絡方法
+            </td>
+            <td valign="top" width="75%" bgcolor="#FFFAE6">
+                <table cellspacing="0" cellpadding="0" border="0">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <input type="checkbox" value="1" name="SHUDAN_EMAIL" />E-メール
+                            </td>
+                            <td></td>
+                            <td>
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" value="1" name="SHUDAN_TEL" />TEL
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                                ご希望時間帯<input name="RENRAKU_TIME" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" value="1" name="SHUDAN_FAX" />FAX
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" value="1" name="SHUDAN_YUBIN" />郵便
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>※複数選択可（必ずひとつはお選びください）
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" width="25%" bgcolor="#FFEFBE">
+                    どのようにしてこのホームページお知りになりましたか？
+            </td>
+            <td width="75%" bgcolor="#FFFAE6">
+                <select multiple="multiple" name="NINTI">
+                    <option value="新聞折込チラシ">
+                        新聞折込チラシ
+                    </option>
+                    <option value="新聞紙面広告">
+                        新聞紙面広告
+                    </option>
+                    <option value="住宅情報誌">
+                        住宅情報誌
+                    </option>
+                    <option value="不動産検索サイト">
+                        不動産検索サイト
+                    </option>
+                    <option value="一般検索サイト">
+                        一般検索サイト
+                    </option>
+                    <option value="その他のサイト">
+                        その他のサイト
+                    </option>
+                    <option value="その他">
+                        その他
+                    </option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" width="25%" bgcolor="#E6E6E6">
+                ご意見・ご要望
+            </td>
+            <td width="75%" bgcolor="#EFEFEF">
+                <textarea name="OPINION" rows="5" cols="40"></textarea>
+            </td>
+        </tr>
+
+    </tbody>
+</table>

@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta name="description" content="" />
+        <meta http-equiv="Content-Type" content="text/html; charset=<TMPL_VAR NAME='page_charset' ESCAPE='1'>" />
+        <title><TMPL_VAR NAME='page_title' ESCAPE='1'></title>
+        <link rel="stylesheet" href="<TMPL_VAR NAME='static_url' ESCAPE='1'>styles.css" type="text/css" />
+
+        <script type="text/javascript">
+<!--
+
+function formSubmit(off_set) {
+  document.rsearch.off_set.value = off_set;
+  document.rsearch.submit();
+}
+
+function formSortSubmit(sort_by) {
+  document.rsearch.sort_by.value = sort_by;
+  document.rsearch.off_set.value = 0;
+  document.rsearch.submit();
+}
+
+function doCheckAll (f, v) {
+    var e = f._object_id_to_be_deleted;
+    if (e) {
+      if (e.value)
+          e.checked = v;
+      else
+          for (i=0; i<e.length; i++) 
+              e[i].checked = v;
+    }
+}
+
+function confirmDelete (f) {
+    var e = f._object_id_to_be_deleted;
+    if (e) {
+        if (e.value){
+            if (e.checked){
+                if (confirm("選択した項目を削除しますか?")){
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {return false;}
+        } else {
+            var c;
+            for (i=0; i<e.length; i++) {
+                if (e[i].checked){
+                                c = true;
+                }
+            }
+            if (c){
+                if (confirm("選択した項目を削除しますか?")){
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        }
+    }
+
+}
+
+function confirmDeletePicture (p,n) {
+    if (p) {
+        if (confirm('画像を削除しますか?')){
+            p.delete_pic.value = n;
+            p.submit();
+            return true;
+        } else {
+            return false;
+        }
+    } else {
+        return false;
+    }
+}
+
+// -->
+        </script>
+
+    </head>
+    <body> 
+
+<div id="banner">
+    <b class="rtop"><b class="r1"></b><b class="r2"></b><b class="r3"></b><b class="r4"></b></b>
+    <span id="banner_logo">
+        <a href="<TMPL_VAR NAME='script_name' ESCAPE='0'>"><h2>REPS::物件管理画面</h2></a>
+        
+    </span>
+<TMPL_IF NAME="user_id">
+    
+    <div id="banner_user_info">
+        ユーザー：<a href="<TMPL_VAR NAME='script_name' ESCAPE='0'>?_mode=mode_profile"><TMPL_IF NAME="admin"><img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>icons/16-member-heart.png" width="16" height="16" border="0" align="top" /><TMPL_ELSE><img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>icons/16-member.png" width="16" height="16" border="0" align="top" /></TMPL_IF><TMPL_VAR NAME='user_id' ESCAPE='0'></a><!-- &nbsp;<TMPL_IF NAME="admin">[<strong>管理者</strong>]</TMPL_IF> -->
+        <br /><a href="<TMPL_VAR NAME='script_name' ESCAPE='0'>?_mode=mode_logout"><img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>icons/door_out.png" width="16" height="16" border="0" align="absmiddle" />ログアウト</a>
+        <!--
+        <form method="post" action="<TMPL_VAR NAME='script_name' ESCAPE='0'>" enctype="application/x-www-form-urlencoded">
+        <input type="submit" name="Logout" value="ログアウト" class="submit" /><input type="hidden" name="_mode" value="mode_main" />
+        </form>
+        -->
+    </div>
+<TMPL_ELSE>
+    <div id="banner_user_info">
+<br />    
+<br />    
+        
+    </div>
+
+</TMPL_IF>
+<!--    <b class="rbottom"><b class="r4"></b><b class="r3"></b><b class="r2"></b><b class="r1"></b></b> -->
+</div>
+<div id="container">

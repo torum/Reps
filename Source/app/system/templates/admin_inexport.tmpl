@@ -1,0 +1,277 @@
+<TMPL_INCLUDE NAME="header.tmpl">
+
+<TMPL_INCLUDE NAME="menu.tmpl">
+<div id="content">
+    <TMPL_VAR NAME="page_data" ESCAPE='0'>
+
+    <form method="get" action="<TMPL_VAR NAME='script_name' ESCAPE='0'>" enctype="application/x-www-form-urlencoded" name="export">
+    <table border="1" class="main_table">
+        <tr>
+            <th align="left" colspan="2" style="background-color:#9BD1FA;padding:0px;"><b class="rtop"><b class="r1"></b><b class="r2"></b><b class="r3"></b><b class="r4"></b></b>&nbsp;&nbsp;<img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>/icons/server_go.png" width="16" height="16" align="top" border="0" />&nbsp;エクスポート</th>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <p>
+                    データをエクスポートするには、まずFTPクライアントソフトウェアで「インストールディレクトリ/app/export」にアクセスし、ヘッダ定義ファイル（*.header）をアップロードしてください。<br />ヘッダ定義ファイルの作成の方法はマニュアルをご参照ください。ヘッダ定義ファイルと物件データが存在するものだけ、エクスポート出来ます。
+                </p>
+                <p>
+                    下記のリンクをクリックしてエクスポートします。「ファイルに保存」ダイアログ ボックスが表示されますので、保存先を指定してCSVファイルを保存してください。
+                </p>
+                <p><strong>[重要]</strong>&nbsp;ファイルを保存しましたら、必ずファイルの内容をご確認ください。</p>
+            </td>
+        </tr>
+        <tr>
+            <td width="30">&nbsp;</td>
+            <td>
+
+                <table border="0">
+<TMPL_IF NAME="r_visible">
+<TMPL_IF NAME="rl_visible">
+                <tr>
+                <td>
+                <TMPL_IF NAME="RL_HEADER">
+                    <a href="<TMPL_VAR NAME='script_name' ESCAPE='0'>?_type=rl&_mode=mode_admin_inexport&_action=export&format_type=csv">
+                        <img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>/icons/page_white_excel.png" width="16" height="16" align="absmiddle" border="0" />
+                        賃貸::住居用</a>&nbsp;(rl.header / rl.csv)
+                <TMPL_ELSE>
+                    賃貸::住居用 (rl.header)
+
+                </TMPL_IF>
+                </td>
+                </tr>
+</TMPL_IF>
+<TMPL_IF NAME="rb_visible">
+                <tr>
+                <td>
+                <TMPL_IF NAME="RB_HEADER">
+                    <a href="<TMPL_VAR NAME='script_name' ESCAPE='0'>?_type=rb&_mode=mode_admin_inexport&_action=export&format_type=csv">
+                        <img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>/icons/page_white_excel.png" width="16" height="16" align="absmiddle" border="0" />
+                        賃貸::事業用</a>&nbsp;(rb.header / rb.csv)
+                <TMPL_ELSE>
+                    賃貸::事業用 (rb.header)
+
+                </TMPL_IF>
+                </td>
+                </tr>
+</TMPL_IF>
+</TMPL_IF>
+<TMPL_IF NAME="b_visible">
+<TMPL_IF NAME="bl_visible">
+                <tr>
+                <td>
+                <TMPL_IF NAME="BL_HEADER">
+                    <a href="<TMPL_VAR NAME='script_name' ESCAPE='0'>?_type=bl&_mode=mode_admin_inexport&_action=export&format_type=csv">
+                        <img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>/icons/page_white_excel.png" width="16" height="16" align="absmiddle" border="0" />
+                        売買::土地 </a>&nbsp;(bl.header / bl.csv)
+                <TMPL_ELSE>
+                    売買::土地 (bl.header)
+
+                </TMPL_IF>
+                </td>
+                </tr>
+</TMPL_IF>
+<TMPL_IF NAME="bm_visible">
+                <tr>
+                <td>
+                <TMPL_IF NAME="BM_HEADER">
+                    <a href="<TMPL_VAR NAME='script_name' ESCAPE='0'>?_type=bm&_mode=mode_admin_inexport&_action=export&format_type=csv">
+                        <img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>/icons/page_white_excel.png" width="16" height="16" align="absmiddle" border="0" />
+                        売買::マンション</a>&nbsp;(bm.header / bm.csv)
+                <TMPL_ELSE>
+                    売買::マンション (bm.header)
+
+                </TMPL_IF>
+                </td>
+                </tr>
+</TMPL_IF>
+<TMPL_IF NAME="bh_visible">
+                <tr>
+                <td>
+                <TMPL_IF NAME="BH_HEADER">
+                    <a href="<TMPL_VAR NAME='script_name' ESCAPE='0'>?_type=bh&_mode=mode_admin_inexport&_action=export&format_type=csv">
+                        <img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>/icons/page_white_excel.png" width="16" height="16" align="absmiddle" border="0" />
+                        売買::一戸建て</a>&nbsp;(bh.header / bh.csv)
+
+                <TMPL_ELSE>
+                    売買::一戸建て (bh.header)
+
+                </TMPL_IF>
+                </td>
+                </tr>
+</TMPL_IF>
+<TMPL_IF NAME="bb_visible">
+                <tr>
+                <td>
+                <TMPL_IF NAME="BB_HEADER">
+                    <a href="<TMPL_VAR NAME='script_name' ESCAPE='0'>?_type=bb&_mode=mode_admin_inexport&_action=export&format_type=csv">
+                        <img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>/icons/page_white_excel.png" width="16" height="16" align="absmiddle" border="0" />
+                        売買::投資用</a>&nbsp;(bb.header / bb.csv)
+
+                <TMPL_ELSE>
+                    売買::投資用 (bb.header)
+
+                </TMPL_IF>
+                </td>
+                </tr>
+</TMPL_IF>
+</TMPL_IF>
+                </table>
+<!--
+                <input type="hidden" name="_mode" value="mode_admin_inexport" />
+                <input type="hidden" name="_action" value="export" />
+                <input type="hidden" name="format_type" value="csv" />
+-->
+                <br />
+            </td>
+        </tr>
+
+            </td>
+        </tr>
+    </table>
+    </form>
+
+
+
+    <form method="get" action="<TMPL_VAR NAME='script_name' ESCAPE='0'>" enctype="application/x-www-form-urlencoded" name="import">
+    <table border="1" class="main_table">
+        <tr>
+            <th align="left" colspan="2" style="background-color:#9BD1FA;padding:0px;"><b class="rtop"><b class="r1"></b><b class="r2"></b><b class="r3"></b><b class="r4"></b></b>&nbsp;&nbsp;<img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>/icons/server_connect.png" width="16" height="16" align="top" border="0" />&nbsp;インポート</th>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <p>
+                    データをインポートするには、まずFTPクライアントソフトウェアで「インストールディレクトリ/app/import」にアクセスし、インポートファイル（*.csv）とヘッダ定義ファイル（*.header）をアップロードしてください。
+                </p>
+                <p>
+                    インポートするデータを選択して、「インポート」ボタンをクリックしてください。ヘッダ定義ファイルとインポートファイルの両方が存在するものだけ、選択できます。<br />
+                </p>
+                <p>
+                    <strong>[重要]</strong>インポートする物件に、既存の物件の物件IDが指定されている場合は、インポートするデータで既存の物件に上書きされます。物件IDが指定されていない、または指定されていても、存在していない物件の物件IDであれば、新規追加物件として、自動で新たな物件IDが割り当てられます。
+                </p>
+                <p>
+                    <strong>[重要]</strong>&nbsp;インポート後に、必ず正しく取り込めているか内容をご確認ください。インポート処理が終わりましたら、最後に、サーバー上から、インポートファイル（*.csv）を削除してください。
+                </p>
+                <p>
+                    <strong>[重要]</strong>&nbsp;インポート前に念のためDBディレクトリの内容をFTPでバックアップしておくことをお薦めいたします。
+                </p>
+
+
+            </td>
+        </tr>
+        <tr align="left">
+            <td width="30">&nbsp;</td>
+            <th align="left">インポート項目の選択 </th>
+        </tr>
+        <tr>
+            <td width="30">&nbsp;</td>
+            <td>
+                <table border="0">
+<TMPL_IF NAME="r_visible">
+<TMPL_IF NAME="rl_visible">
+                <tr>
+                <td>
+                <TMPL_IF NAME="RL_IMPORT">
+                    <label for="i-rl"><input type="radio" id="i-rl" name="_type" value="rl" />&nbsp;賃貸::住居用 データ (rl.header / rl.csv)</label>
+                <TMPL_ELSE>
+                    <label for="i-rl"><input type="radio" id="i-rl" name="_type" value="rl" disabled="disabled" />&nbsp;賃貸::住居用 データ (rl.header / rl.csv)</label>
+                </TMPL_IF>
+                </td>
+                </tr>
+</TMPL_IF>
+<TMPL_IF NAME="rb_visible">
+                <tr>
+                <td>
+                <TMPL_IF NAME="RB_IMPORT">
+                    <label for="i-rb"><input type="radio" id="i-rb" name="_type" value="rb" />&nbsp;賃貸::事業用 データ (rb.header / rb.csv)</label>
+                <TMPL_ELSE>
+                    <label for="i-rb"><input type="radio" id="i-rb" name="_type" value="rb" disabled="disabled" />&nbsp;賃貸::事業用 データ (rb.header / rb.csv)</label>
+                </TMPL_IF>
+                </td>
+                </tr>
+</TMPL_IF>
+</TMPL_IF>
+<TMPL_IF NAME="b_visible">
+<TMPL_IF NAME="bl_visible">
+                <tr>
+                <td>
+                <TMPL_IF NAME="BL_IMPORT">
+                    <label for="i-bl"><input type="radio" id="i-bl" name="_type" value="bl" />&nbsp;売買::土地 データ (bl.header / bl.csv)</label>
+                <TMPL_ELSE>
+                    <label for="i-bl"><input type="radio" id="i-bl" name="_type" value="bl" disabled />&nbsp;売買::土地 データ (bl.header / bl.csv)</label>
+                </TMPL_IF>
+                </td>
+                </tr>
+</TMPL_IF>
+<TMPL_IF NAME="bm_visible">
+                <tr>
+                <td>
+                <TMPL_IF NAME="BM_IMPORT">
+                    <label for="i-bm"><input type="radio" id="i-bm" name="_type" value="bm" />&nbsp;売買::マンション データ (bm.header / bm.csv)</label>
+                <TMPL_ELSE>
+                    <label for="i-bm"><input type="radio" id="i-bm" name="_type" value="bm" disabled />&nbsp;売買::マンション データ (bm.header / bm.csv)</label>
+                </TMPL_IF>
+                </td>
+                </tr>
+</TMPL_IF>
+<TMPL_IF NAME="bh_visible">
+                <tr>
+                <td>
+                <TMPL_IF NAME="BH_IMPORT">
+                    <label for="i-bh"><input type="radio" id="i-bh" name="_type" value="bh" />&nbsp;売買::一戸建て データ (bh.header / bh.csv)</label>
+                <TMPL_ELSE>
+                    <label for="i-bh"><input type="radio" id="i-bh" name="_type" value="bh" disabled />&nbsp;売買::一戸建て データ (bh.header / bh.csv)</label>
+                </TMPL_IF>
+                </td>
+                </tr>
+</TMPL_IF>
+<TMPL_IF NAME="bb_visible">
+                <tr>
+                <td>
+                <TMPL_IF NAME="BB_IMPORT">
+                    <label for="i-bb"><input type="radio" id="i-bb" name="_type" value="bb" />&nbsp;売買::投資用 データ (bb.header / bb.csv)</label>
+                <TMPL_ELSE>
+                    <label for="i-bb"><input type="radio" id="i-bb" name="_type" value="bb" disabled />&nbsp;売買::投資用 データ (bb.header / bb.csv)</label>
+                </TMPL_IF>
+                </td>
+                </tr>
+</TMPL_IF>
+</TMPL_IF>
+                </table>
+                <input type="hidden" name="_mode" value="mode_admin_inexport" />
+                <input type="hidden" name="_action" value="import" />
+                <br />
+            </td>
+        </tr>
+        <tr align="left">
+            <td width="30">&nbsp;</td>
+            <th align="left">オプション</th>
+        </tr>
+        <tr align="left">
+            <td width="30">&nbsp;</td>
+            <td>
+                <p>
+                    すでに存在するデータを削除してCSVファイルの内容で新規にデータを追加するには、「既存データを削除して新規追加する」チェックボックスをチェックしてください。<br />
+                    <strong><input type="checkbox" name="Truncate" value="on" />&nbsp;既存データを削除して新規追加する</strong><br />
+                </p>
+                <p>
+                    インポートデータにユーザIDが含まれていない場合に、デフォルトで設定されるユーザIDを指定してください。<br />
+                    <TMPL_VAR NAME='selectUserID' ESCAPE='0'>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="30">&nbsp;</td>
+            <td>
+                <p>選択した項目のデータを&nbsp;&nbsp;<input type="submit" name="sb" value="インポート" /></p>
+            </td>
+        </tr>
+    </table>
+    </form>
+
+
+
+
+
+</div>
+
+<TMPL_INCLUDE NAME="footer.tmpl">

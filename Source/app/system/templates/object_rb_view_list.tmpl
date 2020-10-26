@@ -1,0 +1,79 @@
+<TMPL_INCLUDE NAME="header.tmpl">
+
+<TMPL_INCLUDE NAME="menu.tmpl">
+<div id="content">
+<TMPL_VAR NAME="page_over_data" ESCAPE='0'>
+<TMPL_VAR NAME="page_nav_paging" ESCAPE='0'>
+<table border="1" class="main_table">
+    <tr><!-- 385 -->
+        <th width="40" rowspan="2" class="list" valign="middle">選択</th>
+        <th class="list" width="375"><a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_list&_type=rb&_sort_by=name&_limit=<TMPL_VAR NAME="limit" ESCAPE='1'>">物件名</a></th>
+        <th width="85" class="list"><a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_list&_type=rb&_sort_by=price&_limit=<TMPL_VAR NAME="limit" ESCAPE='1'>">賃料</a></th>
+        <th width="35" rowspan="2" class="list" valign="middle">状態</th>
+
+    </tr>
+    <tr>
+        <th class="list"><a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_list&_type=rb&_sort_by=location&_limit=<TMPL_VAR NAME="limit" ESCAPE='1'>">所在地</a></th>
+        <th width="85" class="list"><a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_list&_type=rb&_sort_by=date&_limit=<TMPL_VAR NAME="limit" ESCAPE='1'>">最終更新日</a></th>
+        <!-- <th class="list">番号</th> -->
+    </tr>
+    <TMPL_LOOP NAME='main_loop'>
+    <tr valign="top" class="<TMPL_IF NAME="BUSINESS_PUBLISHED">public<TMPL_ELSE>private</TMPL_IF>">
+        <td width="35" rowspan="2" align="center" valign="middle"><input name="_object_id_to_be_deleted" value="<TMPL_VAR NAME="BUSINESS_ID" ESCAPE='0'>" type="checkbox" /></td>
+        <td><a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_edit&_type=rb&_object_id=<TMPL_VAR NAME="BUSINESS_ID" ESCAPE='0'>"><strong><TMPL_VAR NAME="BUSINESS_NAME" ESCAPE='1'></strong></a>&nbsp;&nbsp;[RB<TMPL_VAR NAME="BUSINESS_ID" ESCAPE='0'>]</td>
+        <td><strong><TMPL_VAR NAME="BUSINESS_PRICE" ESCAPE='1'>円</strong></td>
+        <td width="35" align="center" valign="middle" rowspan="2">
+            <TMPL_IF NAME="BUSINESS_PUBLISHED">公開<TMPL_ELSE>-</TMPL_IF>
+            <TMPL_IF NAME="BUSINESS_IS_SPECIAL"><br /><img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>icons/16-heart-gold-m.png" width="16" height="16" /></TMPL_IF>
+            <TMPL_IF NAME="BUSINESS_NEW"><img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>icons/New-006-009.gif" /></TMPL_IF>
+            <TMPL_IF NAME="BUSINESS_UPDATED"><img src="<TMPL_VAR NAME="static_url" ESCAPE='0'>icons/updated-005-002.gif" /></TMPL_IF>
+        </td>
+    </tr>
+    <tr>
+        <td><TMPL_VAR NAME="BUSINESS_LOCATION" ESCAPE='1'></td>
+        <td><TMPL_IF NAME="BUSINESS_LAST_UPDATED"><TMPL_VAR NAME="BUSINESS_LAST_UPDATED" ESCAPE='1'><TMPL_ELSE><TMPL_VAR NAME="BUSINESS_CREATED" ESCAPE='1'></TMPL_IF></td>
+        <!-- <td align="center"><TMPL_IF NAME="BUSINESS_ROOM_NUMBER"><TMPL_VAR NAME="BUSINESS_ROOM_NUMBER" ESCAPE='0'></TMPL_IF></td> -->
+    </tr>
+    </TMPL_LOOP>
+
+
+
+</table>
+<br />
+    <table border="1" class="main_table">
+        <tr>
+            <td colspan="2" align="left">
+                <input type="button" onclick="doCheckAll(this.form,true)" name="check_all" value="すべて選択する" />
+                <input type="button" onclick="doCheckAll(this.form,false)" name="uncheck_all" value="すべて選択を解除する" />
+    
+            </td>
+        </tr>
+        <tr>
+            <td width="33%" align="left">
+                <TMPL_VAR NAME="page_lower_delete" ESCAPE='0'>
+                <input type="submit" name="delete_object" value="削除" class="submit" onClick="return confirmDelete(document.rdelete)" />
+            </td>
+            <td width="66%" align="right">
+
+                <select name="_action">
+                    <option value="" selected="selected">その他の操作</option>
+                    <option value="public">公開</option>
+                    <option value="private">非公開</option>
+                    <option value="duplicate">複製の作成</option>
+                    <option value="make_special">お薦め物件にする</option>
+                    <option value="undo_special">お薦めを解除する</option>
+                </select>
+                <input type="submit" name="multiple_object" value="実行" />
+
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="right">
+                <TMPL_VAR NAME="page_lower_paging" ESCAPE='0'>
+            </td>
+        </tr>
+    </table>
+<TMPL_VAR NAME="page_lower_end" ESCAPE='0'>
+</div>
+
+<TMPL_INCLUDE NAME="footer.tmpl">

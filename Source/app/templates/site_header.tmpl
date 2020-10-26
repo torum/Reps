@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta name="robots" content="index,follow" />
+        <meta http-equiv="Content-Type" content="text/html; charset=<TMPL_VAR NAME='page_charset' ESCAPE='1'>" />
+        <!-- サイトの説明 -->
+        <meta name="description" content="" />
+        <!-- サイトに関連するキーワード -->
+        <meta name="keywords" content="" />
+        <!-- ページタイトル -->
+        <title>REPSハウジング</title>
+        <!-- CSS スタイルシートへのリンク -->
+        <link rel="stylesheet" href="<TMPL_VAR NAME='site_url' ESCAPE='0'>site-styles.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="<TMPL_VAR NAME='site_url' ESCAPE='0'>print.css" type="text/css" media="print" />
+
+        <!-- Atomフィードへのリンク Atom auto discovery(Atomフィード自動発見) -->
+<!--
+        <link rel="alternate" type="application/atom+xml" title="賃貸住居用物件の更新情報（Atomフィード）" href="<TMPL_VAR NAME='site_url' ESCAPE='0'>rl-atom.xml" />
+        <link rel="alternate" type="application/atom+xml" title="賃貸事業用物件の更新情報（Atomフィード）" href="<TMPL_VAR NAME='site_url' ESCAPE='0'>rb-atom.xml" />
+        <link rel="alternate" type="application/atom+xml" title="売買土地物件の更新情報（Atomフィード）" href="<TMPL_VAR NAME='site_url' ESCAPE='0'>bl-atom.xml" />
+        <link rel="alternate" type="application/atom+xml" title="売買マンション物件の更新情報（Atomフィード）" href="<TMPL_VAR NAME='site_url' ESCAPE='0'>bm-atom.xml" />
+        <link rel="alternate" type="application/atom+xml" title="売買一戸建て物件の更新情報（Atomフィード）" href="<TMPL_VAR NAME='site_url' ESCAPE='0'>bh-atom.xml" />
+        <link rel="alternate" type="application/atom+xml" title="売買投資用物件の更新情報（Atomフィード）" href="<TMPL_VAR NAME='site_url' ESCAPE='0'>bb-atom.xml" />
+-->
+        <!-- モバイル用ページへの自動発見リンク Mobile Link Discovery 仕様)-->
+        <link rel="alternate" type="text/html" title="モバイル用ページ" media="handheld" href="<TMPL_VAR NAME='cgi_url' ESCAPE='0'>mobile.cgi" />
+
+        <!-- フォーム関連のスクリプト -->
+        <script type="text/javascript">
+            <!--
+            function formSubmit(off_set) {
+            document.rsearch._mode.value = "mode_search";
+            document.rsearch.off_set.value = off_set;
+            document.rsearch.submit();
+            }
+            
+            function formSortSubmit(sort_by) {
+            document.rsearch._mode.value = "mode_search";
+            document.rsearch.sort_by.value = sort_by;
+            document.rsearch.off_set.value = 0;
+            document.rsearch.submit();
+            }
+            
+            function formShow() {
+            document.rsearch._mode.value = "mode_detail";
+            document.rsearch.action = "<TMPL_VAR NAME='script_name' ESCAPE='1'>?_mode=mode_detail&amp;_type=<TMPL_VAR NAME="_type" ESCAPE='1'>";
+            document.rsearch.submit();
+            }
+            
+            function formInquiry() {
+            document.rsearch._mode.value = "mode_inquiry";
+            document.rsearch.action = "<TMPL_VAR NAME='script_name' ESCAPE='1'>?_mode=mode_inquiry&amp;_type=<TMPL_VAR NAME="_type" ESCAPE='1'>";
+            document.rsearch.submit();
+            }
+            
+            function doCheckAll (f, v) {
+                var e = f._id;
+                if (e.value)
+                    e.checked = v;
+                else
+                    for (i=0; i<e.length; i++) 
+                        e[i].checked = v;
+            }
+            // -->
+        </script>
+    </head>
+<body>
+
+<div id="page">
+    <!-- 上部ヘッダー ロゴ　サブタイトル -->
+    <div id="header">
+        <div id="header_logo">
+            <h1><a href="<TMPL_VAR NAME='site_url' ESCAPE='0'>index.html">REPSハウジング</a></h1>
+            <div class="description">
+                賃貸、売買、不動産物件情報サイトに関する説明文が入ります。
+            </div>
+        </div>
+    </div>
+    <!-- 上部メニュー -->
+    <div id="header_menu">
+        <table border="0"  width="770" class="menu">
+            <tr>
+                <td>
+                    <a href="<TMPL_VAR NAME='site_url' ESCAPE='0'>index.html">ホーム</a>
+                </td>
+                <td>
+                    <a href="<TMPL_VAR NAME='cgi_url' ESCAPE='0'>search.cgi?_mode=mode_search&amp;_type=rl">賃貸:住居用</a>
+                </td>
+                <td>
+                    <a href="<TMPL_VAR NAME='cgi_url' ESCAPE='0'>search.cgi?_mode=mode_search&amp;_type=rb">賃貸:事業用</a>
+                </td>
+                <td>
+                    <a href="<TMPL_VAR NAME='cgi_url' ESCAPE='0'>search.cgi?_mode=mode_search&amp;_type=bl">売買:土地</a>
+                </td>
+                <td>
+                    <a href="<TMPL_VAR NAME='cgi_url' ESCAPE='0'>search.cgi?_mode=mode_search&amp;_type=bm">売買物件:マンション</a>
+                </td>
+                <td>
+                    <a href="<TMPL_VAR NAME='cgi_url' ESCAPE='0'>search.cgi?_mode=mode_search&amp;_type=bh">売買:一戸建て</a>
+                </td>
+                <td>
+                    <a href="<TMPL_VAR NAME='cgi_url' ESCAPE='0'>search.cgi?_mode=mode_search&amp;_type=bb">売買:投資用</a>
+                </td>
+            </tr>
+        </table>
+    </div>

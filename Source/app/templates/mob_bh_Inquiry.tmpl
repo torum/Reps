@@ -1,0 +1,46 @@
+<TMPL_INCLUDE NAME="mob_header.tmpl">
+
+    売買物件&nbsp;::&nbsp;一戸建てお問い合わせ<br /><br />
+    
+    <TMPL_VAR NAME="page_data" ESCAPE='0'>
+    
+    <TMPL_IF NAME="result_count">
+
+    <form method="post" name="rinquiry" id="rinquiry" action="<TMPL_VAR NAME='script_name' ESCAPE='0'>" >
+
+        <TMPL_LOOP NAME='main_loop'>
+            物件番号:BH<TMPL_VAR NAME="ID" ESCAPE='0'><br />
+            所在地：<TMPL_VAR NAME="HOUSE_LOCATION" ESCAPE='1'><br />
+            価格：<TMPL_VAR NAME="HOUSE_PRICE" ESCAPE='1'>万円<br />
+            最寄駅：<TMPL_VAR NAME="HOUSE_STATION_1" ESCAPE='1'><TMPL_IF NAME="HOUSE_STATION_2"><br /><TMPL_VAR NAME="HOUSE_STATION_2" ESCAPE='1'></TMPL_IF><br />
+            土地面積：<TMPL_IF NAME="HOUSE_TOTI_SQUARE"><TMPL_VAR NAME="HOUSE_TOTI_SQUARE" ESCAPE='1'>平米<TMPL_ELSE>--</TMPL_IF><br />
+            建物面積：<TMPL_IF NAME="HOUSE_BUILDING_SQUARE"><TMPL_VAR NAME="HOUSE_BUILDING_SQUARE" ESCAPE='1'>平米<TMPL_ELSE>--</TMPL_IF><br />
+
+            <input name="_object_id" value="<TMPL_VAR NAME="ID" ESCAPE='0'>" type="hidden" />
+
+        </TMPL_LOOP>
+
+        <div style="clear:both;">&nbsp;</div>
+        <p>上記<TMPL_VAR NAME="result_count"  ESCAPE='1'>物件について問い合わせメールを送信します。</p>
+        <br />
+        お名前:<br />
+        <input type="text" name="c_name"><br />
+        電話番号:<br />
+        <input type="text" name="c_phone"><br />
+        メールアドレス:<br />
+        <input type="text" name="c_email"><br />
+        お問い合わせ文:<br />
+        <textarea name="c_text"></textarea><br />
+        ご希望の連絡方法:<br />
+        <input name="contact_pref" value="1" type="radio" />メール<br />
+        <input name="contact_pref" value="2" type="radio" />電話<br />
+        <input name="contact_pref" value="3" type="radio" checked="checked" />どちらでも<br />
+        <br />
+        <input type="hidden" name="_mode" value="mode_inquiry" />
+        <input name="_type" value="bh" type="hidden" />
+        <input value="送信" type="submit" name="submit_Inquiry" />
+    </form>
+
+    </TMPL_IF>
+
+<TMPL_INCLUDE NAME="mob_footer.tmpl">

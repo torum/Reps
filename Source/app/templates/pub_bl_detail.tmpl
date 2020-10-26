@@ -1,0 +1,233 @@
+<TMPL_INCLUDE NAME="site_header.tmpl">
+
+<div id="content_full">
+    <!-- ナビゲーションメニュー -->
+    <a href="<TMPL_VAR NAME="site_url" ESCAPE='0'>index.html" class="nav">ホーム</a>&nbsp;::&nbsp;<a href="<TMPL_VAR NAME='script_name' ESCAPE='0'>?_mode=mode_search&amp;_type=bl" class="nav">売買土地物件検索</a>&nbsp;::&nbsp;詳細表示<br /><br />
+
+    <TMPL_VAR NAME="page_data" ESCAPE='0'>
+
+    <!-- もし物件情報が０件以上あれば -->
+    <TMPL_IF NAME="result_count">
+
+    <!-- 問い合わせフォームを表示するためのフォーム -->
+    <form method="get" name="rsearch" id="rsearch" action="<TMPL_VAR NAME='script_name' ESCAPE='0'>?_mode=mode_inquiry&amp;_type=bl" >
+        <table border="0" class="detail_table" align="left" width="735">
+            <tr>
+                <td colspan="6" align="right">
+                    <input type="hidden" name="_mode" value="mode_inquiry" />
+                    <input name="_type" value="bl" type="hidden" />
+                    <TMPL_IF NAME="result_one">
+                        <TMPL_IF NAME="aid">
+                        <input name="_object_id" value="<TMPL_VAR NAME="aid" ESCAPE='0'>" type="hidden" />
+                        <input value="この物件についてお問い合わせ" class="submit" onclick="formInquiry()" type="submit" /></TMPL_IF>
+                    <TMPL_ELSE>
+                        <input value="選択した物件について一括してお問い合わせ" class="submit" onclick="formInquiry()" type="submit" />
+                    </TMPL_IF>
+                </td>
+            </tr>
+            <!-- 繰り返しLoop開始（複数の物件の詳細を表示） -->
+            <TMPL_LOOP NAME='main_loop'>
+            <!-- 複数の物件情報を表示する場合、選択用のチェックボタンを表示 -->
+            <TMPL_UNLESS NAME="ONLY_ONE">
+            <tr>
+                <td colspan="6" align="right">
+                    <label for="ID<TMPL_VAR NAME="LAND_ID" ESCAPE='0'>"><input name="_object_id" id="ID<TMPL_VAR NAME="LAND_ID" ESCAPE='0'>" value="<TMPL_VAR NAME="LAND_ID" ESCAPE='0'>" type="checkbox" /><strong>&nbsp;この物件を選択</strong>&nbsp;▽&nbsp;</label></td>
+            </tr>
+            </TMPL_UNLESS>
+            <tr>
+                <th class="title" style="font-size:small;">&nbsp;物件番号:<br />&nbsp;BL<TMPL_VAR NAME="LAND_ID" ESCAPE='1'></th>
+                <th align="center" colspan="5" class="title"><h3><strong><TMPL_IF NAME="LAND_ADS_TEXT"><TMPL_VAR NAME="LAND_ADS_TEXT" ESCAPE='1'><TMPL_ELSE>&nbsp;</TMPL_IF></strong></h3><!-- <TMPL_IF NAME="LAND_IS_SPECIAL">お薦め</TMPL_IF> -->
+                </th>
+            </tr>
+            <tr>
+                <th width="12%" align="right" class="items">所在地</th>
+                <td ><TMPL_VAR NAME="LAND_LOCATION" ESCAPE='1'>&nbsp;(<a href="http://maps.google.co.jp/maps?q=loc:+<TMPL_VAR NAME="LAND_LOCATION_URLENCODED" ESCAPE='1'>&amp;spn=0.022785,0.039343&amp;hl=ja" target="_blank"><small>付近の地図</small></a>)</td>
+                <th width="17%" align="right" class="items">接道</th>
+                <td width="17%"><TMPL_IF NAME="LAND_SETUDOU"><TMPL_VAR NAME="LAND_SETUDOU" ESCAPE='1'><TMPL_ELSE>--</TMPL_IF></td>
+            </tr>
+            <tr>
+                <th align="right" class="items">交通</th>
+                <td><span style="font-size:130%;font-weight:normal;"><TMPL_VAR NAME="LAND_STATION_1" ESCAPE='1'></span>
+                    <TMPL_IF NAME="LAND_BUS_1">&nbsp;<TMPL_VAR NAME="LAND_BUS_1" ESCAPE='1'>&nbsp;<TMPL_ELSE>&nbsp;</TMPL_IF>
+                    <TMPL_IF NAME="LAND_BUS_MINUTES_1">バス<TMPL_VAR NAME="LAND_BUS_MINUTES_1" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF><TMPL_IF NAME="LAND_BUSWALK_MINUTES_1">(停歩<TMPL_VAR NAME="LAND_BUSWALK_MINUTES_1" ESCAPE='1'>分)</TMPL_IF>・<TMPL_IF NAME="LAND_WALK_MINUTES_1">徒歩<TMPL_VAR NAME="LAND_WALK_MINUTES_1" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>
+                    <TMPL_IF NAME="LAND_STATION_2"><br /><span style="font-size:130%;font-weight:normal;"><TMPL_VAR NAME="LAND_STATION_2" ESCAPE='1'></span>
+                        <TMPL_IF NAME="LAND_BUS_2">&nbsp;<TMPL_VAR NAME="LAND_BUS_2" ESCAPE='1'>&nbsp;<TMPL_ELSE>&nbsp;</TMPL_IF>
+                        <TMPL_IF NAME="LAND_BUS_MINUTES_2">バス<TMPL_VAR NAME="LAND_BUS_MINUTES_2" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF><TMPL_IF NAME="LAND_BUSWALK_MINUTES_2">(停歩<TMPL_VAR NAME="LAND_BUSWALK_MINUTES_2" ESCAPE='1'>分)</TMPL_IF>・<TMPL_IF NAME="LAND_WALK_MINUTES_2">徒歩<TMPL_VAR NAME="LAND_WALK_MINUTES_2" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>
+
+                    </TMPL_IF>
+                </td>
+                <th align="right" class="items">土地権利</th>
+                <td><TMPL_IF NAME="LAND_KENRI"><TMPL_VAR NAME="LAND_KENRI" ESCAPE='1'><TMPL_ELSE>--</TMPL_IF></td>
+            </tr>
+            <tr>
+                <th align="right" class="items">価格</th>
+                <td><span style="font-size:140%;color:red;font-weight:bold;"><TMPL_VAR NAME="LAND_PRICE" ESCAPE='1'></span>万円</td>
+                <th align="right" class="items">セットバック</th>
+                <td><TMPL_IF NAME="LAND_SETBACK"><TMPL_VAR NAME="LAND_SETBACK" ESCAPE='1'><TMPL_ELSE>--</TMPL_IF></td>
+            </tr>
+            <tr>
+                <th align="right" class="items">坪単価</th>
+                <td><TMPL_IF NAME="LAND_TUBOTANKA"><TMPL_VAR NAME="LAND_TUBOTANKA" ESCAPE='1'>円<TMPL_ELSE>--</TMPL_IF></td>
+                <th align="right" class="items">私道負担面積</th>
+                <td><TMPL_IF NAME="LAND_SIDOUFUTAN_SQUARE"><TMPL_VAR NAME="LAND_SIDOUFUTAN_SQUARE" ESCAPE='1'>m&sup2;<TMPL_ELSE>&nbsp;</TMPL_IF></td>
+            </tr>
+            <tr>
+                <th align="right" class="items">面積</th>
+                <td><TMPL_IF NAME="LAND_SQUARE_M"><TMPL_VAR NAME="LAND_SQUARE_M" ESCAPE='1'>m&sup2;<TMPL_IF NAME="LAND_SQUARE_TEXT">&nbsp;(<TMPL_VAR NAME="LAND_SQUARE_TEXT" ESCAPE='1'>)</TMPL_IF><TMPL_ELSE>--</TMPL_IF>&nbsp;
+                <TMPL_IF NAME="LAND_SQUARE_T"><TMPL_VAR NAME="LAND_SQUARE_T" ESCAPE='1'>坪</TMPL_IF></td>
+                <th align="right" class="items">取引態様</th>
+                <td><TMPL_IF NAME="LAND_TORIHIKITAIYOU"><TMPL_VAR NAME="LAND_TORIHIKITAIYOU" ESCAPE='1'><TMPL_ELSE>&nbsp;</TMPL_IF></td>
+            </tr>
+            <tr>
+                <th align="right" class="items">地目</th>
+                <td><TMPL_IF NAME="LAND_TIMOKU"><TMPL_VAR NAME="LAND_TIMOKU" ESCAPE='1'><TMPL_ELSE>&nbsp;</TMPL_IF></td>
+                <th align="right" class="items">建蔽率</th>
+                <td><TMPL_IF NAME="LAND_KENPEIRITU"><TMPL_VAR NAME="LAND_KENPEIRITU" ESCAPE='1'>%<TMPL_ELSE>&nbsp;</TMPL_IF></td>
+            </tr>
+            <tr>
+                <th align="right" class="items">地勢</th>
+                <td><TMPL_IF NAME="LAND_TISEI"><TMPL_VAR NAME="LAND_TISEI" ESCAPE='1'><TMPL_ELSE>&nbsp;</TMPL_IF></td>
+                <th align="right" class="items">容積率</th>
+                <td><TMPL_IF NAME="LAND_YOUSEKIRITU"><TMPL_VAR NAME="LAND_YOUSEKIRITU" ESCAPE='1'>%<TMPL_ELSE>&nbsp;</TMPL_IF></td>
+            </tr>
+            <tr>
+                <th align="right" class="items">用途地域</th>
+                <td><TMPL_IF NAME="LAND_YOUTOTIIKI"><TMPL_VAR NAME="LAND_YOUTOTIIKI" ESCAPE='1'><TMPL_ELSE>&nbsp;</TMPL_IF></td>
+                <th align="right" class="items">都市計画</th>
+                <td><TMPL_IF NAME="LAND_TOSIKEIKAKU"><TMPL_VAR NAME="LAND_TOSIKEIKAKU" ESCAPE='1'><TMPL_ELSE>&nbsp;</TMPL_IF></td>
+            </tr>
+            <tr>
+                <th align="right" class="items">現況</th>
+                <td><TMPL_IF NAME="LAND_GENKYOU"><TMPL_VAR NAME="LAND_GENKYOU" ESCAPE='1'><TMPL_ELSE>&nbsp;</TMPL_IF></td>
+                <th align="right" class="items">国土省届出</th>
+                <td><TMPL_IF NAME="LAND_KOKUDOHOUTODOKEDE"><TMPL_VAR NAME="LAND_KOKUDOHOUTODOKEDE" ESCAPE='1'><TMPL_ELSE>&nbsp;</TMPL_IF></td>
+            </tr>
+            <tr>
+                <th align="right" class="items">設備</th>
+                <td><TMPL_IF NAME="LAND_SETUBI"><TMPL_VAR NAME="LAND_SETUBI" ESCAPE='1'><TMPL_ELSE>&nbsp;</TMPL_IF></td>
+                <td align="center" class="items">角地</td>
+                <td><TMPL_IF NAME="LAND_OPTIONS_KAKUTI">●<TMPL_ELSE>&nbsp;</TMPL_IF></td>
+            </tr>
+            <tr>
+                <th align="right" class="items">引渡条件等</th>
+                <td><TMPL_IF NAME="LAND_JYOUKEN"><TMPL_VAR NAME="LAND_JYOUKEN" ESCAPE='1'><TMPL_ELSE>&nbsp;</TMPL_IF></td>
+                <td align="center" class="items">ガス</td>
+                <td><TMPL_IF NAME="LAND_OPTIONS_GUS"><TMPL_VAR NAME="LAND_OPTIONS_GUS"><TMPL_ELSE>&nbsp;</TMPL_IF></td>
+            </tr>
+            <tr>
+                <th align="right" class="items">引渡日</th>
+                <td><TMPL_IF NAME="LAND_HIKIWATASI"><TMPL_VAR NAME="LAND_HIKIWATASI" ESCAPE='1'><TMPL_ELSE>&nbsp;</TMPL_IF></td>
+                <td align="center" class="items">水道</td>
+                <td><TMPL_IF NAME="LAND_OPTIONS_SUIDOU"><TMPL_VAR NAME="LAND_OPTIONS_SUIDOU"><TMPL_ELSE>&nbsp;</TMPL_IF></td>
+            </tr>
+            <tr>
+                <th align="right" class="items">備考</th>
+                <td><TMPL_IF NAME="LAND_BIKOU"><TMPL_VAR NAME="LAND_BIKOU" ESCAPE='1'><TMPL_ELSE>--</TMPL_IF></td>
+                <td align="center" class="items">汚水</td>
+                <td><TMPL_IF NAME="LAND_OPTIONS_OSUI"><TMPL_VAR NAME="LAND_OPTIONS_OSUI"><TMPL_ELSE>&nbsp;</TMPL_IF></td>
+            </tr>
+            <tr>
+                <th align="right" class="items">最終更新日</th>
+                <td><TMPL_IF NAME="LAND_LAST_UPDATED"><TMPL_VAR NAME="LAND_LAST_UPDATED" ESCAPE='1'><TMPL_ELSE><TMPL_VAR NAME="LAND_CREATED" ESCAPE='1'></TMPL_IF></td>
+                <td align="center" class="items">雑排水</td>
+                <td><TMPL_IF NAME="LAND_OPTIONS_HAISUI"><TMPL_VAR NAME="LAND_OPTIONS_HAISUI"><TMPL_ELSE>&nbsp;</TMPL_IF></td>
+            </tr>
+            <tr>
+                <td colspan="4" align="center">
+                    <table cellpadding="3" cellspacing="1" class="none_border_table" align="center">
+                        <tr valign="top">
+                            <td>
+                                <TMPL_IF NAME="LAND_PICS_OUTSIDE">
+                                    <div class="photo">
+                                        <a href="<TMPL_VAR NAME="LAND_PICS_OUTSIDE" ESCAPE='1'>" target="_blank" title="クリックして拡大">
+                                        <TMPL_IF NAME="LAND_PICS_OUTSIDE_THUMB">
+                                            <img style="z-index:3;" src="<TMPL_VAR NAME="LAND_PICS_OUTSIDE_THUMB" ESCAPE='1'>" alt="写真1" />
+                                            </a>
+                                            <br />写真1
+                                        <TMPL_ELSE>
+                                            写真1
+                                            </a><br />
+                                        </TMPL_IF>
+                                    </div>
+                                <TMPL_ELSE>&nbsp;</TMPL_IF>
+                            </td>
+                            <td>
+                                <TMPL_IF NAME="LAND_PICS_INSIDE">
+                                    <div class="photo">
+                                        <a href="<TMPL_VAR NAME="LAND_PICS_INSIDE" ESCAPE='1'>" target="_blank" title="クリックして拡大">
+                                        <TMPL_IF NAME="LAND_PICS_INSIDE_THUMB">
+                                            <img style="z-index:1;" src="<TMPL_VAR NAME="LAND_PICS_INSIDE_THUMB" ESCAPE='1'>" alt="写真2" />
+                                            </a>
+                                            <br />写真2
+                                        <TMPL_ELSE>
+                                            写真2
+                                            </a><br />
+                                        </TMPL_IF>
+                                    </div>
+                                <TMPL_ELSE>&nbsp;</TMPL_IF>
+                            </td>
+                            <td>
+                                <TMPL_IF NAME="LAND_PICS_TIZU"><!-- もし地図が登録されていたら -->
+                                    <div class="photo">
+                                        <a href="<TMPL_VAR NAME="LAND_PICS_TIZU" ESCAPE='1'>" target="_blank" title="クリックして拡大">
+                                        <TMPL_IF NAME="LAND_PICS_TIZU_THUMB"><!-- もしサムネイル画像があったら表示 -->
+                                            <img style="z-index:2;" src="<TMPL_VAR NAME="LAND_PICS_TIZU_THUMB" ESCAPE='1'>" alt="地図" />
+                                            </a>
+                                            <br />地図
+                                        <TMPL_ELSE>
+                                            地図
+                                            </a><br />
+                                        </TMPL_IF>
+                                    </div>
+                                </TMPL_IF>
+                            </td>
+                        </tr>
+                        <TMPL_IF NAME="LAND_MOVIE_FILE_URL">
+                        <tr valign="top">
+                            <td colspan="3">
+                                <TMPL_IF NAME="LAND_MOVIE_FILE_URL"><a href="<TMPL_VAR NAME="LAND_MOVIE_FILE_URL" ESCAPE='1'>">動画閲覧</a><TMPL_ELSE>&nbsp;</TMPL_IF>
+                            </td>
+                        </tr>
+                        </TMPL_IF>
+                    </table>
+        
+                </td>
+            </tr>
+            <tr><!-- 取り扱い会社情報 -->
+                <td colspan="6">
+                    <address>
+                    &nbsp;&nbsp;&nbsp;取扱会社：<TMPL_VAR NAME="LAND_COMPANY_NAME" ESCAPE='1'><br />
+                    &nbsp;&nbsp;&nbsp;免許番号：<TMPL_VAR NAME="LAND_COMPANY_LICENSE" ESCAPE='1'><br />
+                    &nbsp;&nbsp;&nbsp;住所:<TMPL_VAR NAME="LAND_COMPANY_ADDRESS" ESCAPE='1'><br />
+                    &nbsp;&nbsp;&nbsp;電話番号：<TMPL_VAR NAME="LAND_COMPANY_TEL" ESCAPE='1'><br />
+                    <TMPL_IF NAME="LAND_COMPANY_HP">
+                    &nbsp;&nbsp;&nbsp;ホームページ：<a href="<TMPL_VAR NAME="LAND_COMPANY_HP" ESCAPE='1'>"><TMPL_VAR NAME="LAND_COMPANY_HP" ESCAPE='1'></a><br />
+                    </TMPL_IF>
+                    </address>
+                </td>
+            </tr>
+            <!-- 繰り返しLoop終わり -->
+            </TMPL_LOOP>
+            <tr>
+                <td colspan="6" align="right">
+                    <TMPL_IF NAME="result_one">
+                    &nbsp;<!-- 一つの物件情報だけの場合、何も表示しない -->
+                    <TMPL_ELSE>
+                    <!-- 複数の物件情報を表示する場合、選択用のチェックボタンを表示 -->
+                    <input value="選択した物件について一括してお問い合わせ" class="submit" onclick="formInquiry()" type="submit" />
+                    </TMPL_IF>
+                </td>
+            </tr>
+        </table>
+        
+    </form>
+    <br />
+    
+    <TMPL_ELSE>
+    <!-- 物件情報が０件の場合 -->
+    <p>物件が選択されていないか、既に削除された、または問題があり表示できません。</p>
+    </TMPL_IF>
+
+</div>
+
+<TMPL_INCLUDE NAME="site_footer.tmpl">

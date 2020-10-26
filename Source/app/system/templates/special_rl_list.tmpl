@@ -1,0 +1,81 @@
+<TMPL_INCLUDE NAME="header.tmpl">
+
+<TMPL_INCLUDE NAME="menu.tmpl">
+<div id="content">
+    <TMPL_VAR NAME="page_data" ESCAPE='0'>
+
+<form method="post" action="<TMPL_VAR NAME="script_name" ESCAPE='0'>" enctype="multipart/form-data" onsubmit="return confirmDelete(document.sdelete)" name="sdelete">
+
+<table border="1" class="main_table">
+<!--
+    <tr>
+        <th colspan="2" class="list">&nbsp;</th>
+        <th width="40" valign="top" class="list">削除</th>
+-->
+    </tr>
+    <TMPL_LOOP NAME='main_loop'>
+    <tr valign="top">
+        <td style="border:solid 1px #ccc;" width="210">
+            <TMPL_IF NAME="APART_PICS_OUTSIDE_THUMB">
+                <img src="<TMPL_VAR NAME="APART_PICS_OUTSIDE_THUMB" ESCAPE='1'>" />
+            <TMPL_ELSE>
+                <TMPL_IF NAME="APART_PICS_MADORIZU_THUMB">
+                    <img src="<TMPL_VAR NAME="APART_PICS_MADORIZU_THUMB" ESCAPE='1'>" />
+                <TMPL_ELSE>
+                    "no pictures"
+                </TMPL_IF>
+            </TMPL_IF>
+        </td>
+        <td style="border:solid 1px #ccc;">
+
+
+<a href="<TMPL_VAR NAME="script_name" ESCAPE='0'>?_mode=mode_edit&_type=rl&_object_id=<TMPL_VAR NAME="APART_ID" ESCAPE='0'>"><strong>
+
+<TMPL_VAR NAME="APART_NAME" ESCAPE='1'></strong></a>&nbsp;(<a href="./search.app?_mode=mode_detail&_type=rl&_object_id=<TMPL_VAR NAME="APART_ID" ESCAPE='0'>" target=\"_blank\">閲覧表示</a>)
+<br />
+[物件番号:RL<TMPL_VAR NAME="APART_ID" ESCAPE='0'>]
+<br />
+            <strong><TMPL_VAR NAME="APART_KIND" ESCAPE='1'></strong>
+            &nbsp;&nbsp;<TMPL_VAR NAME="APART_MADORI" ESCAPE='1'>
+            <br />
+<strong><TMPL_VAR NAME="APART_PRICE" ESCAPE='1'>円</strong>
+<br />
+
+            <TMPL_VAR NAME="APART_LOCATION" ESCAPE='1'><br />
+            <TMPL_VAR NAME="APART_STATION_1" ESCAPE='1'>
+            <TMPL_VAR NAME="APART_STATION_2" ESCAPE='1'>
+            <br />
+
+            敷金／礼金：<TMPL_VAR NAME="APART_PRICE_SIKIKIN" ESCAPE='1'>ヵ月／<TMPL_VAR NAME="APART_PRICE_REIKIN" ESCAPE='1'>ヵ月<br />
+            <TMPL_IF NAME="APART_PRICE_KANRIHI">
+            管理費等：<TMPL_VAR NAME="APART_PRICE_KANRIHI" ESCAPE='1'>円<br />
+            </TMPL_IF>
+<!--
+             <TMPL_VAR NAME="APART_BUS_MINUTES" ESCAPE='1'>
+            <TMPL_VAR NAME="APART_WALK_MINUTES" ESCAPE='1'>
+-->
+<TMPL_IF NAME="APART_ADS_TEXT">
+            <TMPL_VAR NAME="APART_ADS_TEXT" ESCAPE='1'>
+            <br />
+</TMPL_IF>
+        </td>
+<!--
+        <td style="border:solid 1px #ccc;" width="35" align="center"><input name="_object_id_to_be_deleted" value="<TMPL_VAR NAME="APART_ID" ESCAPE='0'>" type="checkbox" /></td>
+-->
+    </tr>
+    </TMPL_LOOP>
+<!--
+    <tr>
+        <td colspan="4" align="right">
+<input onclick="doCheckAll(this.form,true)" name="check_all" value="すべてチェックする" type="button">
+<input onclick="doCheckAll(this.form,false)" name="uncheck_all" value="すべてチェックを外す" type="button">
+<input name="_mode" value="mode_special" type="hidden">
+<input name="_kind" value="rl" type="hidden">
+<input tabindex="1" name="delete_object" value="削除" class="submit" type="submit">
+        </td>
+    </tr>
+-->
+</table>
+</form>
+</div>
+<TMPL_INCLUDE NAME="footer.tmpl">

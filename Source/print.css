@@ -1,0 +1,122 @@
+@charset "utf-8";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    margin: 1mm;
+    font-size: 10pt;
+    font-family: Verdana, Arial, ＭＳ Ｐゴシック, ヒラギノ角ゴ Pro W3, Osaka, sans-serif;
+}
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+dl {
+    margin-bottom: 5mm;
+    line-height: 16pt;
+}
+a {
+    color: #000000;
+    text-decoration: none;
+}
+/* a[href]:after {    content: " (" attr(href)") ";}*/
+
+p,
+li,
+dd {
+    font-family: ＭＳ Ｐ明朝, 細明朝体, Ryumin Light-KL, ヒラギノ明朝 Pro W3, serif;
+}
+#navi {
+    display: none;
+}
+#banner {
+    border: 3px double #666666;
+    padding: 3mm;
+    padding-bottom: 0;
+    margin-bottom: 3mm;
+}
+h2 {
+    border-bottom: 1px solid #666666;
+}
+h3 {
+    border: 1px dotted #999999;
+    border-left: 2mm solid #999999;
+    padding: 2mm 0;
+    padding-left: 2mm;
+}
+.category:before {
+    content: "カテゴリ：";
+}
+ul,
+ol {
+    padding-left: 5mm;
+}
+li {
+    margin-left: 5mm;
+}
+dl {
+    margin-left: 5mm;
+}
+dd {
+    margin-bottom: 2mm;
+}
+.posted {
+    padding-top: 2mm;
+    border-top: 3px double #999999;
+    margin-bottom: 15mm;
+}
+#header_menu{
+    /*display: none;*/
+}
+
+#right {
+    display: none;
+}
+#sidebar{
+    display: none;
+}
+#footer {
+    text-align: center;
+    display: none;
+}
+hr{
+    display: none;
+}
+pre {
+    padding: 2mm;
+    margin-left: 5mm;
+    margin-bottom: 5mm;
+    background: #EEEEEE;
+    page-break-inside: avoid;
+}
+
+
+input, textarea{
+    display: none;
+    }
+.submit{
+    display: none;
+}
+
+td,th{
+    border:1px solid lightblue;
+}
+.none_border_table td{
+    border-width:0px;
+    text-align: center;
+    padding:0.9em 0.9em 0.3em 0;
+}
+
+table.main_table{
+    width:620px;
+}
+
+table.detail_table{
+    width:620px;
+}
+
+

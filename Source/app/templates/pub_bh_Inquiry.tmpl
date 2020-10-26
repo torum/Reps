@@ -1,0 +1,63 @@
+<TMPL_INCLUDE NAME="site_header.tmpl">
+
+<div id="content_full">
+    
+    <a href="<TMPL_VAR NAME="site_url" ESCAPE='0'>index.html" class="nav">ホーム</a>&nbsp;::&nbsp;<a href="<TMPL_VAR NAME='script_name' ESCAPE='0'>?_mode=mode_search&amp;_type=bh" class="nav">売買一戸建て物件検索</a>&nbsp;::&nbsp;お問い合わせ<br /><br />
+    
+    <TMPL_VAR NAME="page_data" ESCAPE='0'>
+    
+    <TMPL_IF NAME="result_count">
+
+    <form method="post" name="rinquiry" id="rinquiry" action="<TMPL_VAR NAME='script_name' ESCAPE='0'>?_mode=mode_inquiry&amp;_type=bh" >
+    
+        <table border="0" class="main_table" align="left" width="735">
+
+            <TMPL_LOOP NAME='main_loop'>
+            <tr valign="middle" class="items">
+                
+                <td><span style="font-size:130%;font-weight:normal;"><TMPL_VAR NAME="HOUSE_STATION_1" ESCAPE='1'></span><TMPL_IF NAME="HOUSE_STATION_2"><br /><span style="font-size:130%;font-weight:normal;"><TMPL_VAR NAME="HOUSE_STATION_2" ESCAPE='1'></span></TMPL_IF></td>
+                <td align="center" valign="middle"><span style="font-size:140%;color:red;font-weight:bold;"><TMPL_VAR NAME="HOUSE_PRICE" ESCAPE='1'></span>万円</td>
+                <td align="center">
+                    <TMPL_IF NAME="HOUSE_TOTI_SQUARE"><TMPL_VAR NAME="HOUSE_TOTI_SQUARE" ESCAPE='1'><small>m&sup2;</small><TMPL_ELSE>--</TMPL_IF></td>
+                                <td align="center" valign="middle">
+                    <TMPL_IF NAME="HOUSE_BUILDING_SQUARE"><TMPL_VAR NAME="HOUSE_BUILDING_SQUARE" ESCAPE='1'><small>m&sup2;</small><TMPL_ELSE>--</TMPL_IF></td>
+            </tr>
+            <tr>
+                <td valign="middle"><TMPL_VAR NAME="HOUSE_LOCATION" ESCAPE='1'></td>
+                <td align="center"><TMPL_IF NAME="HOUSE_BUS_MINUTES_1"><TMPL_VAR NAME="HOUSE_BUS_MINUTES_1" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>・<TMPL_IF NAME="HOUSE_WALK_MINUTES_1"><TMPL_VAR NAME="HOUSE_WALK_MINUTES_1" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>
+                <TMPL_IF NAME="HOUSE_STATION_2"><br /><TMPL_IF NAME="HOUSE_BUS_MINUTES_2"><TMPL_VAR NAME="HOUSE_BUS_MINUTES_2" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>・<TMPL_IF NAME="HOUSE_WALK_MINUTES_2"><TMPL_VAR NAME="HOUSE_WALK_MINUTES_2" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>
+                </TMPL_IF>
+                </td>
+                <td align="center"><TMPL_IF NAME="HOUSE_MADORI"><TMPL_VAR NAME="HOUSE_MADORI" ESCAPE='1'><TMPL_ELSE>--</TMPL_IF></td>
+                <td align="center"><TMPL_IF NAME="HOUSE_LAST_UPDATED"><TMPL_VAR NAME="HOUSE_LAST_UPDATED" ESCAPE='1'><TMPL_ELSE><TMPL_VAR NAME="HOUSE_CREATED" ESCAPE='1'></TMPL_IF>
+    
+                    <input name="_object_id" value="<TMPL_VAR NAME="ID" ESCAPE='0'>" type="hidden" />
+                    <!-- <TMPL_VAR NAME="HOUSE_USER_ID" ESCAPE='0'> -->
+                </td>
+            </tr>
+            </TMPL_LOOP>
+        </table>
+        <div style="clear:both;">&nbsp;</div>
+        <p>上記<TMPL_VAR NAME="result_count"  ESCAPE='1'>物件について問い合わせメールを送信します。</p>
+    
+        <TMPL_INCLUDE NAME="pub_bs_inquiry_buy.tmpl">
+        
+        <div style="text-align:right;width:735px;">
+                <input value="お問い合わせ送信" type="submit" name="submit_Inquiry" class="submit" />
+                <input type="hidden" name="_mode" value="mode_inquiry" />
+                <input name="_type" value="bh" type="hidden" />
+        </div>
+    </form>
+
+    <TMPL_ELSE>
+        <TMPL_UNLESS NAME="page_data" ESCAPE='0'>
+            <p>物件が選択されていないか、既に削除された、または問題があり表示できません。</p>
+        </TMPL_UNLESS>
+    </TMPL_IF>
+
+</div>
+
+
+
+
+<TMPL_INCLUDE NAME="site_footer.tmpl">

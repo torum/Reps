@@ -1,0 +1,54 @@
+<TMPL_INCLUDE NAME="site_header.tmpl">
+
+<div id="content_full">
+    <!-- ナビゲーションメニュー -->
+    <a href="<TMPL_VAR NAME="site_url" ESCAPE='0'>index.html" class="nav">ホーム</a>&nbsp;::&nbsp;<a href="<TMPL_VAR NAME='script_name' ESCAPE='0'>?_mode=mode_search&amp;_type=bl" class="nav">売買土地物件検索</a>&nbsp;::&nbsp;お問い合わせ<br /><br />
+    
+    <TMPL_VAR NAME="page_data" ESCAPE='0'>
+    <!-- もし物件が０以上選択されていたら -->
+    <TMPL_IF NAME="result_count">
+    <!-- お問い合わせメールを送信するためのフォーム -->
+    <form method="post" name="rinquiry" id="rinquiry" action="<TMPL_VAR NAME='script_name' ESCAPE='0'>?_mode=mode_inquiry&amp;_type=bl" >
+
+        <table border="0" class="main_table" align="left" width="735">
+            <!-- 繰り返しLoop開始 -->
+            <TMPL_LOOP NAME='main_loop'>
+            <tr valign="middle" class="items">
+                <td><span style="font-size:130%;font-weight:normal;"><TMPL_VAR NAME="LAND_STATION_1" ESCAPE='1'></span><TMPL_IF NAME="LAND_STATION_2"><br /><span style="font-size:130%;font-weight:normal;"><TMPL_VAR NAME="LAND_STATION_2" ESCAPE='1'></span></TMPL_IF></td>
+                <td align="center" valign="middle"><span style="font-size:140%;color:red;font-weight:bold;"><TMPL_VAR NAME="LAND_PRICE" ESCAPE='1'></span>万円</td>
+                <td align="center"><TMPL_IF NAME="LAND_SQUARE_M"><TMPL_VAR NAME="LAND_SQUARE_M" ESCAPE='1'><small>m&sup2;</small><TMPL_ELSE>--</TMPL_IF></td>
+            </tr>
+            <tr>
+                <td valign="middle"><TMPL_VAR NAME="LAND_LOCATION" ESCAPE='1'></td>
+                <td align="center"><TMPL_IF NAME="LAND_BUS_MINUTES_1"><TMPL_VAR NAME="LAND_BUS_MINUTES_1" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>・<TMPL_IF NAME="LAND_WALK_MINUTES_1"><TMPL_VAR NAME="LAND_WALK_MINUTES_1" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>
+                <TMPL_IF NAME="LAND_STATION_2"><br /><TMPL_IF NAME="LAND_BUS_MINUTES_1"><TMPL_VAR NAME="LAND_BUS_MINUTES_1" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>・<TMPL_IF NAME="LAND_WALK_MINUTES_1"><TMPL_VAR NAME="LAND_WALK_MINUTES_1" ESCAPE='1'>分<TMPL_ELSE>--</TMPL_IF>
+                </TMPL_IF>
+                </td>
+                <td align="center"><TMPL_IF NAME="LAND_LAST_UPDATED"><TMPL_VAR NAME="LAND_LAST_UPDATED" ESCAPE='1'><TMPL_ELSE><TMPL_VAR NAME="LAND_CREATED" ESCAPE='1'></TMPL_IF>
+                    <input name="_object_id" value="<TMPL_VAR NAME="ID" ESCAPE='0'>" type="hidden" />
+                </td>
+            </tr>
+            </TMPL_LOOP>
+            <!-- 繰り返しLoop終わり -->
+        </table>
+        <div style="clear:both;">&nbsp;</div>
+        <p>上記<TMPL_VAR NAME="result_count"  ESCAPE='1'>物件について問い合わせメールを送信します。</p>
+        <!-- 売買共通お問い合わせフォーム読み込み -->
+        <TMPL_INCLUDE NAME="pub_bs_inquiry_buy.tmpl">
+
+        <div style="text-align:right;width:735px;">
+                <input value="お問い合わせ送信" type="submit" name="submit_Inquiry" class="submit" />
+                <input type="hidden" name="_mode" value="mode_inquiry" />
+                <input name="_type" value="bl" type="hidden" />
+        </div>
+    </form>
+    <TMPL_ELSE>
+    <!-- もし物件が選択されていなかったら -->
+        <TMPL_UNLESS NAME="page_data" ESCAPE='0'>
+            <p>物件が選択されていないか、既に削除された、または問題があり表示できません。</p>
+        </TMPL_UNLESS>
+    </TMPL_IF>
+
+</div>
+
+<TMPL_INCLUDE NAME="site_footer.tmpl">
